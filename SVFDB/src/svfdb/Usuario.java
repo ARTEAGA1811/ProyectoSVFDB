@@ -16,5 +16,13 @@ public class Usuario {
     String password;
     
     //Metodos
+    public void ingresarLogin(String login){
+        this.login = login;
+    }
+    
+    public void validarLogin(String loginIngreso){
+        
+    }
+    
            
 }
