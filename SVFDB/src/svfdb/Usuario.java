@@ -3,20 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package svfdb;
 
 /**
  *
  * @author David Arteaga / Mittsaker / Art3-
+ * 14 feb. 2021 12:24:20 p. m.
  */
-public class Main {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        
-    }
+public class Usuario {
+    String login;
+    String password;
     
+    //Metodos
+           
 }
