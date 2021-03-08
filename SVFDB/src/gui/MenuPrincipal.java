@@ -503,7 +503,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CEDULA", "NOMBRE", "APELLIDO", "TELÉFONO", "DIRECCIÓN", "FECHA DE NACIMIENTO"
+                "ID", "CEDULA", "NOMBRE", "APELLIDO", "TELÉFONO", "DIRECCIÓN", "FECHA DE NACIMIENTO"
             }
         ));
         TableCliente.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -676,7 +676,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CREDENCIAL", "NOMBRE", "APELLIDO", "TELÉFONO", "DIRECCIÓN", "FECHA DE NACIMIENTO"
+                "ID", "CREDENCIAL", "NOMBRE", "APELLIDO", "TELÉFONO", "DIRECCIÓN", "FECHA DE NACIMIENTO"
             }
         ));
         TableCliente1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -844,7 +844,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "RUC", "NOMBRE", "TELÉFONO", "DIRECCIÓN", "FECHA DE NACIMIENTO", "APELLIDO", "COMERCIAL", "TIPO DE DOCUMENTO"
+                "ID", "RUC", "NOMBRE", "TELÉFONO", "DIRECCIÓN", "FECHA DE NACIMIENTO", "APELLIDO", "COMERCIAL", "TIPO DE DOCUMENTO"
             }
         ));
         TableProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1036,7 +1036,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CODIGO", "DESCRIPCIÓN", "CANTIDAD", "PRECIO", "COSTO", "ESTADO", "PROVEEDOR", "STOCK"
+                "ID", "CODIGO", "DESCRIPCIÓN", "CANTIDAD", "PRECIO", "COSTO", "ESTADO", "PROVEEDOR", "STOCK"
             }
         ));
         TableProducto.addMouseListener(new java.awt.event.MouseAdapter() {
