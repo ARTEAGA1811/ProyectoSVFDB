@@ -8,9 +8,9 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
+    //*******************************************************
+    private int contadorDeIntentosPassword = 0;
+    //*******************************************************
     public Login() {
         initComponents();
     }
@@ -60,7 +60,7 @@ public class Login extends javax.swing.JFrame {
         btnIniciar.setBackground(new java.awt.Color(0, 0, 204));
         btnIniciar.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciar.setText("Iniciar");
-        btnIniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciarActionPerformed(evt);
@@ -132,6 +132,19 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+
+        
+//        if(txtCorreo.equals("master") && txtPass.equals("master") ){
+//         
+//            menu.setVisible(true);
+//            dispose();
+//            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema.");
+//        }else if(contadorDeIntentosPassword < 3){
+//            JOptionPane.showMessageDialog(null, "Login o Password incorrectos\nVuelva a ingresar los datos.");
+//            contadorDeIntentosPassword++;
+//        }else{
+//            JOptionPane.showMessageDialog(null, "Su usuario ha sido bloqueado\nContáctese con el Gerente General.");
+//        }
         String usuario = txtCorreo.getText();
         
         MenuPrincipal menu = new MenuPrincipal(usuario);
@@ -143,9 +156,16 @@ public class Login extends javax.swing.JFrame {
             case "Bodeguero":
                 menu.setVisible(true);
                 dispose();
+                JOptionPane.showMessageDialog(null, "Bienvenido al Sistema.");
                 break;
             default:
-                JOptionPane.showMessageDialog(this, "Usuario o contraseña inválidos", "Datos invalidos", JOptionPane.ERROR_MESSAGE);
+                if(contadorDeIntentosPassword < 3){
+                    JOptionPane.showMessageDialog(this, "Login o Password incorrectos", "Vuelva a ingresar los datos.", JOptionPane.ERROR_MESSAGE);
+                    contadorDeIntentosPassword++;
+                }else{
+                    JOptionPane.showMessageDialog(this,"Contáctese con el Gerente General." ,"Su usuario ha sido bloqueado", JOptionPane.ERROR_MESSAGE);
+                }
+                
         }
         
         
