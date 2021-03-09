@@ -177,7 +177,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnBuscarUsuario = new javax.swing.JButton();
         btnReseterarPassword = new javax.swing.JButton();
-        btnActualizarPasswordUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1194,7 +1193,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel4.setText("Login");
 
-        btnBuscarUsuario.setText("Buscar");
+        btnBuscarUsuario.setText("Consultar Usuario");
         btnBuscarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarUsuarioActionPerformed(evt);
@@ -1208,13 +1207,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnActualizarPasswordUsuario.setText("Actualizar Contraseña");
-        btnActualizarPasswordUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarPasswordUsuarioActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanelConfigLayout = new javax.swing.GroupLayout(jPanelConfig);
         jPanelConfig.setLayout(jPanelConfigLayout);
         jPanelConfigLayout.setHorizontalGroup(
@@ -1225,19 +1217,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addGap(51, 51, 51)
                         .addComponent(btnCrearNuevoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 894, Short.MAX_VALUE))
                     .addGroup(jPanelConfigLayout.createSequentialGroup()
-                        .addGap(195, 195, 195)
-                        .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnActualizarPasswordUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
+                        .addGap(385, 385, 385)
                         .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnReseterarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelConfigLayout.createSequentialGroup()
+                                .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnBuscarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanelConfigLayout.createSequentialGroup()
-                                .addGap(112, 112, 112)
-                                .addComponent(btnReseterarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConfigLayout.createSequentialGroup()
@@ -1256,11 +1244,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnBuscarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnActualizarPasswordUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReseterarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(111, 111, 111)
+                .addGap(54, 54, 54)
+                .addComponent(btnReseterarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addComponent(btnCrearNuevoUsuario)
                 .addGap(44, 44, 44))
         );
@@ -1454,11 +1440,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void btnReseterarPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReseterarPasswordActionPerformed
         // TODO add your handling code here:
+        ResetearPassword resetPass = new ResetearPassword();
+        resetPass.setVisible(true);
     }//GEN-LAST:event_btnReseterarPasswordActionPerformed
-
-    private void btnActualizarPasswordUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarPasswordUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnActualizarPasswordUsuarioActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
@@ -1510,7 +1494,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelTotal;
     private com.toedter.calendar.JDateChooser Midate;
-    private javax.swing.JButton btnActualizarPasswordUsuario;
     private javax.swing.JButton btnBuscarUsuario;
     private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnConfig;
