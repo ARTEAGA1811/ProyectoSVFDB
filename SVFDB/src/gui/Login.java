@@ -1,5 +1,7 @@
 package gui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author cadri
@@ -130,9 +132,24 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        MenuPrincipal menu = new MenuPrincipal();
-        menu.setVisible(true);
-        dispose();
+        String usuario = txtCorreo.getText();
+        
+        MenuPrincipal menu = new MenuPrincipal(usuario);
+        
+        switch(usuario){
+            case "Gerente":
+            case "Administrador":
+            case "Vendedor":
+            case "Bodeguero":
+                menu.setVisible(true);
+                dispose();
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "Usuario o contraseña inválidos", "Datos invalidos", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+        
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     /**
