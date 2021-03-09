@@ -1,14 +1,16 @@
 package gui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author cadri
  */
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
+    //*******************************************************
+    private int contadorDeIntentosPassword = 0;
+    //*******************************************************
     public Login() {
         initComponents();
     }
@@ -58,7 +60,7 @@ public class Login extends javax.swing.JFrame {
         btnIniciar.setBackground(new java.awt.Color(0, 0, 204));
         btnIniciar.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciar.setText("Iniciar");
-        btnIniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciarActionPerformed(evt);
@@ -131,8 +133,22 @@ public class Login extends javax.swing.JFrame {
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         MenuPrincipal menu = new MenuPrincipal();
-        menu.setVisible(true);
-        dispose();
+//        if(txtCorreo.equals("master") && txtPass.equals("master") ){
+//         
+//            menu.setVisible(true);
+//            dispose();
+//            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema.");
+//        }else if(contadorDeIntentosPassword < 3){
+//            JOptionPane.showMessageDialog(null, "Login o Password incorrectos\nVuelva a ingresar los datos.");
+//            contadorDeIntentosPassword++;
+//        }else{
+//            JOptionPane.showMessageDialog(null, "Su usuario ha sido bloqueado\nContáctese con el Gerente General.");
+//        }
+        
+         menu.setVisible(true);
+            dispose();
+            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema.");
+        
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     /**

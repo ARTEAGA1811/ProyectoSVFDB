@@ -1,5 +1,7 @@
 package gui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author cadri
@@ -179,7 +181,8 @@ public class Administracion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        
+        JOptionPane.showMessageDialog(null,"Usuario creado con éxito.");
+    
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     /**

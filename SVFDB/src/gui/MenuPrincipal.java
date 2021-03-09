@@ -1,10 +1,13 @@
 package gui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author cadri
  */
 public class MenuPrincipal extends javax.swing.JFrame {
+
     /**
      * Creates new form MenuPrincipal
      */
@@ -196,7 +199,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/config.png"))); // NOI18N
-        btnConfig.setText("Administracion");
+        btnConfig.setText("Administración");
         btnConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfigActionPerformed(evt);
@@ -332,6 +335,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         btnGuardarpro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/GuardarTodo.png"))); // NOI18N
+        btnGuardarpro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarpro1ActionPerformed(evt);
+            }
+        });
 
         cbxProveedorPro3.setEditable(true);
         cbxProveedorPro3.addActionListener(new java.awt.event.ActionListener() {
@@ -485,7 +493,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tableCliente);
 
         btnGuardarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/GuardarTodo.png"))); // NOI18N
-        btnGuardarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnGuardarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarClienteActionPerformed(evt);
@@ -493,7 +501,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         btnEditarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Actualizar (2).png"))); // NOI18N
-        btnEditarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEditarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarClienteActionPerformed(evt);
@@ -501,7 +509,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         btnEliminarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/eliminar.png"))); // NOI18N
-        btnEliminarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarClienteActionPerformed(evt);
@@ -509,7 +517,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         btnNuevoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/nuevo.png"))); // NOI18N
-        btnNuevoCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNuevoCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnNuevoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoClienteActionPerformed(evt);
@@ -1200,11 +1208,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCantidadVentaKeyTyped
 
     private void btnEliminarventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarventaActionPerformed
-
+        JOptionPane.showMessageDialog(null,"Venta Eliminada");
     }//GEN-LAST:event_btnEliminarventaActionPerformed
 
     private void btnGenerarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarVentaActionPerformed
 
+        JOptionPane.showMessageDialog(null,"Imprimiendo factura");
 
     }//GEN-LAST:event_btnGenerarVentaActionPerformed
 
@@ -1218,14 +1227,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void btnGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClienteActionPerformed
 
+        JOptionPane.showMessageDialog(null, "Se ha guardado la información del cliente.");
     }//GEN-LAST:event_btnGuardarClienteActionPerformed
 
     private void btnEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarClienteActionPerformed
 
+        JOptionPane.showMessageDialog(null,"Se ha modificado la información del cliente.");
     }//GEN-LAST:event_btnEditarClienteActionPerformed
 
     private void btnEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClienteActionPerformed
 
+        JOptionPane.showMessageDialog(null,"Se ha eliminado al cliente.");
     }//GEN-LAST:event_btnEliminarClienteActionPerformed
 
     private void btnNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoClienteActionPerformed
@@ -1238,14 +1250,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void btnguardarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarProveedorActionPerformed
 
+        JOptionPane.showMessageDialog(null,"Se ha registrado el proveedor.");
     }//GEN-LAST:event_btnguardarProveedorActionPerformed
 
     private void btnEditarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProveedorActionPerformed
 
+        JOptionPane.showMessageDialog(null,"Se ha modificado la información del proveedor.");
     }//GEN-LAST:event_btnEditarProveedorActionPerformed
 
     private void btnEliminarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProveedorActionPerformed
 
+        JOptionPane.showMessageDialog(null,"Se ha eliminado al proveedor.");
     }//GEN-LAST:event_btnEliminarProveedorActionPerformed
 
     private void btnNuevoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoProveedorActionPerformed
@@ -1265,15 +1280,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_tableProductoMouseClicked
 
     private void btnGuardarproActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarproActionPerformed
+        // Boton guardar/registrar el producto ***************************************************
+        JOptionPane.showMessageDialog(null, "El producto ha sido registrado con éxito");
+
 
     }//GEN-LAST:event_btnGuardarproActionPerformed
 
     private void btnEditarproActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarproActionPerformed
 
+        JOptionPane.showMessageDialog(null,"Se ha modificado la información del producto.");
     }//GEN-LAST:event_btnEditarproActionPerformed
 
     private void btnEliminarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProActionPerformed
 
+        JOptionPane.showMessageDialog(null,"Se ha eliminado el producto.");
     }//GEN-LAST:event_btnEliminarProActionPerformed
 
     private void tableVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableVentasMouseClicked
@@ -1310,12 +1330,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnDarDeBajaActionPerformed
 
     private void btnAdministracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministracionActionPerformed
         Administracion admin = new Administracion();
         admin.setVisible(true);
     }//GEN-LAST:event_btnAdministracionActionPerformed
+
+    private void btnGuardarpro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarpro1ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null,"Se ha guardado la venta");
+    }//GEN-LAST:event_btnGuardarpro1ActionPerformed
 
     /**
      * @param args the command line arguments
