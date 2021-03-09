@@ -159,7 +159,13 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Bienvenido al Sistema.");
                 break;
             default:
-                JOptionPane.showMessageDialog(this, "Usuario o contraseña inválidos", "Datos invalidos", JOptionPane.ERROR_MESSAGE);
+                if(contadorDeIntentosPassword < 3){
+                    JOptionPane.showMessageDialog(this, "Login o Password incorrectos", "Vuelva a ingresar los datos.", JOptionPane.ERROR_MESSAGE);
+                    contadorDeIntentosPassword++;
+                }else{
+                    JOptionPane.showMessageDialog(this,"Contáctese con el Gerente General." ,"Su usuario ha sido bloqueado", JOptionPane.ERROR_MESSAGE);
+                }
+                
         }
         
         
