@@ -132,7 +132,8 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        MenuPrincipal menu = new MenuPrincipal();
+
+        
 //        if(txtCorreo.equals("master") && txtPass.equals("master") ){
 //         
 //            menu.setVisible(true);
@@ -144,10 +145,24 @@ public class Login extends javax.swing.JFrame {
 //        }else{
 //            JOptionPane.showMessageDialog(null, "Su usuario ha sido bloqueado\nContáctese con el Gerente General.");
 //        }
+        String usuario = txtCorreo.getText();
         
-         menu.setVisible(true);
-            dispose();
-            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema.");
+        MenuPrincipal menu = new MenuPrincipal(usuario);
+        
+        switch(usuario){
+            case "Gerente":
+            case "Administrador":
+            case "Vendedor":
+            case "Bodeguero":
+                menu.setVisible(true);
+                dispose();
+                JOptionPane.showMessageDialog(null, "Bienvenido al Sistema.");
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "Usuario o contraseña inválidos", "Datos invalidos", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
         
     }//GEN-LAST:event_btnIniciarActionPerformed
 

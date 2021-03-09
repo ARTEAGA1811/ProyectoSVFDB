@@ -12,16 +12,23 @@ package svfdb;
  * 14 feb. 2021 12:24:20 p. m.
  */
 public class Usuario {
-    String login;
-    String password;
+    private String login;
+    private String password;
+    private String rol;
+
+    public Usuario(String login, String password, String rol) {
+        this.login = login;
+        this.password = password;
+        this.rol = rol;
+    }
     
     //Metodos
     public void ingresarLogin(String login){
         this.login = login;
     }
     
-    public void validarLogin(String loginIngreso){
-        
+    public boolean validarLogin(String loginIngreso){
+        return login.equals(loginIngreso);
     }
     
            
