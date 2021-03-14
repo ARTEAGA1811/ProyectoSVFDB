@@ -179,6 +179,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnReseterarPassword = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema de Ventas y Facturación");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Menu.jpeg"))); // NOI18N
