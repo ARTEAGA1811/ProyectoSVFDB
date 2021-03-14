@@ -1,6 +1,8 @@
 package gui;
 
+import Modelos.BDD;
 import javax.swing.JOptionPane;
+import svfdb.Usuario;
 
 /**
  *
@@ -11,8 +13,11 @@ public class Login extends javax.swing.JFrame {
     //*******************************************************
     private int contadorDeIntentosPassword = 0;
     //*******************************************************
+    
+    private BDD baseDeDatos;
     public Login() {
         initComponents();
+        baseDeDatos = new BDD();
     }
 
     /**
@@ -28,7 +33,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtCorreo = new javax.swing.JTextField();
+        txtLogin = new javax.swing.JTextField();
         txtPass = new javax.swing.JPasswordField();
         btnIniciar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -51,9 +56,9 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 255));
         jLabel4.setText("Password");
 
-        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
+        txtLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreoActionPerformed(evt);
+                txtLoginActionPerformed(evt);
             }
         });
 
@@ -80,7 +85,7 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
-                            .addComponent(txtCorreo)
+                            .addComponent(txtLogin)
                             .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(72, 72, 72))
         );
@@ -92,7 +97,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
@@ -127,47 +132,30 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
+    private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreoActionPerformed
+    }//GEN-LAST:event_txtLoginActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
 
+        String usuarioTxt = txtLogin.getText();
+        Usuario usuario = baseDeDatos.getUsuario(usuarioTxt);
         
-//        if(txtCorreo.equals("master") && txtPass.equals("master") ){
-//         
-//            menu.setVisible(true);
-//            dispose();
-//            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema.");
-//        }else if(contadorDeIntentosPassword < 3){
-//            JOptionPane.showMessageDialog(null, "Login o Password incorrectos\nVuelva a ingresar los datos.");
-//            contadorDeIntentosPassword++;
-//        }else{
-//            JOptionPane.showMessageDialog(null, "Su usuario ha sido bloqueado\nContáctese con el Gerente General.");
-//        }
-        String usuario = txtCorreo.getText();
-        
-        MenuPrincipal menu = new MenuPrincipal(usuario);
-        
-        switch(usuario){
-            case "Gerente":
-            case "Administrador":
-            case "Vendedor":
-            case "Bodeguero":
-                menu.setVisible(true);
-                dispose();
-                JOptionPane.showMessageDialog(null, "Bienvenido al Sistema.");
-                break;
-            default:
-                if(contadorDeIntentosPassword < 3){
-                    JOptionPane.showMessageDialog(this, "Login o Password incorrectos", "Vuelva a ingresar los datos.", JOptionPane.ERROR_MESSAGE);
-                    contadorDeIntentosPassword++;
-                }else{
-                    JOptionPane.showMessageDialog(this,"Contáctese con el Gerente General." ,"Su usuario ha sido bloqueado", JOptionPane.ERROR_MESSAGE);
-                }
-                
+        boolean passValida = usuario.validarLogin(new String(txtPass.getPassword()));
+             
+        if (passValida) {
+            MenuPrincipal menu = new MenuPrincipal(usuario.getRol());
+            menu.setVisible(true);
+            dispose();
+            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema.");
+        } else {
+            if (contadorDeIntentosPassword < 3) {
+                JOptionPane.showMessageDialog(this, "Login o Password incorrectos", "Vuelva a ingresar los datos.", JOptionPane.ERROR_MESSAGE);
+                contadorDeIntentosPassword++;
+            } else {
+                JOptionPane.showMessageDialog(this, "Contáctese con el Gerente General.", "Su usuario ha sido bloqueado", JOptionPane.ERROR_MESSAGE);
+            }
         }
-        
         
         
     }//GEN-LAST:event_btnIniciarActionPerformed
@@ -214,7 +202,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtLogin;
     private javax.swing.JPasswordField txtPass;
     // End of variables declaration//GEN-END:variables
 }

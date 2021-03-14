@@ -21,12 +21,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jTabbedPane1.setEnabledAt(5, false);
         
         switch(rol){
-            case "Vendedor":
+            case "vendedor":
                 btnProveedor.setEnabled(false);
                 btnVentas.setEnabled(false);
                 btnConfig.setEnabled(false);
                 break;
-            case "Bodeguero":
+            case "bodeguero":
                 btnClientes.setEnabled(false);
                 btnNuevaVenta.setEnabled(false);
                 btnProveedor.setEnabled(false);

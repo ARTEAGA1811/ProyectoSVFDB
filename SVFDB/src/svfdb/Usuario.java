@@ -14,22 +14,43 @@ package svfdb;
 public class Usuario {
     private String login;
     private String password;
+    private String nombre;
+    private String apellido;
+    private String direccion;
+    private String telefono;
+    private String fechaNacimiento;
     private String rol;
 
-    public Usuario(String login, String password, String rol) {
+    public Usuario(String login, String password, String nombre, String apellido, String direccion, String telefono, String fechaNacimiento, String rol) {
         this.login = login;
         this.password = password;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.fechaNacimiento = fechaNacimiento;
         this.rol = rol;
     }
+    
+    public Usuario(){};
     
     //Metodos
     public void ingresarLogin(String login){
         this.login = login;
     }
     
-    public boolean validarLogin(String loginIngreso){
-        return login.equals(loginIngreso);
+    public boolean validarLogin(String pass){
+        if(password == null)
+            return false;
+        
+        return password.equals(pass);
     }
+
+    public String getRol() {
+        return rol;
+    }
+    
+    
     
            
 }

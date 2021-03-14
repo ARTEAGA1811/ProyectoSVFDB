@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class Client {
- Conexion cn = new Conexion();
+ BDD cn = new BDD();
  
     Connection con;
     PreparedStatement ps;

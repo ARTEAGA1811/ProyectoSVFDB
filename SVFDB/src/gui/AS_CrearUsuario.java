@@ -1,5 +1,6 @@
 package gui;
 
+import Modelos.Loginbas;
 import javax.swing.JOptionPane;
 
 /**
@@ -8,11 +9,13 @@ import javax.swing.JOptionPane;
  */
 public class AS_CrearUsuario extends javax.swing.JFrame {
 
+    Loginbas loginbas;
     /**
      * Creates new form Registro
      */
     public AS_CrearUsuario() {
         initComponents();
+        loginbas = new Loginbas();
     }
 
     /**
