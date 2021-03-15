@@ -1,6 +1,8 @@
 package gui;
 
+import Modelos.BDD;
 import javax.swing.JOptionPane;
+import svfdb.Usuario;
 
 /**
  *
@@ -8,11 +10,13 @@ import javax.swing.JOptionPane;
  */
 public class MenuPrincipal extends javax.swing.JFrame {
 
+    BDD baseDeDatos;
     /**
      * Creates new form MenuPrincipal
      */
-    public MenuPrincipal(String rol) {
+    public MenuPrincipal(String rol, BDD base) {
         initComponents();
+        baseDeDatos = base;
         jTabbedPane1.setEnabledAt(0, false);
         jTabbedPane1.setEnabledAt(1, false);
         jTabbedPane1.setEnabledAt(2, false);
@@ -39,7 +43,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
     
     public MenuPrincipal(){
-        this("Adminsitrador");
+        this("Adminsitrador", null);
     }
 
     /**
@@ -176,7 +180,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnReseterarPassword = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTFLoginBuscado = new javax.swing.JTextField();
         btnBuscarUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1208,9 +1212,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Login");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTFLoginBuscado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTFLoginBuscadoActionPerformed(evt);
             }
         });
 
@@ -1233,7 +1237,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(32, 32, 32)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTFLoginBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnBuscarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
@@ -1243,7 +1247,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(80, 80, 80)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFLoginBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(51, 51, 51)
                 .addComponent(btnBuscarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(58, Short.MAX_VALUE))
@@ -1456,7 +1460,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDarDeBajaActionPerformed
 
     private void btnCrearNuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearNuevoUsuarioActionPerformed
-        AS_CrearUsuario admin = new AS_CrearUsuario();
+        AS_CrearUsuario admin = new AS_CrearUsuario(baseDeDatos);
         admin.setVisible(true);
     }//GEN-LAST:event_btnCrearNuevoUsuarioActionPerformed
 
@@ -1466,15 +1470,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarpro1ActionPerformed
 
     private void btnBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarUsuarioActionPerformed
-        // TODO add your handling code here:
-        //JOptionPane.showMessageDialog(null,"El Usuario ingresado no está registrado en el sistema.");
-        AS_ConsultarUsuario consultarUs = new AS_ConsultarUsuario();
-        consultarUs.setVisible(true);
+    
+        Usuario usuarioConsultado = baseDeDatos.getUsuario(jTFLoginBuscado.getText());
+        if(usuarioConsultado.estaRegistrado()){
+            AS_ConsultarUsuario consultarUs = new AS_ConsultarUsuario(usuarioConsultado);
+            consultarUs.setVisible(true);
+        }else
+            JOptionPane.showMessageDialog(null,"El Usuario ingresado no está registrado en el sistema.");
     }//GEN-LAST:event_btnBuscarUsuarioActionPerformed
 
     private void btnReseterarPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReseterarPasswordActionPerformed
         // TODO add your handling code here:
-        AS_ResetearPassword resetPass = new AS_ResetearPassword();
+        AS_ResetearPassword resetPass = new AS_ResetearPassword(baseDeDatos);
         resetPass.setVisible(true);
     }//GEN-LAST:event_btnReseterarPasswordActionPerformed
 
@@ -1490,9 +1497,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNuevoProActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTFLoginBuscadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFLoginBuscadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTFLoginBuscadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1619,8 +1626,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTextField jTFLoginBuscado;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblConsultarPro1;
     private javax.swing.JLabel lblConsultarProveedor;
     private javax.swing.JLabel lblOrdenarPro;

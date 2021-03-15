@@ -144,7 +144,7 @@ public class Login extends javax.swing.JFrame {
         boolean passValida = usuario.validarLogin(new String(txtPass.getPassword()));
              
         if (passValida) {
-            MenuPrincipal menu = new MenuPrincipal(usuario.getRol());
+            MenuPrincipal menu = new MenuPrincipal(usuario.getRol(), baseDeDatos);
             menu.setVisible(true);
             dispose();
             JOptionPane.showMessageDialog(null, "Bienvenido al Sistema.");

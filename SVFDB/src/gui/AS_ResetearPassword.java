@@ -5,7 +5,12 @@
  */
 package gui;
 
+import Modelos.BDD;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import svfdb.Usuario;
 
 /**
  *
@@ -13,11 +18,13 @@ import javax.swing.JOptionPane;
  */
 public class AS_ResetearPassword extends javax.swing.JFrame {
 
+    BDD baseDeDatos;
     /**
      * Creates new form ActualizarPassword
      */
-    public AS_ResetearPassword() {
+    public AS_ResetearPassword(BDD baseDeDatos) {
         initComponents();
+        this.baseDeDatos = baseDeDatos;
     }
 
     /**
@@ -32,14 +39,14 @@ public class AS_ResetearPassword extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblresetearLogin = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTFLogin = new javax.swing.JTextField();
         lblresetearPass = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         lblresetearValidarPass = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jBResetear = new javax.swing.JButton();
+        jTFNuevaPass = new javax.swing.JPasswordField();
+        jTFNuevaPass2 = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/config.png"))); // NOI18N
@@ -59,10 +66,10 @@ public class AS_ResetearPassword extends javax.swing.JFrame {
         lblresetearValidarPass.setForeground(new java.awt.Color(0, 51, 255));
         lblresetearValidarPass.setText("Ingrese  de nuevo la contraseña");
 
-        jButton1.setText("Resetear Password");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBResetear.setText("Resetear Password");
+        jBResetear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBResetearActionPerformed(evt);
             }
         });
 
@@ -80,12 +87,12 @@ public class AS_ResetearPassword extends javax.swing.JFrame {
                             .addComponent(lblresetearLogin, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2))
+                            .addComponent(jTFLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                            .addComponent(jTFNuevaPass)
+                            .addComponent(jTFNuevaPass2))
                         .addGap(27, 27, 27))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBResetear, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(148, 148, 148))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -94,17 +101,17 @@ public class AS_ResetearPassword extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblresetearLogin)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblresetearPass)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblresetearValidarPass))
-                .addGap(33, 33, 33)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFNuevaPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblresetearValidarPass)
+                    .addComponent(jTFNuevaPass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addComponent(jBResetear, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -135,56 +142,37 @@ public class AS_ResetearPassword extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null,"Se ha reseteado la contraseña del usuario con éxito.");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jBResetearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBResetearActionPerformed
+        Usuario usuarioResetear = baseDeDatos.getUsuario(jTFLogin.getText());
+        String pass1 = new String(jTFNuevaPass.getPassword());
+        
+        boolean passDiferentes = !pass1.equals(new String(jTFNuevaPass2.getPassword()));
+        
+        if(!usuarioResetear.estaRegistrado() || passDiferentes)
+            JOptionPane.showMessageDialog(this, "Datos Incorrectos", "", JOptionPane.ERROR_MESSAGE);
+        else{
+            usuarioResetear.setPassword(pass1);
+            try {
+                baseDeDatos.actualizarUsuario(usuarioResetear);
+                JOptionPane.showMessageDialog(this, "Password reseteado con éxito");
+            } catch (SQLException ex) {
+                Logger.getLogger(AS_ResetearPassword.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }//GEN-LAST:event_jBResetearActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AS_ResetearPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AS_ResetearPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AS_ResetearPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AS_ResetearPassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AS_ResetearPassword().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBResetear;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTFLogin;
+    private javax.swing.JPasswordField jTFNuevaPass;
+    private javax.swing.JPasswordField jTFNuevaPass2;
     private javax.swing.JLabel lblresetearLogin;
     private javax.swing.JLabel lblresetearPass;
     private javax.swing.JLabel lblresetearValidarPass;

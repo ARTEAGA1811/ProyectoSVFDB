@@ -10,13 +10,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import svfdb.Usuario;
 /**
  * 
  * @author Jefferson Alquinga <sguergachi at gmail.com>
  */
 public class BDD {
-    
+    public static SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
     Connection con;
 
     public BDD(){
@@ -52,6 +53,49 @@ public class BDD {
         }        
         
         return usuario;
+    }
+    
+    public void registrarUsuario(Usuario usuario) throws SQLException{
+        String sql = "INSERT INTO usuarios VALUES(?,?,?,?,?,?,?,?)";        
+        PreparedStatement ps = con.prepareStatement(sql);
+        
+        ps.setString(1, usuario.getLogin());
+        ps.setString(2, usuario.getPassword());
+        ps.setString(3, usuario.getNombre());
+        ps.setString(4, usuario.getApellido());
+        ps.setString(5, usuario.getDireccion());
+        ps.setString(6, usuario.getTelefono());
+        ps.setString(7, usuario.getFechaNacimiento());
+        ps.setString(8, usuario.getRol());
+
+        ps.executeUpdate();
+
+    }
+    
+    public void actualizarUsuario(Usuario usuario) throws SQLException{
+        String sql = "UPDATE usuarios SET "
+                + "password = ?, "
+                + "nombre = ?, "
+                + "apellido = ?, "
+                + "direccion = ?, "
+                + "telefono = ?,"
+                + "nacimiento = ?,"
+                + "rol = ? where login = ?";
+        
+        PreparedStatement ps = con.prepareStatement(sql);
+        
+        
+        ps.setString(1, usuario.getPassword());
+        ps.setString(2, usuario.getNombre());
+        ps.setString(3, usuario.getApellido());
+        ps.setString(4, usuario.getDireccion());
+        ps.setString(5, usuario.getTelefono());
+        ps.setString(6, usuario.getFechaNacimiento());
+        ps.setString(7, usuario.getRol());       
+        ps.setString(8, usuario.getLogin());
+        
+        ps.executeUpdate();
+        
     }
 
 }

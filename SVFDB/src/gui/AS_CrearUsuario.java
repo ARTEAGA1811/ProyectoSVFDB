@@ -1,7 +1,14 @@
 package gui;
 
+import Modelos.BDD;
 import Modelos.Loginbas;
+import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import svfdb.Usuario;
 
 /**
  *
@@ -10,10 +17,14 @@ import javax.swing.JOptionPane;
 public class AS_CrearUsuario extends javax.swing.JFrame {
 
     Loginbas loginbas;
+    BDD baseDeDatos;
+    Calendar calendario;
     /**
      * Creates new form Registro
      */
-    public AS_CrearUsuario() {
+    public AS_CrearUsuario(BDD base) {
+        calendario = new GregorianCalendar();
+        baseDeDatos = base;
         initComponents();
         loginbas = new Loginbas();
     }
@@ -33,21 +44,21 @@ public class AS_CrearUsuario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtPass = new javax.swing.JPasswordField();
-        btnIniciar = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtNombre1 = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        txtNombre2 = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        txtNombre3 = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        Midate = new com.toedter.calendar.JDateChooser();
-        txtNombre4 = new javax.swing.JTextField();
+        fechaNacimiento = new com.toedter.calendar.JDateChooser();
+        txtLogin = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jCBRol = new javax.swing.JComboBox<>();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -66,13 +77,13 @@ public class AS_CrearUsuario extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 255));
         jLabel4.setText("Password");
 
-        btnIniciar.setBackground(new java.awt.Color(0, 0, 204));
-        btnIniciar.setForeground(new java.awt.Color(255, 255, 255));
-        btnIniciar.setText("Registrar");
-        btnIniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrar.setBackground(new java.awt.Color(0, 0, 204));
+        btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIniciarActionPerformed(evt);
+                btnRegistrarActionPerformed(evt);
             }
         });
 
@@ -104,7 +115,7 @@ public class AS_CrearUsuario extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(0, 0, 255));
         jLabel16.setText("Rol");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente General", "Administrativo de Sistema", "Vendedor", "Bodeguero" }));
+        jCBRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente General", "Administrativo de Sistema", "Vendedor", "Bodeguero" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -112,7 +123,7 @@ public class AS_CrearUsuario extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(99, 99, 99)
-                .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 79, Short.MAX_VALUE)
@@ -129,12 +140,12 @@ public class AS_CrearUsuario extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addComponent(txtPass)
                         .addComponent(txtNombre)
-                        .addComponent(txtNombre1)
-                        .addComponent(txtNombre2)
-                        .addComponent(txtNombre3)
-                        .addComponent(Midate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtNombre4, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtApellido)
+                        .addComponent(txtDireccion)
+                        .addComponent(txtTelefono)
+                        .addComponent(fechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCBRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
         );
         jPanel2Layout.setVerticalGroup(
@@ -145,7 +156,7 @@ public class AS_CrearUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addComponent(txtNombre4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -157,25 +168,25 @@ public class AS_CrearUsuario extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel13)
                 .addGap(18, 18, 18)
-                .addComponent(txtNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel14)
                 .addGap(18, 18, 18)
-                .addComponent(txtNombre3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel15)
                 .addGap(18, 18, 18)
-                .addComponent(Midate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jCBRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
-                .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
 
@@ -196,53 +207,34 @@ public class AS_CrearUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        JOptionPane.showMessageDialog(null,"Usuario creado con éxito.");
-    
-    }//GEN-LAST:event_btnIniciarActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        String login = txtLogin.getText();
+        String password = new String(txtPass.getPassword());
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        String direccion = txtDireccion.getText();
+        String telefono = txtTelefono.getText();
+        String nacimiento = BDD.formatoFecha.format(fechaNacimiento.getDate());
+        String rol = (String) jCBRol.getSelectedItem();
+        
+        Usuario nuevoUsuario = new Usuario(login, password, nombre, apellido, direccion, telefono, nacimiento, rol);
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AS_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AS_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AS_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AS_CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            baseDeDatos.registrarUsuario(nuevoUsuario);
+            JOptionPane.showMessageDialog(null,"Usuario creado con éxito.");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error al registrar el usuario", "", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+        
+        
+    
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AS_CrearUsuario().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser Midate;
-    private javax.swing.JButton btnIniciar;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnRegistrar;
+    private com.toedter.calendar.JDateChooser fechaNacimiento;
+    private javax.swing.JComboBox<String> jCBRol;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -255,11 +247,11 @@ public class AS_CrearUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtLogin;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtNombre1;
-    private javax.swing.JTextField txtNombre2;
-    private javax.swing.JTextField txtNombre3;
-    private javax.swing.JTextField txtNombre4;
     private javax.swing.JPasswordField txtPass;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

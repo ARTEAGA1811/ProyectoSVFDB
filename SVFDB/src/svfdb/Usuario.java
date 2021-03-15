@@ -35,9 +35,6 @@ public class Usuario {
     public Usuario(){};
     
     //Metodos
-    public void ingresarLogin(String login){
-        this.login = login;
-    }
     
     public boolean validarLogin(String pass){
         if(password == null)
@@ -45,12 +42,46 @@ public class Usuario {
         
         return password.equals(pass);
     }
+    
+    public boolean estaRegistrado(){
+        return login != null;
+    }
 
     public String getRol() {
         return rol;
     }
-    
-    
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }  
     
            
 }
