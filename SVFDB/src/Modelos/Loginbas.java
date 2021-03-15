@@ -17,7 +17,7 @@ public class Loginbas {
 Connection con;
     PreparedStatement ps;
     ResultSet rs;
-    Conexion cn = new Conexion();
+    BDD cn = new BDD();
     
     public login log(String correo, String pass){
         login l = new login();
