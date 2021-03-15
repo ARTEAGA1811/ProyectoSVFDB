@@ -6,6 +6,7 @@
 package gui;
 
 import Modelos.BDD;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -58,6 +59,12 @@ public class AS_ResetearPassword extends javax.swing.JFrame {
         lblresetearLogin.setForeground(new java.awt.Color(0, 51, 255));
         lblresetearLogin.setText("Login");
 
+        jTFLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFLoginKeyTyped(evt);
+            }
+        });
+
         lblresetearPass.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblresetearPass.setForeground(new java.awt.Color(0, 51, 255));
         lblresetearPass.setText("Nueva Contraseña");
@@ -70,6 +77,18 @@ public class AS_ResetearPassword extends javax.swing.JFrame {
         jBResetear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBResetearActionPerformed(evt);
+            }
+        });
+
+        jTFNuevaPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFNuevaPassKeyTyped(evt);
+            }
+        });
+
+        jTFNuevaPass2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFNuevaPass2KeyTyped(evt);
             }
         });
 
@@ -140,15 +159,70 @@ public class AS_ResetearPassword extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBResetearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBResetearActionPerformed
         Usuario usuarioResetear = baseDeDatos.getUsuario(jTFLogin.getText());
         String pass1 = new String(jTFNuevaPass.getPassword());
         
+        //******************************* Validacion del campo, falta validar que tenga al menos una Mayuscula y numero
+        String validarPassUno = new String(jTFNuevaPass.getPassword());
+        String validarPassDos = new String(jTFNuevaPass2.getPassword());
+        char passUnoCadena[] = validarPassUno.toCharArray();
+        char passDosCadena[] = validarPassDos.toCharArray();
+        
+        boolean passUnoTieneMayus = false;
+        
+        for(int i=0; i< passUnoCadena.length; i++){
+            if(Character.isUpperCase(passUnoCadena[i])){
+                passUnoTieneMayus = true;
+            }
+        }
+           
+        boolean passUnoTieneUnNumero = false;
+        for(int i = 0; i< passUnoCadena.length; i++){
+            try{
+                int cambiarANumero = Character.getNumericValue(passUnoCadena[i]);
+                passUnoTieneUnNumero = true;
+            }catch(Exception e){
+                
+            }
+        }
+   
+          
+        
+        boolean passDosTieneMayus = false;     
+        for(int i=0; i< passDosCadena.length; i++){
+            if(Character.isUpperCase(passDosCadena[i])){
+                passDosTieneMayus = true;
+            }
+        }
+        
+        boolean passDosTieneUnNumero = false;
+        for(int i = 0; i< passDosCadena.length; i++){
+            try{
+                int cambiarANumero = Character.getNumericValue(passDosCadena[i]);
+                passDosTieneUnNumero = true;
+            }catch(Exception e){
+                
+            }
+        }
+        
+//        if(!valePassUno){
+//            jTFNuevaPass.setBackground(Color.red);
+//        }
+//        if(!valePassDos){
+//            jTFNuevaPass2.setBackground(Color.red);
+//        }
+        
+        boolean sonCamposValidos = passUnoTieneMayus && passUnoTieneUnNumero && passDosTieneMayus && passDosTieneUnNumero;
+        
+        //*************************************************************
+        
         boolean passDiferentes = !pass1.equals(new String(jTFNuevaPass2.getPassword()));
         
-        if(!usuarioResetear.estaRegistrado() || passDiferentes)
+        if(!usuarioResetear.estaRegistrado() || passDiferentes || (sonCamposValidos == false))
             JOptionPane.showMessageDialog(this, "Datos Incorrectos", "", JOptionPane.ERROR_MESSAGE);
         else{
             usuarioResetear.setPassword(pass1);
@@ -161,6 +235,61 @@ public class AS_ResetearPassword extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jBResetearActionPerformed
+
+    private void jTFLoginKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFLoginKeyTyped
+        // TODO add your handling code here: *****************************KEYTIPPED LOGIN
+        //Login: Hasta 18 caracteres alfabeticos.
+
+        
+        if(jTFLogin.getText().length() >17){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTFLoginKeyTyped
+
+    private void jTFNuevaPassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNuevaPassKeyTyped
+        // TODO add your handling code here:********************************KEYTIPPED NUEVA PASS
+        //Debe ser alfanumerico
+        //Solo numeros
+        boolean esSoloNumeros = (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57);
+        //Solo letras maysculas o minusculas
+        boolean esLetrasMayuOMinu = (evt.getKeyChar() >= 65 && evt.getKeyChar() <= 90) || (evt.getKeyChar() >=97 && evt.getKeyChar() <= 122);
+        
+        if(!(esSoloNumeros || esLetrasMayuOMinu)){
+            evt.consume();
+        }
+        //Hasta 12 caracteres alfanumericos.
+        
+        if(jTFNuevaPass.getText().length() >11){
+            evt.consume();
+        }
+        //No se podra tener espacios
+        if(evt.getKeyChar() == 32){
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_jTFNuevaPassKeyTyped
+
+    private void jTFNuevaPass2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNuevaPass2KeyTyped
+        // TODO add your handling code here:********************************** KEY TIPPED INGRESAR DE NUEVO LA PASS
+        //Debe ser alfanumerico
+        //Solo numeros
+        boolean esSoloNumeros = (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57);
+        //Solo letras maysculas o minusculas
+        boolean esLetrasMayuOMinu = (evt.getKeyChar() >= 65 && evt.getKeyChar() <= 90) || (evt.getKeyChar() >=97 && evt.getKeyChar() <= 122);
+        
+        if(!(esSoloNumeros || esLetrasMayuOMinu)){
+            evt.consume();
+        }
+        //Hasta 12 caracteres alfanumericos.
+        
+        if(jTFNuevaPass2.getText().length() >11){
+            evt.consume();
+        }
+        //No se podra tener espacios
+        if(evt.getKeyChar() == 32){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTFNuevaPass2KeyTyped
 
     /**
      * @param args the command line arguments

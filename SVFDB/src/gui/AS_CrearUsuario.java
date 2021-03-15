@@ -77,6 +77,12 @@ public class AS_CrearUsuario extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 255));
         jLabel4.setText("Password");
 
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPassKeyTyped(evt);
+            }
+        });
+
         btnRegistrar.setBackground(new java.awt.Color(0, 0, 204));
         btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistrar.setText("Registrar");
@@ -91,17 +97,41 @@ public class AS_CrearUsuario extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(0, 0, 255));
         jLabel10.setText("Nombre:");
 
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
+
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 255));
         jLabel12.setText("Apellido");
+
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyTyped(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 255));
         jLabel13.setText("Dirección");
 
+        txtDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDireccionKeyTyped(evt);
+            }
+        });
+
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 255));
         jLabel14.setText("Teléfono Convencional o Celular");
+
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 255));
@@ -110,6 +140,12 @@ public class AS_CrearUsuario extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 255));
         jLabel5.setText("Login");
+
+        txtLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtLoginKeyTyped(evt);
+            }
+        });
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 255));
@@ -205,6 +241,7 @@ public class AS_CrearUsuario extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -218,6 +255,25 @@ public class AS_CrearUsuario extends javax.swing.JFrame {
         String rol = (String) jCBRol.getSelectedItem();
         
         Usuario nuevoUsuario = new Usuario(login, password, nombre, apellido, direccion, telefono, nacimiento, rol);
+        
+        //**********************VALIDACION DE DATOS
+        //Se valida la contrasena
+        char passEnCadena[] = password.toCharArray();
+        boolean passTieneMayus = false;
+        for(int i = 0; i<passEnCadena.length; i++){
+            if(Character.isUpperCase(passEnCadena[i])){
+                passTieneMayus = true;
+            }
+        }
+        
+        //Se valida el nombre.
+        //Se valida el apellido
+        //Se valida la direccion
+        //Se valida el telefono
+        //Se valida la cedula.
+        
+        //*********************************************
+        
         try {
             baseDeDatos.registrarUsuario(nuevoUsuario);
             JOptionPane.showMessageDialog(null,"Usuario creado con éxito.");
@@ -229,6 +285,117 @@ public class AS_CrearUsuario extends javax.swing.JFrame {
         
     
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void txtLoginKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLoginKeyTyped
+        // TODO add your handling code here:****************************KEYEVENT LOGIN
+        /*
+        Login: Hasta 18 caracteres alfabeticos.
+
+        */
+        if(txtLogin.getText().length() >17){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtLoginKeyTyped
+
+    private void txtPassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyTyped
+        // TODO add your handling code here: **************************KEYTIPPED PASSWORD
+         //Debe ser alfanumerico
+        //Solo numeros
+        boolean esSoloNumeros = (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57);
+        //Solo letras maysculas o minusculas
+        boolean esLetrasMayuOMinu = (evt.getKeyChar() >= 65 && evt.getKeyChar() <= 90) || (evt.getKeyChar() >=97 && evt.getKeyChar() <= 122);
+        
+        if(!(esSoloNumeros || esLetrasMayuOMinu)){
+            evt.consume();
+        }
+        //Hasta 12 caracteres alfanumericos.
+        
+        if(txtPass.getText().length() >11){
+            evt.consume();
+        }
+        //No se podra tener espacios
+        if(evt.getKeyChar() == 32){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPassKeyTyped
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        // TODO add your handling code here: ********************************KEY EVENT NOMBRE
+        
+        //HASTA 15 CARACTERES ALFABETICOS
+        if(txtNombre.getText().length() >14){
+            evt.consume();
+        }
+        //Deben ser alfabeticos  
+        boolean esLetrasMayuOMinu = (evt.getKeyChar() >= 65 && evt.getKeyChar() <= 90) || (evt.getKeyChar() >=97 && evt.getKeyChar() <= 122);
+        
+        if(!esLetrasMayuOMinu){
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
+        // TODO add your handling code here: ***************************KEY EVENT APELLIDO
+        
+         //HASTA 15 CARACTERES ALFABETICOS
+        if(txtApellido.getText().length() >14){
+            evt.consume();
+        }
+        //Deben ser alfabeticos  
+        boolean esLetrasMayuOMinu = (evt.getKeyChar() >= 65 && evt.getKeyChar() <= 90) || (evt.getKeyChar() >=97 && evt.getKeyChar() <= 122);
+        
+        if(!esLetrasMayuOMinu){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtApellidoKeyTyped
+
+    private void txtDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionKeyTyped
+        // TODO add your handling code here: **************************KEY EVENT DIRECCION
+        //HASTA 200 CARACTERES
+        if(txtApellido.getText().length() >199){
+            evt.consume();
+        }
+        
+        
+        
+    }//GEN-LAST:event_txtDireccionKeyTyped
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        // TODO add your handling code here: ******************************key event telefono
+        boolean esSoloNumeros = (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57);
+        if(!esSoloNumeros){
+            evt.consume();
+        }
+        
+        //Si el tamano es mayor a 3 es que ya escribio al menos 593
+        if(txtTelefono.getText().length() > 3){
+            char[] cadenaTxtTelefono = txtTelefono.getText().toCharArray();
+            int digUno = Character.getNumericValue(cadenaTxtTelefono[0]);
+            int digDos = Character.getNumericValue(cadenaTxtTelefono[1]);
+            int digTres = Character.getNumericValue(cadenaTxtTelefono[2]);
+            System.out.println("DigUno: "+ digUno );
+            System.out.println("DigDos: "+ digDos);
+            System.out.println("DigTres: "+ digTres);
+            boolean empiezaCon593 = ( digUno == 5 && digDos == 9 && digTres == 3);
+            if(empiezaCon593){
+                //Si escribio 593 puede escribir hasta 12 caracteres.
+                
+                if(txtTelefono.getText().length() > 11){
+                    evt.consume();
+                }
+            }else{
+                //Como no escribio el 593 se puede escribir 10 digitos
+                if(txtTelefono.getText().length() > 9){
+                    evt.consume();
+                }
+            }
+        }
+        
+        
+              
+    
+    }//GEN-LAST:event_txtTelefonoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

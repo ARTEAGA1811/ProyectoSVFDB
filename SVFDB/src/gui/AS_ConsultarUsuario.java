@@ -88,21 +88,30 @@ public class AS_ConsultarUsuario extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(51, 51, 255));
         jLabel7.setText("Teléfono/Celular");
 
+        jTFLogin.setEditable(false);
+
+        jTFPassword.setEditable(false);
         jTFPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFPasswordActionPerformed(evt);
             }
         });
 
+        jTFNombre.setEditable(false);
         jTFNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFNombreActionPerformed(evt);
             }
         });
 
+        jTFApellido.setEditable(false);
+
+        jTFDireccion.setEditable(false);
         jTFDireccion.setColumns(20);
         jTFDireccion.setRows(5);
         jScrollPane1.setViewportView(jTFDireccion);
+
+        jTFTelefono.setEditable(false);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 51, 255));
@@ -111,6 +120,10 @@ public class AS_ConsultarUsuario extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(51, 51, 255));
         jLabel11.setText("Rol de usuario");
+
+        jTFNacimiento.setEditable(false);
+
+        jTFRol.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -208,6 +221,7 @@ public class AS_ConsultarUsuario extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTFPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFPasswordActionPerformed

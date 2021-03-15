@@ -1217,6 +1217,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 jTFLoginBuscadoActionPerformed(evt);
             }
         });
+        jTFLoginBuscado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFLoginBuscadoKeyTyped(evt);
+            }
+        });
 
         btnBuscarUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnBuscarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa.png"))); // NOI18N
@@ -1292,6 +1297,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 960, 520));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaVentaActionPerformed
@@ -1500,6 +1506,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jTFLoginBuscadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFLoginBuscadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFLoginBuscadoActionPerformed
+
+    private void jTFLoginBuscadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFLoginBuscadoKeyTyped
+        // TODO add your handling code here: ****************************** EVENTOS LOGIN BUSCADOR
+        //Login: Hasta 18 caracteres alfabeticos.
+
+        
+        if(jTFLoginBuscado.getText().length() >17){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTFLoginBuscadoKeyTyped
 
     /**
      * @param args the command line arguments
