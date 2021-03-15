@@ -61,6 +61,22 @@ public class Login extends javax.swing.JFrame {
                 txtLoginActionPerformed(evt);
             }
         });
+        txtLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtLoginKeyTyped(evt);
+            }
+        });
+
+        txtPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPassActionPerformed(evt);
+            }
+        });
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPassKeyTyped(evt);
+            }
+        });
 
         btnIniciar.setBackground(new java.awt.Color(0, 0, 204));
         btnIniciar.setForeground(new java.awt.Color(255, 255, 255));
@@ -130,6 +146,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
@@ -138,8 +155,14 @@ public class Login extends javax.swing.JFrame {
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
 
+        //
         String usuarioTxt = txtLogin.getText();
         Usuario usuario = baseDeDatos.getUsuario(usuarioTxt);
+        
+        //Ya estan validades los caracteres maximos, que no se puede tener espacios en la contrasena y que sean alfanumericos
+        //Falta valir en la contrasena que al menos una letra sea un numero y al menos un caracter sea mayuscula
+        
+        
         
         boolean passValida = usuario.validarLogin(new String(txtPass.getPassword()));
              
@@ -159,6 +182,46 @@ public class Login extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnIniciarActionPerformed
+
+    private void txtLoginKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLoginKeyTyped
+        // TODO add your handling code here: ******************************KEYTIPPED LOGIN
+        /*
+        Login: Hasta 18 caracteres alfabeticos.
+
+        */
+        if(txtLogin.getText().length() >17){
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_txtLoginKeyTyped
+
+    private void txtPassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyTyped
+        // TODO add your handling code here:***********************************KEYTIPPED PASSWORD
+        
+        //Debe ser alfanumerico
+        //Solo numeros
+        boolean esSoloNumeros = (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57);
+        //Solo letras maysculas o minusculas
+        boolean esLetrasMayuOMinu = (evt.getKeyChar() >= 65 && evt.getKeyChar() <= 90) || (evt.getKeyChar() >=97 && evt.getKeyChar() <= 122);
+        
+        if(!(esSoloNumeros || esLetrasMayuOMinu)){
+            evt.consume();
+        }
+        //Hasta 12 caracteres alfanumericos.
+        
+        if(txtPass.getText().length() >11){
+            evt.consume();
+        }
+        //No se podra tener espacios
+        if(evt.getKeyChar() == 32){
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_txtPassKeyTyped
+
+    private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassActionPerformed
 
     /**
      * @param args the command line arguments
