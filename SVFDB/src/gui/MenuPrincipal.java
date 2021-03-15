@@ -1,7 +1,11 @@
 package gui;
 
 import Modelos.BDD;
+import Modelos.Client;
+import Modelos.Cliente;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import svfdb.Usuario;
 
 /**
@@ -9,8 +13,12 @@ import svfdb.Usuario;
  * @author cadri
  */
 public class MenuPrincipal extends javax.swing.JFrame {
-
+ Cliente cl = new Cliente();
+    
+    Client client = new Client();
+    DefaultTableModel modelo = new DefaultTableModel();  
     BDD baseDeDatos;
+    
     /**
      * Creates new form MenuPrincipal
      */
@@ -45,6 +53,41 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public MenuPrincipal(){
         this("Adminsitrador", null);
     }
+public void ListarCliente() {
+        
+        
+        List<Cliente> ListarCl = client.ListarCliente();
+        
+        modelo = (DefaultTableModel) tableCliente.getModel();
+        
+        
+        
+        Object[] ob = new Object[7];
+        for (int i = 0; i < ListarCl.size(); i++) {
+            
+            ob[0] = ListarCl.get(i).getId();
+            ob[1] = ListarCl.get(i).getDni();
+           ob[2] = ListarCl.get(i).getNombre();
+            
+            ob[3] = ListarCl.get(i).getApellido();
+            ob[4] = ListarCl.get(i).getTelefono();
+             ob[5] = ListarCl.get(i).getCorreo();
+            ob[6] = ListarCl.get(i).getDireccion();
+            
+         
+            modelo.addRow(ob);
+        }
+        
+        tableCliente.setModel(modelo);
+
+    }
+     public void LimpiarTable() {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            modelo.removeRow(i);
+            i = i - 1;
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
