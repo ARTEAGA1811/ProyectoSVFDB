@@ -52,6 +52,7 @@ public class Client {
     }
     
    public List ListarCliente(){
+       
        List<Cliente> ListaCl = new ArrayList();
        String sql = "SELECT * FROM clientes";
        try {
@@ -60,12 +61,16 @@ public class Client {
            rs = ps.executeQuery();
            while (rs.next()) {               
                Cliente cl = new Cliente();
+               
                cl.setId(rs.getInt("id"));
                cl.setDni(rs.getInt("dni"));
-               cl.setNombre(rs.getString("nombre"));
-               cl.setNombre(rs.getString("Apellido"));
+               cl.setNombre(rs.getString("Nombre"));
+               
+               cl.setApellido(rs.getString("Apellido"));
                cl.setTelefono(rs.getInt("telefono"));
-                  cl.setDireccion(rs.getString("correo"));
+               
+                  cl.setCorreo(rs.getString("correo"));
+                  
                cl.setDireccion(rs.getString("direccion"));
             
                ListaCl.add(cl);
@@ -77,7 +82,8 @@ public class Client {
    }
    
    public boolean EliminarCliente(int id){
-       String sql = "DELETE FROM clientes WHERE id = ?";
+       
+  String sql = "DELETE FROM clientes WHERE id = ?";
        try {
            ps = con.prepareStatement(sql);
            ps.setInt(1, id);
@@ -101,17 +107,20 @@ public class Client {
            ps = con.prepareStatement(sql);
            ps.setInt(1, cl.getDni());
            ps.setString(2, cl.getNombre());
-              ps.setString(3, cl.getNombre());
-           ps.setString(4, cl.getApellido());
+            
+           ps.setString(3, cl.getApellido());
+                      ps.setInt(4, cl.getTelefono());
               ps.setString(5, cl.getCorreo());
            ps.setString(6, cl.getDireccion());
         
-           ps.setInt(8, cl.getId());
+           ps.setInt(7, cl.getId());
            ps.execute();
            return true;
+           
        } catch (SQLException e) {
            System.out.println(e.toString());
            return false;
+           
        }finally{
            try {
                con.close();
