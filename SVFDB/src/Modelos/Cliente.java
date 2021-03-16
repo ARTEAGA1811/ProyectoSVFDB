@@ -12,6 +12,8 @@ package Modelos;
  */
 public class Cliente {
     
+
+    
     private int id;
     private int dni;
     private String nombre;
@@ -19,12 +21,12 @@ public class Cliente {
     private int telefono;
     private String correo;
     private String direccion;
-   
+     private String estado;
 
     public Cliente() {
     }
 
-    public Cliente(int id, int dni, String nombre, String apellido, int telefono, String correo, String direccion) {
+    public Cliente(int id, int dni, String nombre, String apellido, int telefono, String correo, String direccion, String estado) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
@@ -32,6 +34,7 @@ public class Cliente {
         this.telefono = telefono;
         this.correo = correo;
         this.direccion = direccion;
+        this.estado = estado;
     }
 
     public int getId() {
@@ -89,6 +92,20 @@ public class Cliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-}
+
+    public String getEstado() {
+        
+            
+        return estado = "Activo";
+    }
+   
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+   
     
+    
+}
+  
  

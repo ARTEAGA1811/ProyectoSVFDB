@@ -7,13 +7,17 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import svfdb.Usuario;
+import svfdb.ValidacionesCampos;
 
 /**
  *
  * @author cadri
  */
 public class MenuPrincipal extends javax.swing.JFrame {
+    
  Cliente cl = new Cliente();
+ ValidacionesCampos val = new ValidacionesCampos();
+ 
     
     Client client = new Client();
     DefaultTableModel modelo = new DefaultTableModel();  
@@ -62,7 +66,7 @@ public void ListarCliente() {
         
         
         
-        Object[] ob = new Object[7];
+        Object[] ob = new Object[8];
         for (int i = 0; i < ListarCl.size(); i++) {
             
             ob[0] = ListarCl.get(i).getId();
@@ -74,6 +78,7 @@ public void ListarCliente() {
              ob[5] = ListarCl.get(i).getCorreo();
             ob[6] = ListarCl.get(i).getDireccion();
             
+             ob[7] = ListarCl.get(i).getEstado();
          
             modelo.addRow(ob);
         }
@@ -559,12 +564,18 @@ public void ListarCliente() {
             }
         });
 
+        txtNombreCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreClienteKeyTyped(evt);
+            }
+        });
+
         tableCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "CEDULA", "NOMBRE", "APELLIDO", "TELÉFONO", "CORREO ELECTRÓNICO", "DIRECCIÓN", "ESTADO"
+                "ID", "CEDULA", "NOMBRE", "APELLIDO", "TELÉFONO", "E-mail", "DIRECCIÓN", "ESTADO"
             }
         ));
         tableCliente.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -608,6 +619,12 @@ public void ListarCliente() {
 
         jLabel33.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel33.setText("Apellido");
+
+        txtApellidoCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoClienteKeyTyped(evt);
+            }
+        });
 
         jLabel43.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel43.setText("Listar Clientes");
@@ -1562,11 +1579,27 @@ public void ListarCliente() {
     }//GEN-LAST:event_jTFLoginBuscadoKeyTyped
 
     private void txtDniClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniClienteActionPerformed
+
+
+          
+
+
+
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDniClienteActionPerformed
 
     private void txtDniClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniClienteKeyTyped
 
+           char c = evt.getKeyChar();
+           if(c<'0'|| c>'9') evt.consume();
+           
+           
+           
+           
+           
+           
+        
+        
     }//GEN-LAST:event_txtDniClienteKeyTyped
 
     private void tableClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableClienteMouseClicked
@@ -1579,6 +1612,8 @@ public void ListarCliente() {
 
         txtEmailCliente.setText(tableCliente.getValueAt(fila, 5).toString());
         txtDireccionCliente.setText(tableCliente.getValueAt(fila, 6).toString());
+        
+
 
     }//GEN-LAST:event_tableClienteMouseClicked
 
@@ -1668,16 +1703,42 @@ public void ListarCliente() {
     }//GEN-LAST:event_txtDireccionClienteActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+
+   
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
-        // TODO add your handling code here:
+
+
+
+
+// TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void txtIdClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdClienteActionPerformed
+
+    private void txtNombreClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreClienteKeyTyped
+      
+        
+           char c = evt.getKeyChar();
+           if((c<'a'|| c>'z') && (c<'A'||c>'Z')) evt.consume();
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreClienteKeyTyped
+
+    private void txtApellidoClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoClienteKeyTyped
+
+  char c = evt.getKeyChar();
+           if((c<'a'|| c>'z') && (c<'A'||c>'Z')) evt.consume();
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidoClienteKeyTyped
 
     /**
      * @param args the command line arguments
@@ -1857,5 +1918,13 @@ private void LimpiarCliente() {
         txtEmailCliente.setText("");
         txtDireccionCliente.setText("");
     }
+private void BuscarCliente() {
+
+ txtDniCliente.setText("");
+        txtNombreCliente.setText("");
+
+}
+
+
 
 }

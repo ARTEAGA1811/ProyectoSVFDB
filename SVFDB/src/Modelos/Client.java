@@ -18,6 +18,8 @@ import javax.swing.JOptionPane;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class Client {
+
+    static String RegistrarCliente;
  BDD cn = new BDD();
  
     Connection con;
@@ -25,7 +27,7 @@ public class Client {
     ResultSet rs;
     
     public boolean RegistrarCliente(Cliente cl){
-        String sql = "INSERT INTO clientes (dni, nombre,apellido, telefono, correo,direccion) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO clientes (dni, nombre,apellido, telefono, correo,direccion,estado) VALUES (?,?,?,?,?,?,?)";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -35,6 +37,7 @@ public class Client {
             ps.setInt(4, cl.getTelefono());
              ps.setString(5, cl.getCorreo());
             ps.setString(6, cl.getDireccion());
+            ps.setString(7, cl.getEstado());
           
      
             ps.execute();
@@ -72,6 +75,8 @@ public class Client {
                   cl.setCorreo(rs.getString("correo"));
                   
                cl.setDireccion(rs.getString("direccion"));
+               
+                cl.setEstado(rs.getString("estado"));
             
                ListaCl.add(cl);
            }
