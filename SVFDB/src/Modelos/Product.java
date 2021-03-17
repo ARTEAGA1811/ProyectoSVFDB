@@ -26,15 +26,20 @@ public class Product {
     ResultSet rs;
     
     public boolean RegistrarProductos(Productos pro){
-        String sql = "INSERT INTO productos (codigo, nombre, proveedor, stock, precio) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO productos (codigo, nombre,tipo,cantidad,precio,costo, stock,fechaCaducidad,proveedor) VALUES (?,?,?,?,?,?,?,?,?)";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
             ps.setString(1, pro.getCodigo());
             ps.setString(2, pro.getNombre());
-            ps.setString(3, pro.getProveedor());
-            ps.setInt(4, pro.getStock());
+            ps.setString(3, pro.getTipo());
+            ps.setDouble(4, pro.getCantidad());
             ps.setDouble(5, pro.getPrecio());
+            ps.setDouble(6, pro.getCosto());
+             ps.setDouble(7, pro.getStock());
+            ps.setString(8, pro.getFechacaducidad());
+           ps.setString(9, pro.getProveedor());
+            
             ps.execute();
             return true;
         } catch (SQLException e) {
@@ -69,10 +74,18 @@ public class Product {
                pro.setId(rs.getInt("id"));
                pro.setCodigo(rs.getString("codigo"));
                pro.setNombre(rs.getString("nombre"));
+               pro.setTipo(rs.getString("tipo"));
+               pro.setCantidad(rs.getDouble("cantidad"));
+               pro.setPrecio(rs.getDouble("Precio"));
+               pro.setCosto(rs.getDouble("Costo"));
+                pro.setStock(rs.getDouble("stock"));
+                pro.setFechacaducidad(rs.getString("fechacaducidad"));
                pro.setProveedor(rs.getString("proveedor"));
-               pro.setStock(rs.getInt("stock"));
+              
                pro.setPrecio(rs.getDouble("precio"));
                Listapro.add(pro);
+                 ps.setString(1, pro.getCodigo());
+                 
            }
        } catch (SQLException e) {
            System.out.println(e.toString());
@@ -100,14 +113,23 @@ public class Product {
    }
     
     public boolean ModificarProductos(Productos pro){
-       String sql = "UPDATE productos SET codigo=?, nombre=?, proveedor=?, stock=?, precio=? WHERE id=?";
+       String sql = "UPDATE productos SET codigo=?, nombre=?,tipo=?,cantidad=?,precio=?,costo=?, stock=?,fechaCaducidad=?,proveedor=? WHERE id=?";
        try {
+           
+     
            ps = con.prepareStatement(sql);
-           ps.setString(1, pro.getCodigo());
-           ps.setString(2, pro.getNombre());
-           ps.setString(3, pro.getProveedor());
-           ps.setInt(4, pro.getStock());
-           ps.setDouble(5, pro.getPrecio());
+           
+           
+            ps.setString(1, pro.getCodigo());
+            ps.setString(2, pro.getNombre());
+            ps.setString(3, pro.getTipo());
+            ps.setDouble(4, pro.getCantidad());
+            ps.setDouble(5, pro.getPrecio());
+            ps.setDouble(6, pro.getCosto());
+             ps.setDouble(7, pro.getStock());
+            ps.setString(8, pro.getFechacaducidad());
+           ps.setString(9, pro.getProveedor());
+          
            ps.setInt(6, pro.getId());
            ps.execute();
            return true;
