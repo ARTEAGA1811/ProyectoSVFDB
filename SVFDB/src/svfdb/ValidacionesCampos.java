@@ -6,6 +6,8 @@
 
 package svfdb;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author David Arteaga.
@@ -13,7 +15,9 @@ package svfdb;
  */
 public class ValidacionesCampos {
     
-    public boolean validadorDeCedula(String cedula) {
+    public boolean validadorDeCedula() {
+        
+        String cedula = null;
 boolean cedulaCorrecta = false;
  
 try {
@@ -50,12 +54,14 @@ cedulaCorrecta = false;
 } catch (NumberFormatException nfe) {
 cedulaCorrecta = false;
 } catch (Exception err) {
-System.out.println("Una excepcion ocurrio en el proceso de validadcion");
+    JOptionPane.showMessageDialog(null,"Una excepcion ocurrio en el proceso de validadcion , Ingrese su cédula nuevamente");
+
 cedulaCorrecta = false;
 }
  
 if (!cedulaCorrecta) {
-System.out.println("La Cédula ingresada es Incorrecta");
+    
+    JOptionPane.showMessageDialog(null,"La Cédula ingresada es Incorrecta");
 }
 return cedulaCorrecta;
 }
