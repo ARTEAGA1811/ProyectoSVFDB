@@ -324,7 +324,6 @@ public void ListarProveedor() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Ventas y Facturación");
-        setExtendedState(6);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Menu.jpeg"))); // NOI18N
