@@ -1005,7 +1005,6 @@ public void ListarProveedor() {
         jLabel29.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel29.setText("Buscar Código");
 
-        cbxProveedorPro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "coctec", "arin" }));
         cbxProveedorPro.setToolTipText("");
         cbxProveedorPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2071,15 +2070,16 @@ LimpiarTable();
             pro.setCodigo(txtCodigoPro.getText());
             pro.setNombre(txtNombrePro.getText());
             pro.setTipo(cbxTipoPro.getSelectedItem().toString());
-              
+                     pro.setStock(Integer.parseInt(txtCantPro.getText()));
              pro.setPrecio(Double.parseDouble(txtPrecioPro.getText()));
          
             pro.setFechacaducidad( txtFecha.getText());
             
             pro.setProveedor(cbxProveedorPro.getSelectedItem().toString());
-            pro.setStock(Integer.parseInt(txtCantPro.getText()));
+     
             
           proDao.ModificarProductos(pro);
+          
                 JOptionPane.showMessageDialog(null, "Producto Modificado");
                 LimpiarTable();
                 ListarProductos();

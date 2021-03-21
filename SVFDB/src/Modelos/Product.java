@@ -115,7 +115,7 @@ public class Product {
            ps.setInt(8, pro.getId());
            ps.execute();
            return true;
-       } catch (SQLException e) {
+           } catch (SQLException e) {
            System.out.println(e.toString());
            return false;
        }finally{
