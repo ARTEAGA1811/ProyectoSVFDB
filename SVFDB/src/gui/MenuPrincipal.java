@@ -147,7 +147,7 @@ public void ListarProveedor() {
             ob[1] = ListarPro.get(i).getCodigo();
             ob[2] = ListarPro.get(i).getNombre();
             ob[3] = ListarPro.get(i).getTipo();
-                        ob[4] = ListarPro.get(i).getStock();
+            ob[4] = ListarPro.get(i).getStock();
             ob[5] = ListarPro.get(i).getPrecio();
             ob[6] = ListarPro.get(i).getFechacaducidad();
 
