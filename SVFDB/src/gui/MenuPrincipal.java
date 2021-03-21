@@ -1222,7 +1222,7 @@ public void ListarProveedor() {
         });
 
         jLabel59.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel59.setText("Seleccionar");
+        jLabel59.setText("Listar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -1233,7 +1233,7 @@ public void ListarProveedor() {
                 .addComponent(jScrollPane5)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(136, Short.MAX_VALUE)
+                .addContainerGap(170, Short.MAX_VALUE)
                 .addComponent(jLabel59)
                 .addGap(30, 30, 30)
                 .addComponent(cbxProveedorPro8, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
