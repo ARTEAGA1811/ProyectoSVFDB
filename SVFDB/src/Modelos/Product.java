@@ -47,50 +47,6 @@ public class Product {
         }
     }
     
-    public void ConsularProveedor(JComboBox proveedor){
-        String sql = "SELECT comercial FROM proveedor";
-        try {
-            con = cn.getConnection();
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {                
-               proveedor.addItem(rs.getString("comercial"));
-            }
-        } catch (SQLException e) {
-            System.out.println(e.toString());
-        }
-    }
-    public void ConsularProd(JComboBox productos){
-        String sql = "SELECT nombre FROM productos";
-        try {
-            con = cn.getConnection();
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {                
-               productos.addItem(rs.getString("nombre"));
-            }
-        } catch (SQLException e) {
-            System.out.println(e.toString());
-        }
-    }
-    
-     public void ConsularUsuario(JComboBox Usuario){
-       
-        String sql = "SELECT nombre,apellido FROM usuarios";
-        
-        try {
-            con = cn.getConnection();
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {          
-                
-               Usuario.addItem(rs.getString("nombre")+" "+rs.getString("apellido"));
-               
-            }
-        } catch (SQLException e) {
-            System.out.println(e.toString());
-        }
-    }
     public List ListarProductos(){
        List<Productos> Listapro = new ArrayList();
        String sql = "SELECT * FROM productos";
@@ -172,6 +128,52 @@ public class Product {
            }
        }
    }
+    
+    
+    public void ConsularProveedor(JComboBox proveedor){
+        String sql = "SELECT comercial FROM proveedor";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+               proveedor.addItem(rs.getString("comercial"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+    }
+    public void ConsularProd(JComboBox productos){
+        String sql = "SELECT nombre FROM productos";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+               productos.addItem(rs.getString("nombre"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+    }
+    
+     public void ConsularUsuario(JComboBox Usuario){
+       
+        String sql = "SELECT nombre,apellido FROM usuarios";
+        
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {          
+                
+               Usuario.addItem(rs.getString("nombre")+" "+rs.getString("apellido"));
+               
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+    }
     
     public Productos BuscarPro(String cod){
         Productos producto = new Productos();
