@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComboBox;
+import svfdb.Usuario;
 
 /**
  * 
@@ -61,7 +62,35 @@ public class Product {
             System.out.println(e.toString());
         }
     }
+    public void ConsularProd(JComboBox productos){
+        String sql = "SELECT nombre FROM proveedor";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+               productos.addItem(rs.getString("nombre"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+    }
     
+     public void ConsularUsuario(JComboBox Usuario){
+       
+        String sql = "SELECT nombre FROM usuarios";
+        
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {                
+               Usuario.addItem(rs.getString("nombre"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+    }
     public List ListarProductos(){
        List<Productos> Listapro = new ArrayList();
        String sql = "SELECT * FROM productos";
@@ -208,5 +237,8 @@ public class Product {
            }
        }
    }
-
+    
 }
+
+
+

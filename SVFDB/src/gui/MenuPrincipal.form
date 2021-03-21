@@ -2122,7 +2122,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="cbxProveedorPro2" min="-2" pref="111" max="-2" attributes="0"/>
+                              <Component id="cbxUsuario" min="-2" pref="111" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnGuardarpro1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="209" max="-2" attributes="0"/>
@@ -2134,7 +2134,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cbxProveedorPro9" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
+                                  <Component id="cbxProducto" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -2186,7 +2186,7 @@
                                           <Component id="txtCantidadVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtPrecioVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtStockDisponible" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cbxProveedorPro9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxProducto" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
@@ -2213,7 +2213,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="cbxProveedorPro2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxUsuario" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -2334,7 +2334,7 @@
                 <Property name="text" type="java.lang.String" value="Vendedor:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cbxProveedorPro2">
+            <Component class="javax.swing.JComboBox" name="cbxUsuario">
               <Properties>
                 <Property name="editable" type="boolean" value="true"/>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -2342,7 +2342,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxProveedorPro2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxUsuarioActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -2381,7 +2381,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cbxProveedorPro9">
+            <Component class="javax.swing.JComboBox" name="cbxProducto">
               <Properties>
                 <Property name="editable" type="boolean" value="true"/>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -2389,7 +2389,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxProveedorPro9ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxProductoActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
