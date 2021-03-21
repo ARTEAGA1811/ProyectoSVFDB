@@ -2698,7 +2698,7 @@ private void BuscarCliente() {
        txtComercialProveedor.setText("");
         txtTelefonoProveedor.setText("");
         txtEmailProveedor.setText("");
-        txtDireccionProveedor.setText("");
+        txtDireccionProveedor.setText(""); 
         
     }
 
