@@ -6,7 +6,13 @@
 
 package svfdb;
 
+//import com.itextpdf.xmp.impl.Utils;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import org.h2.util.StringUtils;
+
+
 
 /**
  *
@@ -15,6 +21,13 @@ import javax.swing.JOptionPane;
  */
 public class ValidacionesCampos {
     
+    private boolean isPhoneNumberCorrect(String pPhoneNumber) { 
+        Pattern pattern = Pattern .compile("((\\+[1-9]{3,4}|0[1-9]{4}|00[1-9]{3})\\-?)?\\d{8,20}"); 
+        Matcher matcher = pattern.matcher(pPhoneNumber); 
+        if (matcher.matches()) return true; 
+        return false; 
+                }
+
     public boolean validadorDeCedula() {
         
         String cedula = null;
@@ -42,6 +55,7 @@ if ((suma % 10 == 0) && (suma % 10 == verificador)) {
 }
 else if ((10 - (suma % 10)) == verificador) {
  cedulaCorrecta = true;
+   JOptionPane.showMessageDialog(null,"La Cédula ingresada es Incorrecta");
 } else {
  cedulaCorrecta = false;
 }
@@ -60,11 +74,10 @@ cedulaCorrecta = false;
 }
  
 if (!cedulaCorrecta) {
+  
     
-    JOptionPane.showMessageDialog(null,"La Cédula ingresada es Incorrecta");
 }
 return cedulaCorrecta;
 }
-
 
 }
