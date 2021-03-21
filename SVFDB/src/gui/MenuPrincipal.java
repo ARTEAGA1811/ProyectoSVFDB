@@ -147,7 +147,7 @@ public void ListarProveedor() {
             ob[1] = ListarPro.get(i).getCodigo();
             ob[2] = ListarPro.get(i).getNombre();
             ob[3] = ListarPro.get(i).getTipo();
-            ob[4] = ListarPro.get(i).getStock();
+            ob[4] = ListarPro.get(i).getCantidad();
             ob[5] = ListarPro.get(i).getPrecio();
             ob[6] = ListarPro.get(i).getFechacaducidad();
 
@@ -951,6 +951,9 @@ public void ListarProveedor() {
             }
         });
         jScrollPane4.setViewportView(TableProducto);
+        if (TableProducto.getColumnModel().getColumnCount() > 0) {
+            TableProducto.getColumnModel().getColumn(0).setPreferredWidth(20);
+        }
 
         btnGuardarpro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/GuardarTodo.png"))); // NOI18N
         btnGuardarpro.addActionListener(new java.awt.event.ActionListener() {
@@ -2015,7 +2018,7 @@ LimpiarTable();
 
     private void btnGuardarproActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarproActionPerformed
 
- if (!"".equals(txtPrecioPro.getText()) ||!"".equals(txtPrecioPro.getText())  ||!"".equals(txtCantPro.getText()) ||!"".equals(txtFecha.getText()) ||
+ if (!"".equals(txtPrecioPro.getText())  ||!"".equals(txtCantPro.getText()) ||!"".equals(txtFecha.getText()) ||
          !"".equals(txtCodigoPro.getText()) || !"".equals(txtNombrePro.getText()) || !"".equals(cbxTipoPro.getSelectedItem())|| !"".equals(cbxProveedorPro.getSelectedItem())) {
            
      
@@ -2031,12 +2034,12 @@ LimpiarTable();
             pro.setPrecio(Double.parseDouble(txtPrecioPro.getText()));
          
             pro.setFechacaducidad( txtFecha.getText());
-            pro.setProveedor(cbxTipoPro.getSelectedItem().toString());
+            pro.setProveedor(cbxProveedorPro.getSelectedItem().toString());
            
             
                       
             proDao.RegistrarProductos(pro);
-            JOptionPane.showMessageDialog(null, "Productos Registrado");
+            JOptionPane.showMessageDialog(null, "El producto ha sido registrado con éxito");
             
             LimpiarTable();
             ListarProductos();
@@ -2050,8 +2053,7 @@ LimpiarTable();
 
 
 
-        // Boton guardar/registrar el producto ***************************************************
-        JOptionPane.showMessageDialog(null, "El producto ha sido registrado con éxito");
+
 
 
     }//GEN-LAST:event_btnGuardarproActionPerformed
@@ -2063,8 +2065,7 @@ LimpiarTable();
         } else {
              
          }
-        if (
-                !"".equals(txtPrecioPro.getText()) ||!"".equals(txtPrecioPro.getText()) ||!"".equals(txtCantPro.getText()) ||!"".equals(   txtFecha.getText()) ||
+        if (!"".equals(txtPrecioPro.getText()) ||!"".equals(txtCantPro.getText()) ||!"".equals(   txtFecha.getText()) ||
          !"".equals(txtCodigoPro.getText()) || !"".equals(txtNombrePro.getText()) || !"".equals(cbxTipoPro.getSelectedItem())|| !"".equals(cbxProveedorPro.getSelectedItem())) {
            
             pro.setCodigo(txtCodigoPro.getText());
@@ -2074,7 +2075,8 @@ LimpiarTable();
              pro.setPrecio(Double.parseDouble(txtPrecioPro.getText()));
          
             pro.setFechacaducidad( txtFecha.getText());
-            pro.setProveedor(cbxTipoPro.getSelectedItem().toString());
+            
+            pro.setProveedor(cbxProveedorPro.getSelectedItem().toString());
             pro.setStock(Integer.parseInt(txtCantPro.getText()));
             
           proDao.ModificarProductos(pro);

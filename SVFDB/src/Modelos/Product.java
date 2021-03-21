@@ -24,9 +24,8 @@ public class Product {
    BDD cn = new BDD();
     PreparedStatement ps;
     ResultSet rs;
-    
-    public boolean RegistrarProductos(Productos pro){
-        String sql = "INSERT INTO productos (codigo, nombre,tipo,precio, stock,fechaCaducidad,Proveedor) VALUES (?,?,?,?,?,?,?)";
+      public boolean RegistrarProductos(Productos pro){
+        String sql = "INSERT INTO productos codigo, nombre,tipo,precio, stock,fechaCaducidad,Proveedor) VALUES (?,?,?,?,?,?,?) ";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -38,7 +37,7 @@ public class Product {
              ps.setInt(5, pro.getStock());
             ps.setString(6, pro.getFechacaducidad());
            ps.setString(7, pro.getProveedor());
-           
+      
             ps.execute();
             return true;
         } catch (SQLException e) {
@@ -46,6 +45,7 @@ public class Product {
             return false;
         }
     }
+
     
     public List ListarProductos(){
        List<Productos> Listapro = new ArrayList();
@@ -56,21 +56,19 @@ public class Product {
            rs = ps.executeQuery();
            while (rs.next()) {               
                Productos pro = new Productos();
-               pro.setId(rs.getInt("id"));
+             
+               
+                pro.setId(rs.getInt("id"));
                pro.setCodigo(rs.getString("codigo"));
                pro.setNombre(rs.getString("nombre"));
                pro.setTipo(rs.getString("tipo"));
-             
-               pro.setPrecio(rs.getDouble("Precio"));
-                pro.setStock(rs.getInt("stock"));
+               pro.setStock(rs.getInt("stock"));
+              pro.setPrecio(rs.getDouble("precio"));
                 pro.setFechacaducidad(rs.getString("fechacaducidad"));
                pro.setProveedor(rs.getString("proveedor"));
-              
-               pro.setPrecio(rs.getDouble("precio"));
                Listapro.add(pro);
-                 ps.setString(1, pro.getCodigo());
-                 
            }
+         
        } catch (SQLException e) {
            System.out.println(e.toString());
        }
@@ -110,7 +108,7 @@ public class Product {
        
             ps.setDouble(4, pro.getPrecio());
   
-             ps.setDouble(5, pro.getStock());
+             ps.setInt(5, pro.getStock());
             ps.setString(6, pro.getFechacaducidad());
            ps.setString(7, pro.getProveedor());
           
