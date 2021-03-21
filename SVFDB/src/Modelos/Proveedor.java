@@ -13,7 +13,7 @@ package Modelos;
 public class Proveedor {
     
     private int id;
-    private int ruc;
+    private String ruc;
     private String nombre;
     private String apellido;    
     private String comercial;
@@ -27,7 +27,7 @@ public class Proveedor {
         
     }
 
-    public Proveedor(int id, int ruc, String nombre, String apellido, String comercial, int telefono, String email, String direccion, String Estado) {
+    public Proveedor(int id, String ruc, String nombre, String apellido, String comercial, int telefono, String email, String direccion, String Estado) {
         this.id = id;
         this.ruc = ruc;
         this.nombre = nombre;
@@ -47,11 +47,11 @@ public class Proveedor {
         this.id = id;
     }
 
-    public int getRuc() {
+    public String getRuc() {
         return ruc;
     }
 
-    public void setRuc(int ruc) {
+    public void setRuc(String ruc) {
         this.ruc = ruc;
     }
 
