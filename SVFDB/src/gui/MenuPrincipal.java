@@ -4,6 +4,8 @@ import Modelos.BDD;
 import Modelos.Client;
 import Modelos.Cliente;
 import Modelos.Config;
+import Modelos.Fact;
+import Modelos.Factura;
 import Modelos.Product;
 import Modelos.Productos;
 import Modelos.Proveed;
@@ -42,6 +44,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     Vent Vt = new Vent();
    int item;
     double Totalpagar = 0.00;
+    
+    Factura fac = new Factura();
+    Fact fa = new Fact();
     
     /**
      * Creates new form MenuPrincipal
@@ -179,7 +184,22 @@ public void ListarProveedor() {
         
 
     }
-
+     
+       public void ListarFactura() {
+        List<Factura> ListarFactura = fa.ListarFactura();
+        modelo = (DefaultTableModel) tableVenta4.getModel();
+        Object[] ob = new Object[5];
+        for (int i = 0; i < ListarFactura.size(); i++) {
+            ob[0] = ListarFactura.get(i).getId();
+            
+            ob[1] = ListarFactura.get(i).getRuc();
+            ob[2] = ListarFactura.get(i).getProveedor();
+            ob[3] = ListarFactura.get(i).getDireccion();
+            ob[4] = ListarFactura.get(i).getTotal();
+            modelo.addRow(ob);
+        }
+        tableVenta4.setModel(modelo);
+       }
  
      public void LimpiarTable() {
         for (int i = 0; i < modelo.getRowCount(); i++) {
@@ -350,7 +370,7 @@ public void ListarProveedor() {
         txtPrecioVenta1 = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        tableVenta1 = new javax.swing.JTable();
+        tableVenta4 = new javax.swing.JTable();
         btnGenerarVenta2 = new javax.swing.JButton();
         btnRegistrarFactura = new javax.swing.JButton();
 
@@ -1802,7 +1822,7 @@ public void ListarProveedor() {
         jLabel30.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel30.setText("RUC Proveedor");
 
-        tableVenta1.setModel(new javax.swing.table.DefaultTableModel(
+        tableVenta4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1810,7 +1830,7 @@ public void ListarProveedor() {
                 "CÓDIGO FACTURA", "RUC", "PROVEEDOR", "DIRECCIÓN", " TOTAL $"
             }
         ));
-        jScrollPane6.setViewportView(tableVenta1);
+        jScrollPane6.setViewportView(tableVenta4);
 
         btnGenerarVenta2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/print.png"))); // NOI18N
         btnGenerarVenta2.setText("Modificar");
@@ -1937,7 +1957,8 @@ LimpiarTable();
     }//GEN-LAST:event_btnConfigActionPerformed
 
     private void txtNombreVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreVentaKeyPressed
- if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
           
             if (!"".equals(txtNombreVenta.getText())) {
                 String cod = txtNombreVenta.getText();
@@ -2560,6 +2581,14 @@ LimpiarProductos();        // TODO add your handling code here:
 
     private void btnRegistarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistarCompraActionPerformed
 
+LimpiarTable();
+        ListarFactura();
+        
+        
+        
+        
+        //AQUIIIIIIII
+        
         
         
          jTabbedPane1.setSelectedIndex(6);
@@ -2923,7 +2952,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     private javax.swing.JLabel lblOrdenarPro;
     private javax.swing.JTable tableCliente;
     private javax.swing.JTable tableVenta;
-    private javax.swing.JTable tableVenta1;
+    private javax.swing.JTable tableVenta4;
     private javax.swing.JTable tableVentas1;
     private javax.swing.JLabel tipo;
     private javax.swing.JTextField txtApellidoCliente;
