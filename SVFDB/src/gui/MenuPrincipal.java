@@ -2316,9 +2316,9 @@ LimpiarTable();
         }else{ 
             //En esta parte ya quiere decir que el codigo de venta si es valido,aqui resolvemos todo.
             //if (evt.getKeyCode() == KeyEvent.VK_ENTER)
-            AS_Generar_Factura genFactura = new AS_Generar_Factura();
+            //AS_Generar_Factura genFactura = new AS_Generar_Factura();
             
-            genFactura.setVisible(true);
+            //genFactura.setVisible(true);
             
         }
         //en
