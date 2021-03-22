@@ -619,7 +619,7 @@ public void ListarProveedor() {
                             .addComponent(btnEditarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                             .addComponent(btnNuevoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelClientesLayout.createSequentialGroup()
-                        .addContainerGap(52, Short.MAX_VALUE)
+                        .addContainerGap(45, Short.MAX_VALUE)
                         .addGroup(jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanelClientesLayout.createSequentialGroup()
@@ -832,7 +832,7 @@ public void ListarProveedor() {
                             .addComponent(jLabel34)
                             .addComponent(jLabel18)
                             .addComponent(jLabel17))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                         .addGroup(jPanelProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtApellidoProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                             .addComponent(txtNombreProveedor)
@@ -1080,7 +1080,7 @@ public void ListarProveedor() {
                                     .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(txtCantPro, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbxTipoPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addGroup(jPanelInventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblConsultarPro1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -1241,6 +1241,11 @@ public void ListarProveedor() {
                 txtCodigoVFActionPerformed(evt);
             }
         });
+        txtCodigoVF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoVFKeyTyped(evt);
+            }
+        });
 
         jLabel54.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel54.setText("Vendedor");
@@ -1269,7 +1274,6 @@ public void ListarProveedor() {
             }
         });
 
-        cbxProveedorPro8.setEditable(true);
         cbxProveedorPro8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendiente", "Despachado" }));
         cbxProveedorPro8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1323,7 +1327,7 @@ public void ListarProveedor() {
                     .addComponent(cbxProveedorPro8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel59))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDarDeBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1360,14 +1364,32 @@ public void ListarProveedor() {
             .addGap(0, 146, Short.MAX_VALUE)
         );
 
+        txtIdVenta5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIdVenta5KeyTyped(evt);
+            }
+        });
+
         jLabel55.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel55.setText("Vendedor");
+
+        txtIdVenta6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIdVenta6KeyTyped(evt);
+            }
+        });
 
         jLabel56.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel56.setText("Código ");
 
         jLabel57.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel57.setText("Cédula Cliente");
+
+        txtIdVenta7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIdVenta7KeyTyped(evt);
+            }
+        });
 
         btnBuscarUsuario1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnBuscarUsuario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa.png"))); // NOI18N
@@ -1560,7 +1582,7 @@ public void ListarProveedor() {
                 .addGroup(jPanelConfigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCrearNuevoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnReseterarPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(244, Short.MAX_VALUE))
+                .addContainerGap(241, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConfigLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel32)
@@ -1651,7 +1673,6 @@ public void ListarProveedor() {
         jLabel42.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel42.setText("Vendedor:");
 
-        cbxUsuario.setEditable(true);
         cbxUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxUsuarioActionPerformed(evt);
@@ -1731,7 +1752,7 @@ public void ListarProveedor() {
                                 .addGap(46, 46, 46))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelNuevaVentaLayout.createSequentialGroup()
                                 .addGap(14, 14, 14)
-                                .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                                .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
                                 .addGap(30, 30, 30)
                                 .addComponent(txtNombreVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)))
@@ -1856,7 +1877,7 @@ public void ListarProveedor() {
                 .addGap(9, 9, 9)
                 .addGroup(jPanelRegistrarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelRegistrarCompraLayout.createSequentialGroup()
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 949, Short.MAX_VALUE)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
                         .addGap(10, 10, 10))
                     .addGroup(jPanelRegistrarCompraLayout.createSequentialGroup()
                         .addGap(161, 161, 161)
@@ -1990,6 +2011,19 @@ LimpiarTable();
 
     private void txtNombreVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreVentaKeyTyped
 
+        //*************************************************************KEY TIPPED DEL NOMBRE DEL PRODUCTO
+        //40 caracteres alfabeticos incluido el caracter blanco.
+       
+        boolean esLetrasMayuOMinu = (evt.getKeyChar() >= 65 && evt.getKeyChar() <= 90) || (evt.getKeyChar() >=97 && evt.getKeyChar() <= 122);
+        boolean tieneEspacio = (evt.getKeyChar() == 32);
+        if(!esLetrasMayuOMinu && !tieneEspacio){
+            evt.consume();
+        }
+        
+        //hasta 60 caracteres alfabeticos.
+        if(txtNombreVenta.getText().length() > 59){
+            evt.consume();
+        }
     }//GEN-LAST:event_txtNombreVentaKeyTyped
 
     private void btnEliminarventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarventaActionPerformed
@@ -2705,7 +2739,16 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     }//GEN-LAST:event_txtCantidadVentaKeyPressed
 
     private void txtCantidadVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadVentaKeyTyped
-        // TODO add your handling code here:
+        // TODO add your handling code here: *********************************KEY TIPPED DE LA CANTIDAD DEL PRODUCTO
+        boolean esSoloNumeros = (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57);
+        if(!esSoloNumeros){
+            evt.consume();
+        }
+        //Hasta 4 digidos.
+        if(txtCantidadVenta.getText().length() > 3){
+            evt.consume();
+        }
+        
     }//GEN-LAST:event_txtCantidadVentaKeyTyped
 
     private void TableProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableProductoMouseEntered
@@ -2760,7 +2803,16 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     }//GEN-LAST:event_txtCodigoKeyPressed
 
     private void txtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyTyped
-        // TODO add your handling code here:
+        // TODO add your handling code here: *****************************KEY TIPPED CODIGO
+        //codigo de 4 digitos.
+        boolean esSoloNumeros = (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57);
+        if(!esSoloNumeros){
+            evt.consume();
+        }
+        if(txtCodigo.getText().length() > 3){
+            evt.consume();
+        }
+        
     }//GEN-LAST:event_txtCodigoKeyTyped
 
     private void txtCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyReleased
@@ -2801,6 +2853,47 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     private void btnBuscarUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBuscarUsuarioKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarUsuarioKeyTyped
+
+    private void txtIdVenta7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdVenta7KeyTyped
+        // TODO add your handling code here: ******************************KEY TIPPED CEDULACLIENTE
+        boolean esSoloNumeros = (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57);
+        if(!esSoloNumeros){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtIdVenta7KeyTyped
+
+    private void txtIdVenta6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdVenta6KeyTyped
+        // TODO add your handling code here: ************************key tipped del codigo
+        boolean esSoloNumeros = (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57);
+        
+        if(!esSoloNumeros){
+            evt.consume();
+        }
+        if(txtIdVenta6.getText().length() > 3){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtIdVenta6KeyTyped
+
+    private void txtIdVenta5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdVenta5KeyTyped
+        // TODO add your handling code here: **********************************key tipped nombre del venddor
+        boolean esLetrasMayuOMinu = (evt.getKeyChar() >= 65 && evt.getKeyChar() <= 90) || (evt.getKeyChar() >=97 && evt.getKeyChar() <= 122);
+        //se podra tener espacios
+        
+        if(!esLetrasMayuOMinu && !(evt.getKeyChar() == 32)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtIdVenta5KeyTyped
+
+    private void txtCodigoVFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoVFKeyTyped
+        // TODO add your handling code here:
+         boolean esSoloNumeros = (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57);
+         if(!esSoloNumeros){
+             evt.consume();
+         }
+         if(txtCodigoVF.getText().length() > 3){
+             evt.consume();
+         }
+    }//GEN-LAST:event_txtCodigoVFKeyTyped
 
     /**
      * @param args the command line arguments

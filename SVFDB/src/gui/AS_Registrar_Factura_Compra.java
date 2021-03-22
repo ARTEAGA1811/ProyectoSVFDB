@@ -100,7 +100,6 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
         jLabel1.setText("REGISTRAR FACTURA COMPRA");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -123,8 +122,6 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Teléfono");
 
-        txtRuc2.setBackground(new java.awt.Color(255, 255, 255));
-        txtRuc2.setForeground(new java.awt.Color(0, 0, 0));
         txtRuc2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRuc2ActionPerformed(evt);
@@ -136,29 +133,38 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
             }
         });
 
-        txtNombreCome.setBackground(new java.awt.Color(255, 255, 255));
-        txtNombreCome.setForeground(new java.awt.Color(0, 0, 0));
         txtNombreCome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreComeActionPerformed(evt);
             }
         });
+        txtNombreCome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreComeKeyTyped(evt);
+            }
+        });
 
-        txtId.setBackground(new java.awt.Color(255, 255, 255));
-        txtId.setForeground(new java.awt.Color(0, 0, 0));
+        txtId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIdKeyTyped(evt);
+            }
+        });
 
-        txtDireccion.setBackground(new java.awt.Color(255, 255, 255));
-        txtDireccion.setForeground(new java.awt.Color(0, 0, 0));
+        txtDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDireccionKeyTyped(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("E-mail");
 
-        txtTelefono.setBackground(new java.awt.Color(255, 255, 255));
-        txtTelefono.setForeground(new java.awt.Color(0, 0, 0));
-
-        txtEmail.setBackground(new java.awt.Color(255, 255, 255));
-        txtEmail.setForeground(new java.awt.Color(0, 0, 0));
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
 
         tableCompra1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -314,11 +320,8 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(13, 13, 13)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jLabel8))
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(87, 87, 87)
                         .addComponent(jLabel10)
                         .addGap(96, 96, 96)
@@ -519,6 +522,12 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
     private void txtProdCompraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProdCompraKeyTyped
 
+        //*********************************************************************KEY TIPPED NOMBRE DEL PRODUCTO
+        if(txtProdCompra.getText().length() > 29){
+            evt.consume();
+        }
+        
+        
     }//GEN-LAST:event_txtProdCompraKeyTyped
 
     private void txtCantidadCompraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadCompraKeyPressed
@@ -617,6 +626,13 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
     private void txtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyTyped
         // TODO add your handling code here:
+         boolean esSoloNumeros = (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57);
+        if(txtCodigo.getText().length() >3){
+            evt.consume();
+        }
+        if(!esSoloNumeros){
+            evt.consume();
+        }
     }//GEN-LAST:event_txtCodigoKeyTyped
 
     private void btnEliminarventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarventaActionPerformed
@@ -630,6 +646,42 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
         JOptionPane.showMessageDialog(null,"Venta Eliminada");
 
     }//GEN-LAST:event_btnEliminarventaActionPerformed
+
+    private void txtNombreComeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreComeKeyTyped
+        // TODO add your handling code here: *************************KEY TIPPED NOMBRE COMERCIAL
+        //Hasta 60 caracteres alfanumericos.
+        
+        if(txtNombreCome.getText().length() >59){
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_txtNombreComeKeyTyped
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        // TODO add your handling code here: ************************KEY TIPPED DEL TELEFONO
+         boolean esSoloNumeros = (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57);
+        if(!esSoloNumeros){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTelefonoKeyTyped
+
+    private void txtDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionKeyTyped
+        // TODO add your handling code here:
+        if(txtDireccion.getText().length() >199){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDireccionKeyTyped
+
+    private void txtIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdKeyTyped
+        // TODO add your handling code here: ***************************KEY TIPPED CODIGO
+        boolean esSoloNumeros = (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57);
+        if(txtId.getText().length() >3){
+            evt.consume();
+        }
+        if(!esSoloNumeros){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtIdKeyTyped
 
     /**
      * @param args the command line arguments

@@ -134,12 +134,20 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCedulaGenFactKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedulaGenFactKeyTyped(evt);
+            }
         });
 
         txtNombreGenFac.setForeground(new java.awt.Color(255, 255, 255));
         txtNombreGenFac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreGenFacActionPerformed(evt);
+            }
+        });
+        txtNombreGenFac.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreGenFacKeyTyped(evt);
             }
         });
 
@@ -149,18 +157,38 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
                 txtApellidoGenFacActionPerformed(evt);
             }
         });
+        txtApellidoGenFac.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoGenFacKeyTyped(evt);
+            }
+        });
 
         txtCodigoGenFac.setForeground(new java.awt.Color(255, 255, 255));
 
         txtDireccionGenFac.setForeground(new java.awt.Color(255, 255, 255));
+        txtDireccionGenFac.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDireccionGenFacKeyTyped(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("E-mail");
 
         txtTelefGenFac.setForeground(new java.awt.Color(255, 255, 255));
+        txtTelefGenFac.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefGenFacKeyTyped(evt);
+            }
+        });
 
         txtCorreoGenFac.setForeground(new java.awt.Color(255, 255, 255));
+        txtCorreoGenFac.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCorreoGenFacKeyTyped(evt);
+            }
+        });
 
         tableFactura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -519,6 +547,88 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
         
 
     }//GEN-LAST:event_txtCedulaGenFactKeyPressed
+
+    private void txtNombreGenFacKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreGenFacKeyTyped
+        // TODO add your handling code here: ************************** KEY TIPPER DEL NOMBRE
+        
+        //Solo letras maysculas o minusculas
+        boolean esLetrasMayuOMinu = (evt.getKeyChar() >= 65 && evt.getKeyChar() <= 90) || (evt.getKeyChar() >=97 && evt.getKeyChar() <= 122);
+        
+        if(!esLetrasMayuOMinu){
+            evt.consume();
+        }
+        //nombre de hasta 60 caracteres
+        if(txtNombreGenFac.getText().length() >59){
+            evt.consume();
+        }
+        
+         //No se podra tener espacios
+        if(evt.getKeyChar() == 32){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNombreGenFacKeyTyped
+
+    private void txtApellidoGenFacKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoGenFacKeyTyped
+        // TODO add your handling code here: **************************KEY TIPPPED DEL APELLIDO
+        //Solo letras maysculas o minusculas
+        boolean esLetrasMayuOMinu = (evt.getKeyChar() >= 65 && evt.getKeyChar() <= 90) || (evt.getKeyChar() >=97 && evt.getKeyChar() <= 122);
+        
+        if(!esLetrasMayuOMinu){
+            evt.consume();
+        }
+        //nombre de hasta 60 caracteres
+        if(txtApellidoGenFac.getText().length() >59){
+            evt.consume();
+        }
+        
+         //No se podra tener espacios
+        if(evt.getKeyChar() == 32){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtApellidoGenFacKeyTyped
+
+    private void txtTelefGenFacKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefGenFacKeyTyped
+        // TODO add your handling code here: *******************************KEY TIPPED DEL TELEFONO
+        boolean esSoloNumeros = (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57);
+        if(!esSoloNumeros){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTelefGenFacKeyTyped
+
+    private void txtDireccionGenFacKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionGenFacKeyTyped
+        // TODO add your handling code here: *********************************KEY TIPPED DE LA DIRECCION
+        //cadena de hasta 200 caracteres, que puede incluir letras y números, 
+        //más los caracteres especiales “- “y “blanco “. Ej.: El Comité del Pueblo. 
+        //Av. N58-32 entre la Ferretería y el Parque San Vicente 
+        if(txtDireccionGenFac.getText().length() >199){
+            evt.consume();
+        }
+        
+        boolean esSoloNumeros = (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57);
+        boolean esLetrasMayuOMinu = (evt.getKeyChar() >= 65 && evt.getKeyChar() <= 90) || (evt.getKeyChar() >=97 && evt.getKeyChar() <= 122);
+        boolean tieneEspacio = (evt.getKeyChar() == 32);
+        boolean tieneGuion = (evt.getKeyChar() == 45);
+        boolean tienePUnto = (evt.getKeyChar() == 46);
+        if(esSoloNumeros || esLetrasMayuOMinu || tieneEspacio || tienePUnto || tieneGuion){
+            
+        }else{
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_txtDireccionGenFacKeyTyped
+
+    private void txtCorreoGenFacKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoGenFacKeyTyped
+        // TODO add your handling code here: *****************************KEY TIPPED DEL EMAIL CORREO
+        
+    }//GEN-LAST:event_txtCorreoGenFacKeyTyped
+
+    private void txtCedulaGenFactKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaGenFactKeyTyped
+        // TODO add your handling code here:
+        boolean esSoloNumeros = (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57);
+        if(!esSoloNumeros){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCedulaGenFactKeyTyped
 
  
     /**
