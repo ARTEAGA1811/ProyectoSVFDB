@@ -2593,16 +2593,17 @@ LimpiarProductos();        // TODO add your handling code here:
 
     private void tableVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableVentasMouseClicked
         
-        //DMODIFICACION DAVID******************************************************************     
-        //Cuando es clickada una fila
-        int fila = TableVentaPrin.rowAtPoint(evt.getPoint());
-        txtCodigoVF.setText(TableVentaPrin.getValueAt(fila, 0).toString());
+        
         
         
     }//GEN-LAST:event_tableVentasMouseClicked
 
     private void TableVentaPrinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableVentaPrinMouseClicked
 
+        //DMODIFICACION DAVID******************************************************************     
+        //Cuando es clickada una fila
+        int fila = TableVentaPrin.rowAtPoint(evt.getPoint());
+        txtCodigoVF.setText(TableVentaPrin.getValueAt(fila, 0).toString());
     }//GEN-LAST:event_TableVentaPrinMouseClicked
 
 

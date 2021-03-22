@@ -446,8 +446,9 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
 //        }*/
     
 if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-          
+          /*
             if (!"".equals(txtCedulaGenFact.getText())) {
+                //boolean esCedulaValida = new ValidacionesCampos().validadorDeCedula(txtCedulaGenFact.getText());
                 String cod = txtCedulaGenFact.getText();
                 cl = client.BuscarCli(cod);
                         
@@ -470,7 +471,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
                 
                 txtCedulaGenFact.requestFocus();
             }
-
+*/
 
 
         
@@ -481,23 +482,24 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             
             
             
-            /*
+            
             if(txtCedulaGenFact.getText().isEmpty() == false){
-                //boolean esCedulaValida = new ValidacionesCampos().validadorDeCedula(txtCedulaGenFact.getText());
-                boolean esCedulaValida = true;
+                boolean esCedulaValida = new ValidacionesCampos().validadorDeCedula(txtCedulaGenFact.getText());
+                //boolean esCedulaValida = true;
                 if(esCedulaValida){
-                    
-                    miClientee = miClient.Buscarcliente(Integer.parseInt(txtCedulaGenFact.getText()));
-                    System.out.println("nombre: "+ miClientee.getNombre());
-                    if(miClientee.getNombre() != null){
+                    String cod = txtCedulaGenFact.getText();
+                    cl = client.BuscarCli(cod);
+                    //miClientee = miClient.Buscarcliente(Integer.parseInt(txtCedulaGenFact.getText()));
+                    System.out.println("nombre: "+ cl.getNombre());
+                    if(cl.getNombre() != null){
                         System.out.println("Vale esto?");
-                        txtNombreGenFac.setText(""+ miClientee.getNombre());
-                        txtApellidoGenFac.setText(""+ miClientee.getApellido());
-                        txtTelefGenFac.setText(Integer.toString(miClientee.getTelefono()));
-                        txtDireccionGenFac.setText(""+ miClientee.getDireccion());
-                        txtCorreoGenFac.setText(""+ miClientee.getCorreo());
+                        txtNombreGenFac.setText(""+ cl.getNombre());
+                        txtApellidoGenFac.setText(""+ cl.getApellido());
+                        txtTelefGenFac.setText(Integer.toString(cl.getTelefono()));
+                        txtDireccionGenFac.setText(""+ cl.getDireccion());
+                        txtCorreoGenFac.setText(""+ cl.getCorreo());
                     }else{
-                        //En este caso es que no ha detectado una cedula registrada
+                        //En este caso es que no ha demiClienteetectado una cedula registrada
                         JOptionPane.showMessageDialog(null, "Cliente no registrado, ingrese datos");
                         //limpiarEstaVentana();
                     
@@ -510,12 +512,12 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
                 
             }
             
-        }*/
+        }
         
         
         
         
-}
+
     }//GEN-LAST:event_txtCedulaGenFactKeyPressed
 
  
