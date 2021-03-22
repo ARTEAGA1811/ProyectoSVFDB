@@ -1611,7 +1611,7 @@ public void ListarProveedor() {
         });
 
         cbxEstado.setEditable(true);
-        cbxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendiente" }));
+        cbxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "pendiente", "despachado" }));
         cbxEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxEstadoActionPerformed(evt);
@@ -2158,14 +2158,14 @@ LimpiarTable();
 
     private void btnGuardarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarVentaActionPerformed
 
-        
+         RegistrarVenta();
         
          if (tableVenta.getRowCount() > 0) {
              
             if (!"".equals( cbxUsuario.getSelectedItem())) {
                 
              
-                 RegistrarVenta();
+               
                  
                 ActualizarStock();
 
@@ -2839,7 +2839,8 @@ private void BuscarCliente() {
         int numFila = tableVenta.getRowCount();
         for (int i = 0; i < numFila; i++) {
             double cal = Double.parseDouble(String.valueOf(tableVenta.getModel().getValueAt(i, 4)));
-            Totalpagar = Totalpagar + cal;
+             int cant = Integer.parseInt(String.valueOf(tableVenta.getValueAt(i, 3).toString()));
+            Totalpagar = cant*cal;
         }
         LabelTotal.setText(String.format("%.2f", Totalpagar));
     }
@@ -2878,12 +2879,17 @@ private void BuscarCliente() {
       private void RegistrarVenta() {
 
         String vendedor = cbxUsuario.getItemAt(item);
+        
         String estado = cbxEstado.getItemAt(item);
+        
         double monto = Totalpagar;
        
         v.setVendedor(vendedor);
+        
         v.setTotal(monto);
+        
          v.setEstado(estado);
+         
         Vt.RegistrarVenta(v);
     }
 }
