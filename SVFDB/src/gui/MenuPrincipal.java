@@ -4,6 +4,7 @@ import Modelos.BDD;
 import Modelos.Client;
 import Modelos.Cliente;
 import Modelos.Config;
+import Modelos.Detalle;
 import Modelos.Fact;
 import Modelos.Factura;
 import Modelos.Product;
@@ -33,7 +34,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     Proveed PrDao = new Proveed();
     Productos pro = new Productos();
     Product proDao = new Product();
-
+Detalle Dv = new Detalle();
      Config conf = new Config();
      BDD BD=new BDD();
      
@@ -48,6 +49,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     Factura fac = new Factura();
     Fact fa = new Fact();
     
+    AS_Generar_Facturas  Facturas = new AS_Generar_Facturas();
+    
     /**
      * Creates new form MenuPrincipal
      */
@@ -55,6 +58,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         txtIdCliente.setVisible(false);
+        
+        
+        AutoCompleteDecorator.decorate(cbxProveedorPro);
+        proDao.ConsularProveedor(cbxProveedorPro);
+  
+        
         AutoCompleteDecorator.decorate(cbxProveedorPro);
         proDao.ConsularProveedor(cbxProveedorPro);
         
@@ -200,6 +209,9 @@ public void ListarProveedor() {
         }
         tableVenta4.setModel(modelo);
        }
+       
+        
+      
  
      public void LimpiarTable() {
         for (int i = 0; i < modelo.getRowCount(); i++) {
@@ -1363,6 +1375,12 @@ public void ListarProveedor() {
         jLabel55.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel55.setText("Vendedor");
 
+        txtIdVenta6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdVenta6ActionPerformed(evt);
+            }
+        });
+
         jLabel56.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel56.setText("Código ");
 
@@ -1748,8 +1766,8 @@ public void ListarProveedor() {
                                 .addGap(25, 25, 25)))
                         .addGap(54, 54, 54)
                         .addGroup(jPanelNuevaVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtStockDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
+                            .addComponent(jLabel7)
+                            .addComponent(txtStockDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(34, 34, 34)
                         .addComponent(btnEliminarventa)
                         .addGap(49, 49, 49)
@@ -1784,7 +1802,7 @@ public void ListarProveedor() {
                             .addComponent(cbxEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEliminarventa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanelNuevaVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelNuevaVentaLayout.createSequentialGroup()
                         .addGap(28, 28, 28)
@@ -1800,7 +1818,7 @@ public void ListarProveedor() {
                         .addGroup(jPanelNuevaVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cbxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel42))))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab1", jPanelNuevaVenta);
@@ -2286,7 +2304,13 @@ LimpiarTable();
             
             genFactura.setVisible(true);
             
+            genFactura.ListarDetalle();
         }
+        
+        
+        
+        
+        
         //en
         //
         //***********************************************************************************
@@ -2325,6 +2349,7 @@ LimpiarTable();
                  
                 RegistrarVenta();
                 JOptionPane.showMessageDialog(null, "Se ha registrado la venta Exitosamente");
+                RegistrarDetalle();
                 ActualizarStock();
 
                 LimpiartableVenta();
@@ -2812,6 +2837,10 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarUsuarioKeyTyped
 
+    private void txtIdVenta6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdVenta6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdVenta6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3068,6 +3097,7 @@ private void BuscarCliente() {
         txtStockDisponible.setText("");
         txtPrecioVenta.setText("");
         txtCodigo.setText("");
+       // txtIdVenta.setText("");
 
        // txtIdVenta.setText("");
         
@@ -3107,5 +3137,27 @@ private void BuscarCliente() {
          v.setEstado(estado);
          
         Vt.RegistrarVenta(v);
+    }
+      
+       private void RegistrarDetalle() {
+           
+        int id = Vt.IdVenta();
+        for (int i = 0; i < tableVenta.getRowCount(); i++) {
+            String cod = tableVenta.getValueAt(i, 0).toString();
+              String nom = tableVenta.getValueAt(i, 1).toString();
+            int cant = Integer.parseInt(tableVenta.getValueAt(i, 2).toString());
+            double precio = Double.parseDouble(tableVenta.getValueAt(i, 3).toString());
+            double total = Double.parseDouble(tableVenta.getValueAt(i, 4).toString());
+            
+          
+            Dv.setCod_pro(cod);
+             Dv.setNombre(nom);
+            Dv.setCantidad(cant);
+            Dv.setPrecio(precio);
+            Dv.setPreciototal(total);
+            Dv.setId(id);
+            Vt.RegistrarDetalle(Dv);
+
+        }
     }
 }

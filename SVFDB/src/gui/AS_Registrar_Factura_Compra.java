@@ -331,8 +331,8 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtPrecioCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29)
-                                .addComponent(txtStockDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(159, 159, 159)
+                                .addComponent(txtStockDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(147, 147, 147)
                         .addComponent(btnEliminarventa))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -412,114 +412,60 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tableCompra1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCompra1MouseClicked
+    private void btnEliminarventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarventaActionPerformed
+
+        modelo = (DefaultTableModel) tableCompra1.getModel();
+        modelo.removeRow(tableCompra1.getSelectedRow());
+
+        TotalPagar();
+        txtProdCompra.requestFocus();
+
+        JOptionPane.showMessageDialog(null,"Venta Eliminada");
+    }//GEN-LAST:event_btnEliminarventaActionPerformed
+
+    private void txtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_tableCompra1MouseClicked
+    }//GEN-LAST:event_txtCodigoKeyTyped
 
-    private void txtNombreComeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreComeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreComeActionPerformed
-
-    private void btnGuardarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCompraActionPerformed
-
-        
-        
-        
-          
-         if (tableCompra1.getRowCount() > 0) {
-                   
-             RegistrarFactura();
-    
-              //  RegistrarVenta();
-                JOptionPane.showMessageDialog(null, "Se ha registrado la venta Exitosamente");
-                ActualizarStock();
-
-                LimpiartableVenta();
-        
-         }
-           
-
+    private void txtCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyReleased
 
         // TODO add your handling code here:
-  
-    }//GEN-LAST:event_btnGuardarCompraActionPerformed
+    }//GEN-LAST:event_txtCodigoKeyReleased
 
-    private void txtRuc2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRuc2KeyPressed
-
-
-if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-          
-            if (!"".equals(txtRuc2.getText())) {
-                String cod = txtRuc2.getText();
-                prove = prov.BuscarProve(cod);
-                        
-                        if (prove.getComercial() != null) {
-                    
-                 txtNombreCome.setText("" + prove.getComercial());
-                 txtId.setText("" + prove.getId());
-                    txtTelefono.setText("" + prove.getTelefono());
-                    txtDireccion.setText("" + prove.getDireccion());
-                    txtEmail.setText("" + prove.getEmail());
-                    txtRuc2.requestFocus();
-                } else {
-                   
-                    
-                    txtRuc2.requestFocus();
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "No exite Proveedor con ese RUC ");
-                txtId.requestFocus();
-            }
-        }
-
-
-        
-        
-
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRuc2KeyPressed
-
-    private void txtRuc2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuc2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRuc2ActionPerformed
-
-    private void txtProdCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProdCompraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtProdCompraActionPerformed
-
-    private void txtProdCompraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProdCompraKeyPressed
+    private void txtCodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyPressed
 
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
-            if (!"".equals(txtProdCompra.getText())) {
-                String cod = txtProdCompra.getText();
-                pro = proDao.BuscarPro1(cod);
-                if (pro.getCodigo() != null) {
+            if (!"".equals(txtCodigo.getText())) {
+                String cod = txtCodigo.getText();
+                pro = proDao.BuscarPro(cod);
+                if (pro.getNombre() != null) {
 
-                    txtCodigo.setText("" + pro.getCodigo());
-
+                    txtProdCompra.setText("" + pro.getNombre());
                     txtPrecioCompra.setText("" + pro.getPrecio());
                     txtStockDisponible.setText("" + pro.getStock());
                     txtCantidadCompra.requestFocus();
                 } else {
                     LimparVenta();
-                    txtProdCompra.requestFocus();
-                    JOptionPane.showMessageDialog(null, "Producto no disponible en el inventario, intenta con otro producto");
+                    txtCodigo.requestFocus();
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Producto no disponible en el inventario, intenta con otro producto");
-
-                txtProdCompra.requestFocus();
+                JOptionPane.showMessageDialog(null, "Ingrese el codigo del producto");
+                txtCodigo.requestFocus();
             }
-
         }
 
-    }//GEN-LAST:event_txtProdCompraKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoKeyPressed
 
-    private void txtProdCompraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProdCompraKeyTyped
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
 
-    }//GEN-LAST:event_txtProdCompraKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoActionPerformed
+
+    private void txtCantidadCompraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadCompraKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCantidadCompraKeyTyped
 
     private void txtCantidadCompraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadCompraKeyPressed
 
@@ -575,61 +521,100 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantidadCompraKeyPressed
 
-    private void txtCantidadCompraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadCompraKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantidadCompraKeyTyped
+    private void txtProdCompraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProdCompraKeyTyped
 
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+    }//GEN-LAST:event_txtProdCompraKeyTyped
 
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoActionPerformed
-
-    private void txtCodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyPressed
+    private void txtProdCompraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProdCompraKeyPressed
 
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
-            if (!"".equals(txtCodigo.getText())) {
-                String cod = txtCodigo.getText();
-                pro = proDao.BuscarPro(cod);
-                if (pro.getNombre() != null) {
+            if (!"".equals(txtProdCompra.getText())) {
+                String cod = txtProdCompra.getText();
+                pro = proDao.BuscarPro1(cod);
+                if (pro.getCodigo() != null) {
 
-                    txtProdCompra.setText("" + pro.getNombre());
+                    txtCodigo.setText("" + pro.getCodigo());
+
                     txtPrecioCompra.setText("" + pro.getPrecio());
                     txtStockDisponible.setText("" + pro.getStock());
                     txtCantidadCompra.requestFocus();
                 } else {
                     LimparVenta();
-                    txtCodigo.requestFocus();
+                    txtProdCompra.requestFocus();
+                    JOptionPane.showMessageDialog(null, "Producto no disponible en el inventario, intenta con otro producto");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Ingrese el codigo del producto");
-                txtCodigo.requestFocus();
+                JOptionPane.showMessageDialog(null, "Producto no disponible en el inventario, intenta con otro producto");
+
+                txtProdCompra.requestFocus();
+            }
+
+        }
+    }//GEN-LAST:event_txtProdCompraKeyPressed
+
+    private void txtProdCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProdCompraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProdCompraActionPerformed
+
+    private void btnGuardarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCompraActionPerformed
+
+        if (tableCompra1.getRowCount() > 0) {
+
+            RegistrarFactura();
+
+            //  RegistrarVenta();
+            JOptionPane.showMessageDialog(null, "Se ha registrado la venta Exitosamente");
+            ActualizarStock();
+
+            LimpiartableVenta();
+
+        }
+
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnGuardarCompraActionPerformed
+
+    private void tableCompra1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCompra1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableCompra1MouseClicked
+
+    private void txtNombreComeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreComeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreComeActionPerformed
+
+    private void txtRuc2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRuc2KeyPressed
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            if (!"".equals(txtRuc2.getText())) {
+                String cod = txtRuc2.getText();
+                prove = prov.BuscarProve(cod);
+
+                if (prove.getComercial() != null) {
+
+                    txtNombreCome.setText("" + prove.getComercial());
+                    txtId.setText("" + prove.getId());
+                    txtTelefono.setText("" + prove.getTelefono());
+                    txtDireccion.setText("" + prove.getDireccion());
+                    txtEmail.setText("" + prove.getEmail());
+                    txtRuc2.requestFocus();
+                } else {
+
+                    txtRuc2.requestFocus();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No exite Proveedor con ese RUC ");
+                txtId.requestFocus();
             }
         }
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoKeyPressed
+    }//GEN-LAST:event_txtRuc2KeyPressed
 
-    private void txtCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyReleased
-
+    private void txtRuc2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuc2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoKeyReleased
-
-    private void txtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoKeyTyped
-
-    private void btnEliminarventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarventaActionPerformed
-
-        modelo = (DefaultTableModel) tableCompra1.getModel();
-        modelo.removeRow(tableCompra1.getSelectedRow());
-
-        TotalPagar();
-        txtProdCompra.requestFocus();
-
-        JOptionPane.showMessageDialog(null,"Venta Eliminada");
-
-    }//GEN-LAST:event_btnEliminarventaActionPerformed
+    }//GEN-LAST:event_txtRuc2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -8,6 +8,7 @@ package gui;
 import Modelos.BDD;
 import Modelos.Client;
 import Modelos.Cliente;
+import Modelos.Detalle;
 import Modelos.Fact;
 import Modelos.Factura;
 import Modelos.Product;
@@ -17,6 +18,7 @@ import Modelos.Proveedor;
 import Modelos.Vent;
 import Modelos.Venta;
 import java.awt.event.KeyEvent;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -55,7 +57,39 @@ public class AS_Generar_Facturas extends javax.swing.JFrame {
         initComponents();
         
         
+        
+    
+
     }
+
+             
+            public void ListarDetalle() {
+                
+        List<Detalle> ListarDetalle = Vt.ListarDetalle();
+        
+        modelo = (DefaultTableModel) tableFactura.getModel();
+        
+        Object[] ob = new Object[5];
+        for (int i = 0; i < ListarDetalle.size(); i++) {
+          
+            
+            ob[0] = ListarDetalle.get(i).getCod_pro();
+            ob[1] = ListarDetalle.get(i).getNombre();
+             ob[2] = ListarDetalle.get(i).getCantidad();
+                ob[3] = ListarDetalle.get(i).getPrecio();
+                  ob[4] = ListarDetalle.get(i).getPreciototal();
+                  
+           
+            modelo.addRow(ob);
+        }
+        tableFactura.setModel(modelo);
+           
+ 
+            
+            
+}
+        
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -82,7 +116,7 @@ public class AS_Generar_Facturas extends javax.swing.JFrame {
         txtxTelefonoFac = new javax.swing.JTextField();
         txtEmailFac = new javax.swing.JTextField();
         jScrollPane7 = new javax.swing.JScrollPane();
-        tableCompra1 = new javax.swing.JTable();
+        tableFactura = new javax.swing.JTable();
         btnGuardarCompra = new javax.swing.JButton();
         txtStockDisponible = new javax.swing.JTextField();
         txtApellidoFac = new javax.swing.JTextField();
@@ -101,7 +135,7 @@ public class AS_Generar_Facturas extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa.png"))); // NOI18N
-        jLabel1.setText("REGISTRAR FACTURA COMPRA");
+        jLabel1.setText("REGISTRAR FACTURA ");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -164,7 +198,7 @@ public class AS_Generar_Facturas extends javax.swing.JFrame {
         txtEmailFac.setBackground(new java.awt.Color(255, 255, 255));
         txtEmailFac.setForeground(new java.awt.Color(0, 0, 0));
 
-        tableCompra1.setModel(new javax.swing.table.DefaultTableModel(
+        tableFactura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -172,12 +206,12 @@ public class AS_Generar_Facturas extends javax.swing.JFrame {
                 "CódigoPro", "Nombre Producto", "Cantidad de Producto", "Precio Unidad $", "Precio Total $"
             }
         ));
-        tableCompra1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableFactura.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableCompra1MouseClicked(evt);
+                tableFacturaMouseClicked(evt);
             }
         });
-        jScrollPane7.setViewportView(tableCompra1);
+        jScrollPane7.setViewportView(tableFactura);
 
         btnGuardarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/GuardarTodo.png"))); // NOI18N
         btnGuardarCompra.setText("Registrar");
@@ -367,16 +401,16 @@ public class AS_Generar_Facturas extends javax.swing.JFrame {
                     .addComponent(txtxTelefonoFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
                     .addComponent(txtEmailFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(81, 81, 81)
+                .addGap(39, 39, 39)
                 .addComponent(txtStockDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(42, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnGuardarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(89, 89, 89))))
@@ -399,7 +433,7 @@ public class AS_Generar_Facturas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -407,9 +441,9 @@ public class AS_Generar_Facturas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tableCompra1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCompra1MouseClicked
+    private void tableFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableFacturaMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tableCompra1MouseClicked
+    }//GEN-LAST:event_tableFacturaMouseClicked
 
     private void txtNombreFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreFacActionPerformed
         // TODO add your handling code here:
@@ -421,7 +455,7 @@ public class AS_Generar_Facturas extends javax.swing.JFrame {
         
         
           
-         if (tableCompra1.getRowCount() > 0) {
+         if (tableFactura.getRowCount() > 0) {
                    
              RegistrarFactura();
     
@@ -524,7 +558,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     private javax.swing.JTextField jTFNombre1;
     private javax.swing.JTextField jTFNombre3;
     private javax.swing.JTextField jTFNombre4;
-    private javax.swing.JTable tableCompra1;
+    private javax.swing.JTable tableFactura;
     private javax.swing.JTextField txtApellidoFac;
     private javax.swing.JTextField txtCedulaFac;
     private javax.swing.JTextField txtDireccionFac;
@@ -550,17 +584,17 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 private void TotalPagar() {
     
         Totalpagar = 0.00;
-        int numFila = tableCompra1.getRowCount();
+        int numFila = tableFactura.getRowCount();
         for (int i = 0; i < numFila; i++) {
-            double cal = Double.parseDouble(String.valueOf(tableCompra1.getModel().getValueAt(i, 4)));
+            double cal = Double.parseDouble(String.valueOf(tableFactura.getModel().getValueAt(i, 4)));
             Totalpagar = Totalpagar + cal;
         }
         LabelTotal1.setText(String.format("%.2f", Totalpagar));
 }
 
 private void LimpiartableVenta() {
-        tmp = (DefaultTableModel) tableCompra1.getModel();
-        int fila = tableCompra1.getRowCount();
+        tmp = (DefaultTableModel) tableFactura.getModel();
+        int fila = tableFactura.getRowCount();
         for (int i = 0; i < fila; i++) {
             tmp.removeRow(0);
         }
@@ -591,9 +625,9 @@ private void LimpiartableVenta() {
 
 
     private void ActualizarStock() {
-        for (int i = 0; i < tableCompra1.getRowCount(); i++) {
-            String cod = tableCompra1.getValueAt(i, 0).toString();
-            int cant = Integer.parseInt(tableCompra1.getValueAt(i, 2).toString());
+        for (int i = 0; i < tableFactura.getRowCount(); i++) {
+            String cod = tableFactura.getValueAt(i, 0).toString();
+            int cant = Integer.parseInt(tableFactura.getValueAt(i, 2).toString());
             pro = proDao.BuscarPro(cod);
             int StockActual = (int) (pro.getStock() - cant);
             Vt.ActualizarStock(StockActual, cod);

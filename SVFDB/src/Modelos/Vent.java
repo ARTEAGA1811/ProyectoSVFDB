@@ -65,14 +65,17 @@ public class Vent {
     
     public int RegistrarDetalle(Detalle Dv){
         
-       String sql = "INSERT INTO detalle (cod_pro, cantidad, precio, id_venta) VALUES (?,?,?,?)";
+       String sql = "INSERT INTO detalle (cod_pro,nombre,cantidad, precio,preciototal, id_venta) VALUES (?,?,?,?,?,?)";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
+            
             ps.setString(1, Dv.getCod_pro());
-            ps.setInt(2, Dv.getCantidad());
-            ps.setDouble(3, Dv.getPrecio());
-            ps.setInt(4, Dv.getId());
+            ps.setString(2, Dv.getNombre());
+            ps.setInt(3, Dv.getCantidad());
+            ps.setDouble(4, Dv.getPrecio());
+            ps.setDouble(5, Dv.getPreciototal());
+            ps.setInt(6, Dv.getId());
             ps.execute();
         } catch (SQLException e) {
             System.out.println(e.toString());
@@ -100,8 +103,43 @@ public class Vent {
             return false;
         }
     }
+    public List ListarDetalle(){
+        
+       List<Detalle> ListaDetalle = new ArrayList();
+       String sql = "SELECT * FROM detalle";
+       try {
+           con = cn.getConnection();
+           ps = con.prepareStatement(sql);
+           rs = ps.executeQuery();
+           while (rs.next()) {    
+               
+               Detalle De = new Detalle();
+               
+               De.setId(rs.getInt("id"));
+     
+               De.setCod_pro("cod_pro");
+               
+                De.setNombre("nombre");
+  
+              De.setCantidad(rs.getInt("cantidad"));
+               
+               De.setPrecio(rs.getDouble("precio"));
+               
+               De.setPreciototal(rs.getDouble("preciototal"));
+                   De.setId_venta(rs.getInt("id_venta"));
+               
+               ListaDetalle.add(De);
+           }
+       } catch (SQLException e) {
+           System.out.println(e.toString());
+       }
+       return ListaDetalle;
+   }
     
-    public List Listarventas(){
+    
+
+    
+   public List Listarventas(){
        List<Venta> ListaVenta = new ArrayList();
        String sql = "SELECT * FROM ventas";
        try {
