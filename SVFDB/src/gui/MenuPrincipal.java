@@ -326,7 +326,7 @@ public void ListarProveedor() {
         cbxEstado = new javax.swing.JComboBox<>();
         txtCantidadVenta = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txtCodigoVenta1 = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
         jPanelRegistrarCompra = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         txtCantidadVenta1 = new javax.swing.JTextField();
@@ -1570,6 +1570,16 @@ public void ListarProveedor() {
         txtPrecioVenta.setEditable(false);
 
         txtStockDisponible.setEditable(false);
+        txtStockDisponible.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtStockDisponibleMouseClicked(evt);
+            }
+        });
+        txtStockDisponible.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtStockDisponibleKeyPressed(evt);
+            }
+        });
 
         tableVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1611,7 +1621,7 @@ public void ListarProveedor() {
         });
 
         cbxEstado.setEditable(true);
-        cbxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendiente" }));
+        cbxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "pendiente", "despachado" }));
         cbxEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxEstadoActionPerformed(evt);
@@ -1630,20 +1640,20 @@ public void ListarProveedor() {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Código");
 
-        txtCodigoVenta1.addActionListener(new java.awt.event.ActionListener() {
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoVenta1ActionPerformed(evt);
+                txtCodigoActionPerformed(evt);
             }
         });
-        txtCodigoVenta1.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtCodigoVenta1KeyPressed(evt);
+                txtCodigoKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtCodigoVenta1KeyReleased(evt);
+                txtCodigoKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCodigoVenta1KeyTyped(evt);
+                txtCodigoKeyTyped(evt);
             }
         });
 
@@ -1676,7 +1686,7 @@ public void ListarProveedor() {
                                 .addGap(46, 46, 46))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelNuevaVentaLayout.createSequentialGroup()
                                 .addGap(14, 14, 14)
-                                .addComponent(txtCodigoVenta1, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                                .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                                 .addGap(30, 30, 30)
                                 .addComponent(txtNombreVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)))
@@ -1722,7 +1732,7 @@ public void ListarProveedor() {
                                 .addComponent(txtCantidadVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelNuevaVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtNombreVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtCodigoVenta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanelNuevaVentaLayout.createSequentialGroup()
                         .addGap(103, 103, 103)
                         .addGroup(jPanelNuevaVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1885,12 +1895,33 @@ LimpiarTable();
     }//GEN-LAST:event_btnConfigActionPerformed
 
     private void txtNombreVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreVentaKeyPressed
-
+ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+          
+            if (!"".equals(txtNombreVenta.getText())) {
+                String cod = txtNombreVenta.getText();
+                pro = proDao.BuscarPro1(cod);
+                if (pro.getCodigo() != null) {
+                    
+                    txtCodigo.setText("" + pro.getCodigo());
+                    
+                    txtPrecioVenta.setText("" + pro.getPrecio());
+                    txtStockDisponible.setText("" + pro.getStock());
+                    txtCantidadVenta.requestFocus();
+                } else {
+                    LimparVenta();
+                    txtNombreVenta.requestFocus();
+                    JOptionPane.showMessageDialog(null, "Producto no disponible en el inventario, intenta con otro producto");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Producto no disponible en el inventario, intenta con otro producto");
+                
+                txtNombreVenta.requestFocus();
+            }
     
         
         
         
-        
+ }
         
     }//GEN-LAST:event_txtNombreVentaKeyPressed
 
@@ -2161,14 +2192,15 @@ LimpiarTable();
     private void btnGuardarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarVentaActionPerformed
 
         
-        
          if (tableVenta.getRowCount() > 0) {
              
             if (!"".equals( cbxUsuario.getSelectedItem())) {
                 
              
-                 RegistrarVenta();
+               
                  
+                RegistrarVenta();
+                JOptionPane.showMessageDialog(null, "Se ha registrado la venta Exitosamente");
                 ActualizarStock();
 
                 LimpiartableVenta();
@@ -2488,7 +2520,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     
     
             if (!"".equals(txtCantidadVenta.getText())) {
-                String cod = txtCodigoVenta1.getText();
+                String cod = txtCodigo.getText();
                 String nombre = txtNombreVenta.getText();
                 
                 int cant = Integer.parseInt(txtCantidadVenta.getText());
@@ -2522,9 +2554,9 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
                     tableVenta.setModel(tmp);
                     TotalPagar();
                     LimparVenta();
-                    txtCodigoVenta1.requestFocus();
+                    txtCodigo.requestFocus();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Stock no disponible");
+                    JOptionPane.showMessageDialog(null, "Stock insuficiente, número de productos en stock "+ stock);
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Ingrese Cantidad");
@@ -2555,19 +2587,19 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreVentaActionPerformed
 
-    private void txtCodigoVenta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoVenta1ActionPerformed
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
 
 
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoVenta1ActionPerformed
+    }//GEN-LAST:event_txtCodigoActionPerformed
 
-    private void txtCodigoVenta1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoVenta1KeyPressed
+    private void txtCodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyPressed
 
       if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
           
-            if (!"".equals(txtCodigoVenta1.getText())) {
-                String cod = txtCodigoVenta1.getText();
+            if (!"".equals(txtCodigo.getText())) {
+                String cod = txtCodigo.getText();
                 pro = proDao.BuscarPro(cod);
                 if (pro.getNombre() != null) {
                     
@@ -2577,27 +2609,39 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
                     txtCantidadVenta.requestFocus();
                 } else {
                     LimparVenta();
-                    txtCodigoVenta1.requestFocus();
+                    txtCodigo.requestFocus();
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Ingrese el codigo del productos");
-                txtCodigoVenta1.requestFocus();
+                txtCodigo.requestFocus();
             }
         }
         
 
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoVenta1KeyPressed
+    }//GEN-LAST:event_txtCodigoKeyPressed
 
-    private void txtCodigoVenta1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoVenta1KeyTyped
+    private void txtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoVenta1KeyTyped
+    }//GEN-LAST:event_txtCodigoKeyTyped
 
-    private void txtCodigoVenta1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoVenta1KeyReleased
+    private void txtCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyReleased
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoVenta1KeyReleased
+    }//GEN-LAST:event_txtCodigoKeyReleased
+
+    private void txtStockDisponibleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStockDisponibleKeyPressed
+
+        
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStockDisponibleKeyPressed
+
+    private void txtStockDisponibleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtStockDisponibleMouseClicked
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStockDisponibleMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2760,10 +2804,10 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     private javax.swing.JTextField txtCantPro;
     private javax.swing.JTextField txtCantidadVenta;
     private javax.swing.JTextField txtCantidadVenta1;
+    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtCodigoPro;
     private javax.swing.JTextField txtCodigoPro2;
     private javax.swing.JTextField txtCodigoPro3;
-    private javax.swing.JTextField txtCodigoVenta1;
     private javax.swing.JTextField txtComercialProveedor;
     private javax.swing.JTextField txtDireccionCliente;
     private javax.swing.JTextField txtDireccionProveedor;
@@ -2836,7 +2880,7 @@ private void BuscarCliente() {
         
         
     }
-      private void TotalPagar() {
+     private void TotalPagar() {
         Totalpagar = 0.00;
         int numFila = tableVenta.getRowCount();
         for (int i = 0; i < numFila; i++) {
@@ -2845,7 +2889,7 @@ private void BuscarCliente() {
         }
         LabelTotal.setText(String.format("%.2f", Totalpagar));
     }
-    
+
        private void LimparVenta() {
            
        
@@ -2879,13 +2923,18 @@ private void BuscarCliente() {
     }
       private void RegistrarVenta() {
 
-        String vendedor = cbxUsuario.getItemAt(item);
-        String estado = cbxEstado.getItemAt(item);
+        String vendedor = cbxUsuario.getSelectedItem().toString();
+  
+        String estado = cbxEstado.getSelectedItem().toString();
+        
         double monto = Totalpagar;
        
         v.setVendedor(vendedor);
+        
         v.setTotal(monto);
+        
          v.setEstado(estado);
+         
         Vt.RegistrarVenta(v);
     }
 }

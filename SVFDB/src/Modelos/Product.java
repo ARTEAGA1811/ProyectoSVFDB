@@ -191,6 +191,27 @@ public class Product {
         }
         return producto;
     }
+       public Productos BuscarPro1(String cod){
+        Productos producto = new Productos();
+        String sql = "SELECT * FROM productos WHERE nombre = ?";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, cod);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                
+                producto.setCodigo(rs.getString("codigo"));
+                
+                producto.setPrecio(rs.getDouble("precio"));
+                producto.setStock(rs.getInt("stock"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return producto;
+    }
+    
     
     public Config BuscarDatos(){
         Config conf = new Config();
