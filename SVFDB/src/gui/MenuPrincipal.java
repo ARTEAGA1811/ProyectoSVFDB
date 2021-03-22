@@ -2223,15 +2223,15 @@ LimpiarTable();
         //Primero debe verificar que haya elegido un codigo de venta y que sea un codigo de venta valido.
         boolean esCodigoDeVentaValido = false;
         String pendienteODespachado = "";
-        DefaultTableModel model = (DefaultTableModel) tableVentas.getModel();
+        DefaultTableModel model = (DefaultTableModel) TableVentaPrin.getModel();
         int numFilas = model.getRowCount();
         System.out.println("numFilas" + numFilas);
         //Va buscando en la tabla el codigo, en caso que el codigo s[i sea uno que este en la tabla
         //quiere decir que el codigo de venta si es valido.
         for(int i = 0; i<numFilas; i++){
-            if((tableVentas.getValueAt(i, 0).toString()).equals(txtCodigoVF.getText())){
+            if((TableVentaPrin.getValueAt(i, 0).toString()).equals(txtCodigoVF.getText())){
                 esCodigoDeVentaValido = true;
-                pendienteODespachado = tableVentas.getValueAt(i, 2).toString();
+                pendienteODespachado = TableVentaPrin.getValueAt(i, 2).toString();
             }
         }
         
@@ -2576,16 +2576,17 @@ LimpiarProductos();        // TODO add your handling code here:
 
     private void tableVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableVentasMouseClicked
         
-        //DMODIFICACION DAVID******************************************************************     
-        //Cuando es clickada una fila
-        int fila = tableVentas.rowAtPoint(evt.getPoint());
-        txtCodigoVF.setText(tableVentas.getValueAt(fila, 0).toString());
         
         
     }//GEN-LAST:event_tableVentasMouseClicked
 
     private void TableVentaPrinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableVentaPrinMouseClicked
 
+        //DMODIFICACION DAVID******************************************************************     
+        //Cuando es clickada una fila
+        int fila = TableVentaPrin.rowAtPoint(evt.getPoint());
+        txtCodigoVF.setText(TableVentaPrin.getValueAt(fila, 0).toString());
+        
     }//GEN-LAST:event_TableVentaPrinMouseClicked
 
 

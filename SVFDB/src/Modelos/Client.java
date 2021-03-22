@@ -145,8 +145,10 @@ public class Client {
            rs = ps.executeQuery();
            if (rs.next()) {
                cl.setNombre(rs.getString("nombre"));
+               cl.setApellido(rs.getString("apellido"));
                cl.setTelefono(rs.getInt("telefono"));
                cl.setDireccion(rs.getString("direccion"));
+               cl.setCorreo(rs.getString("correo"));
             
            }
        } catch (SQLException e) {
