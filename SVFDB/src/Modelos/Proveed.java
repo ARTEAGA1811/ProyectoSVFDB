@@ -28,7 +28,7 @@ public class Proveed {
         try {
            con = cn.getConnection();
            ps = con.prepareStatement(sql);
-           ps.setInt(1, pr.getRuc());
+           ps.setString(1, pr.getRuc());
            ps.setString(2, pr.getNombre());
            ps.setString(3, pr.getApellido());
              ps.setString(4, pr.getComercial());
@@ -61,7 +61,7 @@ public class Proveed {
             while (rs.next()) {                
                 Proveedor pr = new Proveedor();
                 pr.setId(rs.getInt("id"));
-                pr.setRuc(rs.getInt("ruc"));
+                pr.setRuc(rs.getString("ruc"));
                 pr.setNombre(rs.getString("nombre"));
                         pr.setApellido(rs.getString("apellido"));
                         pr.setComercial(rs.getString("comercial"));
@@ -103,7 +103,7 @@ public class Proveed {
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, pr.getRuc());
+            ps.setString(1, pr.getRuc());
             ps.setString(2, pr.getNombre());
              ps.setString(3, pr.getApellido());
                ps.setString(4, pr.getComercial());

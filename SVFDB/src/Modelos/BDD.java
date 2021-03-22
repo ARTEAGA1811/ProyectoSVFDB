@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import javax.swing.JComboBox;
 import svfdb.Usuario;
 /**
  * 
@@ -22,6 +23,7 @@ public class BDD {
 
     public BDD(){
         con = getConnection();
+        
     }
     
     public Connection getConnection() {
@@ -56,7 +58,7 @@ public class BDD {
     }
     
     public void registrarUsuario(Usuario usuario) throws SQLException{
-        String sql = "INSERT INTO usuarios VALUES(?,?,?,?,?,?,?,?)";        
+        String sql = "INSERT INTO usuarios (login,password,nombre,apellido,direccion,telefono, nacimiento,rol) VALUES(?,?,?,?,?,?,?,?)";        
         PreparedStatement ps = con.prepareStatement(sql);
         
         ps.setString(1, usuario.getLogin());
@@ -69,7 +71,10 @@ public class BDD {
         ps.setString(8, usuario.getRol());
 
         ps.executeUpdate();
-
+        ps.execute();
+        
+        
+       
     }
     
     public void actualizarUsuario(Usuario usuario) throws SQLException{
@@ -97,7 +102,8 @@ public class BDD {
         ps.executeUpdate();
         
     }
-
+   
+  
 }
 
 
