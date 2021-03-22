@@ -5,7 +5,12 @@
  */
 package gui;
 
+import Modelos.Client;
+import Modelos.Cliente;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 import svfdb.Usuario;
+import svfdb.ValidacionesCampos;
 
 /**
  *
@@ -13,10 +18,15 @@ import svfdb.Usuario;
  */
 public class AS_Generar_Factura extends javax.swing.JFrame {
 
+    Client miClient = new Client();
     public AS_Generar_Factura(Usuario usuarioConsultado) {
         initComponents();
         
     
+    }
+    
+    public AS_Generar_Factura(){
+        initComponents();
     }
 
     /**
@@ -36,14 +46,14 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTFLogin = new javax.swing.JTextField();
-        jTFPassword = new javax.swing.JTextField();
-        jTFNombre = new javax.swing.JTextField();
-        jTFApellido = new javax.swing.JTextField();
-        jTFTelefono = new javax.swing.JTextField();
+        txtCedulaGenFact = new javax.swing.JTextField();
+        txtNombreGenFac = new javax.swing.JTextField();
+        txtApellidoGenFac = new javax.swing.JTextField();
+        txtCodigoGenFac = new javax.swing.JTextField();
+        txtDireccionGenFac = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTFNacimiento = new javax.swing.JTextField();
-        jTFRol = new javax.swing.JTextField();
+        txtTelefGenFac = new javax.swing.JTextField();
+        txtCorreoGenFac = new javax.swing.JTextField();
         jScrollPane7 = new javax.swing.JScrollPane();
         tableVentas1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
@@ -93,39 +103,37 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Teléfono");
 
-        jTFLogin.setBackground(new java.awt.Color(255, 255, 255));
-
-        jTFPassword.setBackground(new java.awt.Color(255, 255, 255));
-        jTFPassword.setForeground(new java.awt.Color(255, 255, 255));
-        jTFPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFPasswordActionPerformed(evt);
+        txtCedulaGenFact.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCedulaGenFactKeyPressed(evt);
             }
         });
 
-        jTFNombre.setBackground(new java.awt.Color(255, 255, 255));
-        jTFNombre.setForeground(new java.awt.Color(255, 255, 255));
-        jTFNombre.addActionListener(new java.awt.event.ActionListener() {
+        txtNombreGenFac.setForeground(new java.awt.Color(255, 255, 255));
+        txtNombreGenFac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFNombreActionPerformed(evt);
+                txtNombreGenFacActionPerformed(evt);
             }
         });
 
-        jTFApellido.setBackground(new java.awt.Color(255, 255, 255));
-        jTFApellido.setForeground(new java.awt.Color(255, 255, 255));
+        txtApellidoGenFac.setForeground(new java.awt.Color(255, 255, 255));
+        txtApellidoGenFac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidoGenFacActionPerformed(evt);
+            }
+        });
 
-        jTFTelefono.setBackground(new java.awt.Color(255, 255, 255));
-        jTFTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        txtCodigoGenFac.setForeground(new java.awt.Color(255, 255, 255));
+
+        txtDireccionGenFac.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("E-mail");
 
-        jTFNacimiento.setBackground(new java.awt.Color(255, 255, 255));
-        jTFNacimiento.setForeground(new java.awt.Color(255, 255, 255));
+        txtTelefGenFac.setForeground(new java.awt.Color(255, 255, 255));
 
-        jTFRol.setBackground(new java.awt.Color(255, 255, 255));
-        jTFRol.setForeground(new java.awt.Color(255, 255, 255));
+        txtCorreoGenFac.setForeground(new java.awt.Color(255, 255, 255));
 
         tableVentas1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -158,7 +166,6 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Valor Total :");
 
-        jTFNombre1.setBackground(new java.awt.Color(255, 255, 255));
         jTFNombre1.setForeground(new java.awt.Color(255, 255, 255));
         jTFNombre1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +173,6 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
             }
         });
 
-        jTFNombre2.setBackground(new java.awt.Color(255, 255, 255));
         jTFNombre2.setForeground(new java.awt.Color(255, 255, 255));
         jTFNombre2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,7 +180,6 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
             }
         });
 
-        jTFNombre3.setBackground(new java.awt.Color(255, 255, 255));
         jTFNombre3.setForeground(new java.awt.Color(255, 255, 255));
         jTFNombre3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,7 +187,6 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
             }
         });
 
-        jTFNombre4.setBackground(new java.awt.Color(255, 255, 255));
         jTFNombre4.setForeground(new java.awt.Color(255, 255, 255));
         jTFNombre4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,8 +270,8 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTFNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                    .addComponent(jTFLogin))
+                    .addComponent(txtTelefGenFac, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                    .addComponent(txtCedulaGenFact))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -279,22 +283,22 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTFPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNombreGenFac, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
-                        .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtApellidoGenFac, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTFApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCodigoGenFac, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(175, 175, 175))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTFTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDireccionGenFac, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel11)
                         .addGap(33, 33, 33)
-                        .addComponent(jTFRol, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCorreoGenFac, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -314,21 +318,21 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTFLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCedulaGenFact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApellidoGenFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jTFApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigoGenFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jTFPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreGenFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTFTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDireccionGenFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(jTFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelefGenFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
-                    .addComponent(jTFRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCorreoGenFac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,13 +377,13 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tableVentas1MouseClicked
 
-    private void jTFNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNombreActionPerformed
+    private void txtApellidoGenFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoGenFacActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTFNombreActionPerformed
+    }//GEN-LAST:event_txtApellidoGenFacActionPerformed
 
-    private void jTFPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFPasswordActionPerformed
+    private void txtNombreGenFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreGenFacActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTFPasswordActionPerformed
+    }//GEN-LAST:event_txtNombreGenFacActionPerformed
 
     private void jTFNombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNombre1ActionPerformed
         // TODO add your handling code here:
@@ -399,8 +403,62 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
 
     private void btnGuardarpro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarpro1ActionPerformed
 
+        
+        
     }//GEN-LAST:event_btnGuardarpro1ActionPerformed
 
+    private void txtCedulaGenFactKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaGenFactKeyPressed
+        // TODO add your handling code here: ************************KEY PRESSED LA CEDULA DEL CLIENTE.
+        Cliente miClientee = new Cliente();
+//        boolean esSoloNumeros = (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57);
+//        if(!esSoloNumeros){
+//            evt.consume();
+//        }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            if(txtCedulaGenFact.getText().isEmpty() == false){
+                //boolean esCedulaValida = new ValidacionesCampos().validadorDeCedula(txtCedulaGenFact.getText());
+                boolean esCedulaValida = true;
+                if(esCedulaValida){
+                    
+                    miClientee = miClient.Buscarcliente(Integer.parseInt(txtCedulaGenFact.getText()));
+                    System.out.println("nombre: "+ miClientee.getNombre());
+                    if(miClientee.getNombre() != null){
+                        System.out.println("Vale esto?");
+                        txtNombreGenFac.setText(""+ miClientee.getNombre());
+                        txtApellidoGenFac.setText(""+ miClientee.getApellido());
+                        txtTelefGenFac.setText(Integer.toString(miClientee.getTelefono()));
+                        txtDireccionGenFac.setText(""+ miClientee.getDireccion());
+                        txtCorreoGenFac.setText(""+ miClientee.getCorreo());
+                    }else{
+                        //En este caso es que no ha detectado una cedula registrada
+                        JOptionPane.showMessageDialog(null, "Cliente no registrado, ingrese datos");
+                        //limpiarEstaVentana();
+                    
+                    
+                    }    
+                }else{
+                    JOptionPane.showMessageDialog(null, "Cedula incorrecta, vuelva a ingresar");
+                    //limpiarEstaVentana();
+                }
+                
+            }
+            
+        }
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_txtCedulaGenFactKeyPressed
+
+    
+    private void limpiarEstaVentana(){
+         txtNombreGenFac.setText(null);
+        txtApellidoGenFac.setText(null);
+        txtTelefGenFac.setText(null);
+        txtDireccionGenFac.setText(null);
+        txtCorreoGenFac.setText(null);
+    }
     /**
      * @param args the command line arguments
      */
@@ -423,17 +481,17 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTextField jTFApellido;
-    private javax.swing.JTextField jTFLogin;
-    private javax.swing.JTextField jTFNacimiento;
-    private javax.swing.JTextField jTFNombre;
     private javax.swing.JTextField jTFNombre1;
     private javax.swing.JTextField jTFNombre2;
     private javax.swing.JTextField jTFNombre3;
     private javax.swing.JTextField jTFNombre4;
-    private javax.swing.JTextField jTFPassword;
-    private javax.swing.JTextField jTFRol;
-    private javax.swing.JTextField jTFTelefono;
     private javax.swing.JTable tableVentas1;
+    private javax.swing.JTextField txtApellidoGenFac;
+    private javax.swing.JTextField txtCedulaGenFact;
+    private javax.swing.JTextField txtCodigoGenFac;
+    private javax.swing.JTextField txtCorreoGenFac;
+    private javax.swing.JTextField txtDireccionGenFac;
+    private javax.swing.JTextField txtNombreGenFac;
+    private javax.swing.JTextField txtTelefGenFac;
     // End of variables declaration//GEN-END:variables
 }

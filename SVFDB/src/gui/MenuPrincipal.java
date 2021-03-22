@@ -2203,12 +2203,35 @@ LimpiarTable();
         
         //Primero debe verificar que haya elegido un codigo de venta y que sea un codigo de venta valido.
         boolean esCodigoDeVentaValido = false;
-        for(int i = 0; i<)
-        if(txtCodigoVF.getText().isEmpty() ||){
-            JOptionPane.showMessageDialog(null, "Debe ingresar un codigo de venta valido.");
+        String pendienteODespachado = "";
+        DefaultTableModel model = (DefaultTableModel) tableVentas.getModel();
+        int numFilas = model.getRowCount();
+        System.out.println("numFilas" + numFilas);
+        //Va buscando en la tabla el codigo, en caso que el codigo s[i sea uno que este en la tabla
+        //quiere decir que el codigo de venta si es valido.
+        for(int i = 0; i<numFilas; i++){
+            if((tableVentas.getValueAt(i, 0).toString()).equals(txtCodigoVF.getText())){
+                esCodigoDeVentaValido = true;
+                pendienteODespachado = tableVentas.getValueAt(i, 2).toString();
+            }
+        }
+        
+
+        if(esCodigoDeVentaValido == false){ //E ncaso que el codigo no este registrado
+            JOptionPane.showMessageDialog(null, "Codigo de venta no registrado ");
+        }else if(txtCodigoVF.getText().isEmpty()){ //En caso que no seleccione ninguna venta.
+            JOptionPane.showMessageDialog(null, "Seleccione una venta para registrar fatura.");
+        }else if(pendienteODespachado.equalsIgnoreCase("despachado")){ //En caso que el estado sea despachado.
+            JOptionPane.showMessageDialog(null, "Venta despachada, seleccione otro registro");
+        }else{ 
+            //En esta parte ya quiere decir que el codigo de venta si es valido,aqui resolvemos todo.
+            //if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+            AS_Generar_Factura genFactura = new AS_Generar_Factura();
+            genFactura.setVisible(true);
+            
         }
         //en
-        //AS_Generar_Factura genFactura = new AS_Generar_Factura(usuarioConsultado)
+        //
         //***********************************************************************************
     }//GEN-LAST:event_btnGenerarVenta1ActionPerformed
 
@@ -2651,7 +2674,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
                     txtCodigo.requestFocus();
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Ingrese el codigo del productos");
+                JOptionPane.showMessageDialog(null, "Ingrese el codigo del producto");
                 txtCodigo.requestFocus();
             }
         }
