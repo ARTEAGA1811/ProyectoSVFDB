@@ -13,22 +13,22 @@ package Modelos;
 public class Venta {
     
      private int id;
-    private String cliente;
+   
     private String vendedor;
     private double total;
-    private String fecha;
+     private String Estado;
     
     public Venta(){
         
     }
 
-    public Venta(int id, String cliente, String vendedor, double total, String fecha) {
+    public Venta(int id, String vendedor, double total, String Estado) {
         this.id = id;
-        this.cliente = cliente;
         this.vendedor = vendedor;
         this.total = total;
-        this.fecha = fecha;
+        this.Estado = Estado;
     }
+    
 
     public int getId() {
         return id;
@@ -36,14 +36,6 @@ public class Venta {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
     }
 
     public String getVendedor() {
@@ -62,13 +54,13 @@ public class Venta {
         this.total = total;
     }
 
-    public String getFecha() {
-        return fecha;
+    public String getEstado() {
+        return Estado;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setEstado(String Estado) {
+        this.Estado = Estado;
     }
-
+    
 
 }

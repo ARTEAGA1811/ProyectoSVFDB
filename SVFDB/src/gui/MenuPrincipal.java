@@ -322,8 +322,8 @@ public void ListarProveedor() {
         LabelTotal = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         cbxUsuario = new javax.swing.JComboBox<>();
-        btnGuardarpro1 = new javax.swing.JButton();
-        cbxProveedorPro3 = new javax.swing.JComboBox<>();
+        btnGuardarVenta = new javax.swing.JButton();
+        cbxEstado = new javax.swing.JComboBox<>();
         txtCantidadVenta = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtCodigoVenta1 = new javax.swing.JTextField();
@@ -1603,18 +1603,18 @@ public void ListarProveedor() {
             }
         });
 
-        btnGuardarpro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/GuardarTodo.png"))); // NOI18N
-        btnGuardarpro1.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/GuardarTodo.png"))); // NOI18N
+        btnGuardarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarpro1ActionPerformed(evt);
+                btnGuardarVentaActionPerformed(evt);
             }
         });
 
-        cbxProveedorPro3.setEditable(true);
-        cbxProveedorPro3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendiente" }));
-        cbxProveedorPro3.addActionListener(new java.awt.event.ActionListener() {
+        cbxEstado.setEditable(true);
+        cbxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendiente" }));
+        cbxEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxProveedorPro3ActionPerformed(evt);
+                cbxEstadoActionPerformed(evt);
             }
         });
 
@@ -1660,7 +1660,7 @@ public void ListarProveedor() {
                         .addGap(27, 27, 27)
                         .addComponent(cbxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnGuardarpro1)
+                        .addComponent(btnGuardarVenta)
                         .addGap(209, 209, 209)
                         .addComponent(jLabel10)
                         .addGap(66, 66, 66)
@@ -1698,7 +1698,7 @@ public void ListarProveedor() {
                         .addGap(34, 34, 34)
                         .addComponent(btnEliminarventa)
                         .addGap(49, 49, 49)
-                        .addComponent(cbxProveedorPro3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(56, 56, 56))))
         );
         jPanelNuevaVentaLayout.setVerticalGroup(
@@ -1726,7 +1726,7 @@ public void ListarProveedor() {
                     .addGroup(jPanelNuevaVentaLayout.createSequentialGroup()
                         .addGap(103, 103, 103)
                         .addGroup(jPanelNuevaVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbxProveedorPro3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEliminarventa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1739,7 +1739,7 @@ public void ListarProveedor() {
                         .addComponent(jLabel10))
                     .addGroup(jPanelNuevaVentaLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(btnGuardarpro1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnGuardarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelNuevaVentaLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(jPanelNuevaVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -2138,9 +2138,9 @@ LimpiarTable();
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxUsuarioActionPerformed
 
-    private void cbxProveedorPro3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxProveedorPro3ActionPerformed
+    private void cbxEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxEstadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbxProveedorPro3ActionPerformed
+    }//GEN-LAST:event_cbxEstadoActionPerformed
 
     private void btnGenerarVenta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarVenta1ActionPerformed
         // TODO add your handling code here:
@@ -2156,25 +2156,27 @@ LimpiarTable();
         admin.setVisible(true);
     }//GEN-LAST:event_btnCrearNuevoUsuarioActionPerformed
 
-    private void btnGuardarpro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarpro1ActionPerformed
+    private void btnGuardarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarVentaActionPerformed
 
+        
         
          if (tableVenta.getRowCount() > 0) {
              
             if (!"".equals( cbxUsuario.getSelectedItem())) {
                 
              
-                
+                 RegistrarVenta();
+                 
                 ActualizarStock();
 
                 LimpiartableVenta();
         
                 
             } else {
-                JOptionPane.showMessageDialog(null, "Debes buscar un cliente");
+                JOptionPane.showMessageDialog(null, "Debes Ingresar el vendedor");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Noy productos en la venta");
+            JOptionPane.showMessageDialog(null, "No hay productos en la venta");
         }
 
         
@@ -2187,8 +2189,8 @@ LimpiarTable();
 
 
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null,"Se ha guardado la venta");
-    }//GEN-LAST:event_btnGuardarpro1ActionPerformed
+     
+    }//GEN-LAST:event_btnGuardarVentaActionPerformed
 
     private void btnBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarUsuarioActionPerformed
     
@@ -2485,7 +2487,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     
             if (!"".equals(txtCantidadVenta.getText())) {
                 String cod = txtCodigoVenta1.getText();
-                String descripcion = txtNombreVenta.getText();
+                String nombre = txtNombreVenta.getText();
                 
                 int cant = Integer.parseInt(txtCantidadVenta.getText());
                 double precio = Double.parseDouble(txtPrecioVenta.getText());
@@ -2496,6 +2498,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
                     tmp = (DefaultTableModel) tableVenta.getModel();
                     for (int i = 0; i < tableVenta.getRowCount(); i++) {
                         if (tableVenta.getValueAt(i, 1).equals(txtNombreVenta.getText())) {
+                            
                             JOptionPane.showMessageDialog(null, "El producto ya esta registrado");
                             return;
                         }
@@ -2503,7 +2506,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
                     ArrayList lista = new ArrayList();
                     lista.add(item);
                     lista.add(cod);
-                    lista.add(descripcion);
+                    lista.add(nombre);
                     lista.add(cant);
                     lista.add(precio);
                     lista.add(total);
@@ -2648,8 +2651,8 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     private javax.swing.JButton btnGenerarVenta1;
     private javax.swing.JButton btnGenerarVenta2;
     private javax.swing.JButton btnGenerarVenta3;
+    private javax.swing.JButton btnGuardarVenta;
     private javax.swing.JButton btnGuardarpro;
-    private javax.swing.JButton btnGuardarpro1;
     private javax.swing.JButton btnModificarProducto;
     private javax.swing.JButton btnNuevaVenta;
     private javax.swing.JButton btnNuevoCliente;
@@ -2663,8 +2666,8 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     private javax.swing.JButton btnReseterarPassword;
     private javax.swing.JButton btnVentas;
     private javax.swing.JButton btnguardarProveedor;
+    private javax.swing.JComboBox<String> cbxEstado;
     private javax.swing.JComboBox<String> cbxProveedorPro;
-    private javax.swing.JComboBox<String> cbxProveedorPro3;
     private javax.swing.JComboBox<String> cbxProveedorPro8;
     private javax.swing.JComboBox<String> cbxTipoPro;
     private javax.swing.JComboBox<String> cbxUsuario;
@@ -2872,5 +2875,15 @@ private void BuscarCliente() {
             tmp.removeRow(0);
         }
     }
-   
+      private void RegistrarVenta() {
+
+        String vendedor = cbxUsuario.getItemAt(item);
+        String estado = cbxEstado.getItemAt(item);
+        double monto = Totalpagar;
+       
+        v.setVendedor(vendedor);
+        v.setTotal(monto);
+         v.setEstado(estado);
+        Vt.RegistrarVenta(v);
+    }
 }
