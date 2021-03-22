@@ -31,7 +31,7 @@ public class Client {
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, cl.getDni());
+            ps.setString(1, cl.getDni());
             ps.setString(2, cl.getNombre());
                ps.setString(3, cl.getApellido());
             ps.setInt(4, cl.getTelefono());
@@ -66,7 +66,7 @@ public class Client {
                Cliente cl = new Cliente();
                
                cl.setId(rs.getInt("id"));
-               cl.setDni(rs.getInt("dni"));
+               cl.setDni(rs.getString("dni"));
                cl.setNombre(rs.getString("Nombre"));
                
                cl.setApellido(rs.getString("Apellido"));
@@ -110,7 +110,7 @@ public class Client {
        String sql = "UPDATE clientes SET dni=?, nombre=?, apellido=? , telefono=?,correo=?, direccion=? WHERE id=?";
        try {
            ps = con.prepareStatement(sql);
-           ps.setInt(1, cl.getDni());
+           ps.setString(1, cl.getDni());
            ps.setString(2, cl.getNombre());
             
            ps.setString(3, cl.getApellido());
@@ -153,6 +153,32 @@ public class Client {
            System.out.println(e.toString());
        }
        return cl;
+       
    }
+public Cliente BuscarClien(String cod){
+        Cliente clien = new Cliente();
+        
+        String sql = "SELECT * FROM clientes WHERE dni = ?";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, cod);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+        
+                clien.setNombre(rs.getString("nombre"));
+                 clien.setApellido(rs.getString("apellido"));
+                clien.setTelefono(rs.getInt("telefono"));
+                   clien.setCorreo(rs.getString("correo"));
+                clien.setDireccion(rs.getString("direccion"));
+                                                                      
+                
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return clien ;
+    }
+
    
-}
+}      

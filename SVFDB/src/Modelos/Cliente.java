@@ -15,7 +15,7 @@ public class Cliente {
 
     
     private int id;
-    private int dni;
+    private   String dni;
     private String nombre;
     private String apellido;
     private int telefono;
@@ -26,7 +26,7 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(int id, int dni, String nombre, String apellido, int telefono, String correo, String direccion, String estado) {
+    public Cliente(int id, String dni, String nombre, String apellido, int telefono, String correo, String direccion, String estado) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
@@ -36,6 +36,7 @@ public class Cliente {
         this.direccion = direccion;
         this.estado = estado;
     }
+    
 
     public int getId() {
         return id;
@@ -45,11 +46,11 @@ public class Cliente {
         this.id = id;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
@@ -94,18 +95,10 @@ public class Cliente {
     }
 
     public String getEstado() {
-        
-            
-        return estado = "Activo";
+        return estado;
     }
-   
+
     public void setEstado(String estado) {
         this.estado = estado;
     }
-
-   
-    
-    
 }
-  
- 

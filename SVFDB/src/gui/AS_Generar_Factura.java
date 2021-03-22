@@ -5,11 +5,18 @@
  */
 package gui;
 
+import Modelos.BDD;
 import Modelos.Client;
 import Modelos.Cliente;
+import Modelos.Product;
+import Modelos.Productos;
+import Modelos.Proveed;
+import Modelos.Proveedor;
+import Modelos.Vent;
+import Modelos.Venta;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import svfdb.Usuario;
+import javax.swing.table.DefaultTableModel;
 import svfdb.ValidacionesCampos;
 
 /**
@@ -18,12 +25,31 @@ import svfdb.ValidacionesCampos;
  */
 public class AS_Generar_Factura extends javax.swing.JFrame {
 
-    Client miClient = new Client();
-    public AS_Generar_Factura(Usuario usuarioConsultado) {
+       BDD baseDeDatos;
+       Venta v = new Venta();
+    Vent Vt = new Vent();
+        Client client = new Client();
+ Cliente cli = new Cliente();
+        
+        Proveed prov = new Proveed();
+        Proveedor prove = new Proveedor();
+          Productos pro = new Productos();
+    Product proDao = new Product();
+      DefaultTableModel modelo = new DefaultTableModel();  
+    DefaultTableModel tmp = new DefaultTableModel();
+   int item;
+    double Totalpagar = 0.00;
+    
+ 
+    
+    
+   /* public AS_Generar_Factura(Usuario usuarioConsultado) {
         initComponents();
         
     
     }
+  */  
+    
     
     public AS_Generar_Factura(){
         initComponents();
@@ -55,16 +81,16 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
         txtTelefGenFac = new javax.swing.JTextField();
         txtCorreoGenFac = new javax.swing.JTextField();
         jScrollPane7 = new javax.swing.JScrollPane();
-        tableVentas1 = new javax.swing.JTable();
+        tableFactura = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jTFNombre1 = new javax.swing.JTextField();
-        jTFNombre2 = new javax.swing.JTextField();
         jTFNombre3 = new javax.swing.JTextField();
         jTFNombre4 = new javax.swing.JTextField();
+        LabelTotal2 = new javax.swing.JLabel();
         btnGenerarVenta3 = new javax.swing.JButton();
         btnGuardarpro1 = new javax.swing.JButton();
 
@@ -135,7 +161,7 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
 
         txtCorreoGenFac.setForeground(new java.awt.Color(255, 255, 255));
 
-        tableVentas1.setModel(new javax.swing.table.DefaultTableModel(
+        tableFactura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -143,12 +169,12 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
                 "CódigoPro", "Nombre Producto", "Cantidad de Producto", "Precio Unidad $", "Precio Total $"
             }
         ));
-        tableVentas1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableFactura.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableVentas1MouseClicked(evt);
+                tableFacturaMouseClicked(evt);
             }
         });
-        jScrollPane7.setViewportView(tableVentas1);
+        jScrollPane7.setViewportView(tableFactura);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -173,13 +199,6 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
             }
         });
 
-        jTFNombre2.setForeground(new java.awt.Color(255, 255, 255));
-        jTFNombre2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFNombre2ActionPerformed(evt);
-            }
-        });
-
         jTFNombre3.setForeground(new java.awt.Color(255, 255, 255));
         jTFNombre3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,6 +213,8 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
             }
         });
 
+        LabelTotal2.setText("-----");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -204,7 +225,7 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 33, Short.MAX_VALUE)
+                                .addGap(0, 39, Short.MAX_VALUE)
                                 .addComponent(jLabel12)
                                 .addGap(58, 58, 58)
                                 .addComponent(jTFNombre3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -214,9 +235,9 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel13))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTFNombre2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTFNombre1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTFNombre1, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                                    .addComponent(LabelTotal2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(97, 97, 97)
                         .addComponent(jLabel9)
@@ -227,9 +248,11 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
-                    .addComponent(jTFNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(LabelTotal2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -373,9 +396,9 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tableVentas1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableVentas1MouseClicked
+    private void tableFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableFacturaMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tableVentas1MouseClicked
+    }//GEN-LAST:event_tableFacturaMouseClicked
 
     private void txtApellidoGenFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoGenFacActionPerformed
         // TODO add your handling code here:
@@ -389,10 +412,6 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFNombre1ActionPerformed
 
-    private void jTFNombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNombre2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFNombre2ActionPerformed
-
     private void jTFNombre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNombre3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFNombre3ActionPerformed
@@ -403,18 +422,67 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
 
     private void btnGuardarpro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarpro1ActionPerformed
 
-        
+  
+             
+    
+              //  RegistrarVenta();
+                JOptionPane.showMessageDialog(null, "Se ha registrado la venta Exitosamente");
+                
+             
         
     }//GEN-LAST:event_btnGuardarpro1ActionPerformed
 
     private void txtCedulaGenFactKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaGenFactKeyPressed
         // TODO add your handling code here: ************************KEY PRESSED LA CEDULA DEL CLIENTE.
-        Cliente miClientee = new Cliente();
+    /*    Cliente miClientee = new Cliente();
 //        boolean esSoloNumeros = (evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57);
 //        if(!esSoloNumeros){
 //            evt.consume();
-//        }
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+//        }*/
+    
+if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+          
+            if (!"".equals(txtCedulaGenFact.getText())) {
+                
+                String cod =txtCedulaGenFact.getText();
+                
+                
+                //Integer.parseInt(tableFactura.getValueAt(i, 2).toString());
+                cli = client.BuscarClien(cod);
+                        
+                        if (cli.getNombre()!=null ) {
+                    
+                 txtNombreGenFac.setText("" + cli.getNombre());
+                    txtCodigoGenFac.setText("" + cli.getId());
+                 txtApellidoGenFac.setText("" + cli.getApellido());
+                 
+                 txtTelefGenFac.setText("" + cli.getTelefono());
+                 txtDireccionGenFac.setText("" + cli.getDireccion());
+                 txtCorreoGenFac.setText("" + cli.getCorreo());
+
+                    txtCedulaGenFact.requestFocus();
+                } else {
+                   
+                    
+                    txtCedulaGenFact.requestFocus();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No exite Proveedor con ese RUC ");
+                
+                txtCedulaGenFact.requestFocus();
+            }
+
+
+
+        
+     
+            
+            
+            
+            
+            
+            
+            /*
             if(txtCedulaGenFact.getText().isEmpty() == false){
                 //boolean esCedulaValida = new ValidacionesCampos().validadorDeCedula(txtCedulaGenFact.getText());
                 boolean esCedulaValida = true;
@@ -443,27 +511,21 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
                 
             }
             
-        }
+        }*/
         
         
         
         
-        
+}
     }//GEN-LAST:event_txtCedulaGenFactKeyPressed
 
-    
-    private void limpiarEstaVentana(){
-         txtNombreGenFac.setText(null);
-        txtApellidoGenFac.setText(null);
-        txtTelefGenFac.setText(null);
-        txtDireccionGenFac.setText(null);
-        txtCorreoGenFac.setText(null);
-    }
+ 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelTotal2;
     private javax.swing.JButton btnGenerarVenta3;
     private javax.swing.JButton btnGuardarpro1;
     private javax.swing.JLabel jLabel1;
@@ -482,10 +544,9 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTextField jTFNombre1;
-    private javax.swing.JTextField jTFNombre2;
     private javax.swing.JTextField jTFNombre3;
     private javax.swing.JTextField jTFNombre4;
-    private javax.swing.JTable tableVentas1;
+    private javax.swing.JTable tableFactura;
     private javax.swing.JTextField txtApellidoGenFac;
     private javax.swing.JTextField txtCedulaGenFact;
     private javax.swing.JTextField txtCodigoGenFac;
@@ -494,4 +555,37 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombreGenFac;
     private javax.swing.JTextField txtTelefGenFac;
     // End of variables declaration//GEN-END:variables
+
+
+        
+
+private void TotalPagar() {
+    
+        Totalpagar = 0.00;
+        int numFila = tableFactura.getRowCount();
+        for (int i = 0; i < numFila; i++) {
+            double cal = Double.parseDouble(String.valueOf(tableFactura.getModel().getValueAt(i, 4)));
+            Totalpagar = Totalpagar + cal;
+        }
+        LabelTotal2.setText(String.format("%.2f", Totalpagar));
+}
+
+private void LimpiartableVenta() {
+        tmp = (DefaultTableModel) tableFactura.getModel();
+        int fila =tableFactura.getRowCount();
+        for (int i = 0; i < fila; i++) {
+            tmp.removeRow(0);
+        }
+    }
+    private void ActualizarStock() {
+        for (int i = 0; i < tableFactura.getRowCount(); i++) {
+            String cod = tableFactura.getValueAt(i, 0).toString();
+            int cant = Integer.parseInt(tableFactura.getValueAt(i, 2).toString());
+            pro = proDao.BuscarPro(cod);
+            int StockActual = (int) (pro.getStock() - cant);
+            Vt.ActualizarStock(StockActual, cod);
+
+        }
+    }
+
 }

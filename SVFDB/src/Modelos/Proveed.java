@@ -135,6 +135,7 @@ public class Proveed {
             ps.setString(1, cod);
             rs = ps.executeQuery();
             if (rs.next()) {
+                
                 proved.setComercial(rs.getString("comercial"));
                 proved.setTelefono(rs.getInt("telefono"));
                 proved.setDireccion(rs.getString("direccion"));

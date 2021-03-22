@@ -24,14 +24,14 @@ import svfdb.ValidacionesCampos;
  * @author cadri
  */
 public class MenuPrincipal extends javax.swing.JFrame {
-    
+        Client client = new Client();
  Cliente cl = new Cliente();
  ValidacionesCampos val = new ValidacionesCampos();
  Proveedor pr = new Proveedor();
     Proveed PrDao = new Proveed();
     Productos pro = new Productos();
     Product proDao = new Product();
-    Client client = new Client();
+
      Config conf = new Config();
      BDD BD=new BDD();
      
@@ -2218,37 +2218,55 @@ LimpiarTable();
     }//GEN-LAST:event_cbxEstadoActionPerformed
 
     private void btnGenerarVenta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarVenta1ActionPerformed
+
+        
+
+     
+      
+
         // TODO add your handling code here: ************************************MODIFICACIONES DAVID
         
-        //Primero debe verificar que haya elegido un codigo de venta y que sea un codigo de venta valido.
+      /*  //Primero debe verificar que haya elegido un codigo de venta y que sea un codigo de venta valido.
         boolean esCodigoDeVentaValido = false;
+        
         String pendienteODespachado = "";
-        DefaultTableModel model = (DefaultTableModel) tableVentas.getModel();
+        
+        DefaultTableModel model = (DefaultTableModel) TableVentaPrin.getModel();
         int numFilas = model.getRowCount();
+        
         System.out.println("numFilas" + numFilas);
         //Va buscando en la tabla el codigo, en caso que el codigo s[i sea uno que este en la tabla
         //quiere decir que el codigo de venta si es valido.
         for(int i = 0; i<numFilas; i++){
-            if((tableVentas.getValueAt(i, 0).toString()).equals(txtCodigoVF.getText())){
+            
+            
+            if((TableVentaPrin.getValueAt(i, 0).toString()).equals(txtCodigoVF.getText())){
                 esCodigoDeVentaValido = true;
-                pendienteODespachado = tableVentas.getValueAt(i, 2).toString();
+                
+                pendienteODespachado = TableVentaPrin.getValueAt(i, 2).toString();
             }
         }
         
 
         if(esCodigoDeVentaValido == false){ //E ncaso que el codigo no este registrado
+            
             JOptionPane.showMessageDialog(null, "Codigo de venta no registrado ");
+            
         }else if(txtCodigoVF.getText().isEmpty()){ //En caso que no seleccione ninguna venta.
+            
             JOptionPane.showMessageDialog(null, "Seleccione una venta para registrar fatura.");
+            
         }else if(pendienteODespachado.equalsIgnoreCase("despachado")){ //En caso que el estado sea despachado.
+            
             JOptionPane.showMessageDialog(null, "Venta despachada, seleccione otro registro");
         }else{ 
             //En esta parte ya quiere decir que el codigo de venta si es valido,aqui resolvemos todo.
-            //if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+            //if (evt.getKeyCode() == KeyEvent.VK_ENTER)*/
             AS_Generar_Factura genFactura = new AS_Generar_Factura();
+            
             genFactura.setVisible(true);
             
-        }
+    
         //en
         //
         //***********************************************************************************
@@ -2384,7 +2402,7 @@ LimpiarProductos();        // TODO add your handling code here:
 
         if (!"".equals(txtDniCliente.getText()) || !"".equals(txtNombreCliente.getText()) || !"".equals(txtApellidoCliente.getText())|| !"".equals(txtTelefonoCliente.getText()) || !"".equals(txtEmailCliente.getText())|| !"".equals(txtDireccionCliente.getText())) {
 
-            cl.setDni(Integer.parseInt(txtDniCliente.getText()));
+            cl.setDni(txtDniCliente.getText());
             cl.setNombre(txtNombreCliente.getText());
             cl.setApellido(txtApellidoCliente.getText());
             cl.setTelefono(Integer.parseInt(txtTelefonoCliente.getText()));
@@ -2414,7 +2432,7 @@ LimpiarProductos();        // TODO add your handling code here:
         } else {
 
             if (!"".equals(txtDniCliente.getText()) || !"".equals(txtNombreCliente.getText()) || !"".equals(txtApellidoCliente.getText())|| !"".equals(txtTelefonoCliente.getText()) || !"".equals(txtEmailCliente.getText())|| !"".equals(txtDireccionCliente.getText())) {
-                cl.setDni(Integer.parseInt(txtDniCliente.getText()));
+                cl.setDni(txtDniCliente.getText());
                 cl.setNombre(txtNombreCliente.getText());
                 cl.setApellido(txtApellidoCliente.getText());
                 cl.setTelefono(Integer.parseInt(txtTelefonoCliente.getText()));
@@ -2578,8 +2596,8 @@ LimpiarProductos();        // TODO add your handling code here:
         
         //DMODIFICACION DAVID******************************************************************     
         //Cuando es clickada una fila
-        int fila = tableVentas.rowAtPoint(evt.getPoint());
-        txtCodigoVF.setText(tableVentas.getValueAt(fila, 0).toString());
+        int fila = TableVentaPrin.rowAtPoint(evt.getPoint());
+        txtCodigoVF.setText(TableVentaPrin.getValueAt(fila, 0).toString());
         
         
     }//GEN-LAST:event_tableVentasMouseClicked
@@ -3010,6 +3028,8 @@ private void BuscarCliente() {
         txtNombreVenta.setText("");
         txtStockDisponible.setText("");
         txtPrecioVenta.setText("");
+        txtCodigo.setText("");
+
        // txtIdVenta.setText("");
         
 }
