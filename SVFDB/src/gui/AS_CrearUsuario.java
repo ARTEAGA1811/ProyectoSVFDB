@@ -353,7 +353,7 @@ public class AS_CrearUsuario extends javax.swing.JFrame {
     private void txtDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDireccionKeyTyped
         // TODO add your handling code here: **************************KEY EVENT DIRECCION
         //HASTA 200 CARACTERES
-        if(txtApellido.getText().length() >199){
+        if(txtDireccion.getText().length() >199){
             evt.consume();
         }
         

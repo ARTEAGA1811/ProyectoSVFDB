@@ -30,7 +30,7 @@ public class BDD {
         try {
             //String access = "jdbc:ucanaccess://D:/ventas.accdb";
             String myBD = "jdbc:mysql://localhost:3306/sistemaventasfacturacion?serverTimezone=UTC";
-            con = DriverManager.getConnection(myBD, "root", "");
+            con = DriverManager.getConnection(myBD, "root", "yosoyart3");
             return con;
         } catch (SQLException e) {
             System.out.println(e.toString());
