@@ -161,7 +161,23 @@ public void ListarProveedor() {
         TableProducto.setModel(modelo);
 
     }
+ 
+ 
+     public void ListarVentas() {
+        List<Venta> ListarVenta = Vt.Listarventas();
+        modelo = (DefaultTableModel) tableVentas.getModel();
+        Object[] ob = new Object[4];
+        for (int i = 0; i < ListarVenta.size(); i++) {
+            ob[0] = ListarVenta.get(i).getId();
+            
+            ob[1] = ListarVenta.get(i).getVendedor();
+            ob[2] = ListarVenta.get(i).getEstado();
+            ob[3] = ListarVenta.get(i).getTotal();
+            modelo.addRow(ob);
+        }
+        tableVentas.setModel(modelo);
 
+    }
 
  
      public void LimpiarTable() {
@@ -1884,7 +1900,16 @@ LimpiarTable();
         jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_btnProductosActionPerformed
 
+    
     private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
+
+
+      ListarVentas();
+
+        
+        
+        /// PILAS
+
         // TODO add your handling code here:
         jTabbedPane1.setSelectedIndex(3);
     }//GEN-LAST:event_btnVentasActionPerformed

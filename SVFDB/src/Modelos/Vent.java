@@ -110,10 +110,15 @@ public class Vent {
            rs = ps.executeQuery();
            while (rs.next()) {               
                Venta vent = new Venta();
+               
                vent.setId(rs.getInt("id"));
      
                vent.setVendedor(rs.getString("vendedor"));
+               
+               vent.setEstado(rs.getString("estado"));
+               
                vent.setTotal(rs.getDouble("total"));
+               
                ListaVenta.add(vent);
            }
        } catch (SQLException e) {
