@@ -2144,6 +2144,8 @@ LimpiarTable();
 
     private void btnGenerarVenta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarVenta1ActionPerformed
         // TODO add your handling code here:
+        
+        //AS_Generar_Factura genFactura = new AS_Generar_Factura(usuarioConsultado)
     }//GEN-LAST:event_btnGenerarVenta1ActionPerformed
 
     private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
