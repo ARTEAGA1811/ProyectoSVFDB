@@ -139,6 +139,8 @@ public class Proveed {
                 proved.setTelefono(rs.getInt("telefono"));
                 proved.setDireccion(rs.getString("direccion"));
                 proved.setEmail(rs.getString("email"));
+                
+                
             }
         } catch (SQLException e) {
             System.out.println(e.toString());
