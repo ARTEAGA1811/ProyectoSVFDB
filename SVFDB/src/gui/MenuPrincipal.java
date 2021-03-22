@@ -165,7 +165,7 @@ public void ListarProveedor() {
  
      public void ListarVentas() {
         List<Venta> ListarVenta = Vt.Listarventas();
-        modelo = (DefaultTableModel) tableVentas.getModel();
+        modelo = (DefaultTableModel) TableVentaPrin.getModel();
         Object[] ob = new Object[4];
         for (int i = 0; i < ListarVenta.size(); i++) {
             ob[0] = ListarVenta.get(i).getId();
@@ -175,7 +175,8 @@ public void ListarProveedor() {
             ob[3] = ListarVenta.get(i).getTotal();
             modelo.addRow(ob);
         }
-        tableVentas.setModel(modelo);
+        TableVentaPrin.setModel(modelo);
+        
 
     }
 
@@ -293,7 +294,7 @@ public void ListarProveedor() {
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        tableVentas = new javax.swing.JTable();
+        TableVentaPrin = new javax.swing.JTable();
         jLabel53 = new javax.swing.JLabel();
         txtIdVenta3 = new javax.swing.JTextField();
         jLabel54 = new javax.swing.JLabel();
@@ -1197,7 +1198,7 @@ public void ListarProveedor() {
 
         jTabbedPane2.setToolTipText("");
 
-        tableVentas.setModel(new javax.swing.table.DefaultTableModel(
+        TableVentaPrin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1205,12 +1206,12 @@ public void ListarProveedor() {
                 "CODIGO VENTA", "VENDEDOR", "ESTADO", "TOTAL"
             }
         ));
-        tableVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+        TableVentaPrin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableVentasMouseClicked(evt);
+                TableVentaPrinMouseClicked(evt);
             }
         });
-        jScrollPane5.setViewportView(tableVentas);
+        jScrollPane5.setViewportView(TableVentaPrin);
 
         jLabel53.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel53.setText("Código ");
@@ -1871,6 +1872,8 @@ public void ListarProveedor() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaVentaActionPerformed
+
+
         // TODO add your handling code here:
         jTabbedPane1.setSelectedIndex(5);
     }//GEN-LAST:event_btnNuevaVentaActionPerformed
@@ -1903,8 +1906,9 @@ LimpiarTable();
     
     private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
 
-
-      ListarVentas();
+     LimpiarTable();
+ListarVentas();
+                  
 
         
         
@@ -2521,9 +2525,9 @@ LimpiarProductos();        // TODO add your handling code here:
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGenerarVenta3ActionPerformed
 
-    private void tableVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableVentasMouseClicked
+    private void TableVentaPrinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableVentaPrinMouseClicked
 
-    }//GEN-LAST:event_tableVentasMouseClicked
+    }//GEN-LAST:event_TableVentaPrinMouseClicked
 
     private void txtIdVenta3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdVenta3ActionPerformed
         // TODO add your handling code here:
@@ -2542,12 +2546,15 @@ LimpiarProductos();        // TODO add your handling code here:
 if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     
     
-            if (!"".equals(txtCantidadVenta.getText())) {
+            if (!"".equals(txtCantidadVenta.getText())||!"".equals(txtPrecioVenta.getText())) {
+                
                 String cod = txtCodigo.getText();
                 String nombre = txtNombreVenta.getText();
                 
                 int cant = Integer.parseInt(txtCantidadVenta.getText());
-                double precio = Double.parseDouble(txtPrecioVenta.getText());
+                
+                double precio =  Double.parseDouble(txtPrecioVenta.getText());
+                
                 double total = cant * precio;
                 int stock = Integer.parseInt(txtStockDisponible.getText());
                 if (stock >= cant) {
@@ -2566,14 +2573,14 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
                     lista.add(nombre);
                     lista.add(cant);
                     lista.add(precio);
-                    lista.add(total);
+                     lista.add(cant*precio);
                     Object[] O = new Object[5];
                     O[0] = lista.get(1);
                     O[1] = lista.get(2);
                     O[2] = lista.get(3);
                     O[3] = lista.get(4);
-                    O[4] = lista.get(4);
-                    tmp.addRow(O);
+                    O[4] = lista.get(5);
+                     tmp.addRow(O);
                     tableVenta.setModel(tmp);
                     TotalPagar();
                     LimparVenta();
@@ -2705,6 +2712,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     private javax.swing.JLabel LabelTotal;
     private javax.swing.JTable TableProducto;
     private javax.swing.JTable TableProveedor;
+    private javax.swing.JTable TableVentaPrin;
     private javax.swing.JButton btnBuscarUsuario;
     private javax.swing.JButton btnBuscarUsuario1;
     private javax.swing.JButton btnClientes;
@@ -2817,7 +2825,6 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     private javax.swing.JTable tableCliente;
     private javax.swing.JTable tableVenta;
     private javax.swing.JTable tableVenta1;
-    private javax.swing.JTable tableVentas;
     private javax.swing.JTable tableVentas1;
     private javax.swing.JLabel tipo;
     private javax.swing.JTextField txtApellidoCliente;
