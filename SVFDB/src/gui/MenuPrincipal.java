@@ -1908,13 +1908,13 @@ LimpiarTable();
                     txtStockDisponible.setText("" + pro.getStock());
                     txtCantidadVenta.requestFocus();
                 } else {
-                   
+                    LimparVenta();
                     txtNombreVenta.requestFocus();
                     JOptionPane.showMessageDialog(null, "Producto no disponible en el inventario, intenta con otro producto");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Producto no disponible en el inventario, intenta con otro producto");
-                 LimparVenta();
+                
                 txtNombreVenta.requestFocus();
             }
     
