@@ -11,9 +11,9 @@ import svfdb.Usuario;
  *
  * @author David Arteaga.
  */
-public class AS_Registrar_Factura extends javax.swing.JFrame {
+public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
 
-    public AS_Registrar_Factura(Usuario usuarioConsultado) {
+    public AS_Registrar_Factura_Compra(Usuario usuarioConsultado) {
         initComponents();
         
         
@@ -57,7 +57,7 @@ public class AS_Registrar_Factura extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa.png"))); // NOI18N
-        jLabel1.setText("REGISTRAR FACTURA");
+        jLabel1.setText("REGISTRAR FACTURA COMPRA");
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
