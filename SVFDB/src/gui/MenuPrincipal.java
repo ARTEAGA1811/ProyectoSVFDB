@@ -1907,7 +1907,7 @@ LimpiarTable();
     private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
 
      LimpiarTable();
-ListarVentas();
+     ListarVentas();
                   
 
         
