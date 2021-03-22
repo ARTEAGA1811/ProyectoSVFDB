@@ -88,20 +88,20 @@
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="jTFNacimiento" pref="115" max="32767" attributes="0"/>
-                      <Component id="jTFLogin" max="32767" attributes="0"/>
+                      <Component id="txtTelefono" pref="115" max="32767" attributes="0"/>
+                      <Component id="txtRuc2" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jTFPassword" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="txtNombreCome" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTFTelefono" min="-2" pref="207" max="-2" attributes="0"/>
+                          <Component id="txtDireccion" min="-2" pref="207" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -109,14 +109,14 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jTFApellido" min="-2" pref="83" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
+                          <Component id="txtId" min="-2" pref="121" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jTFRol" min="-2" pref="223" max="-2" attributes="0"/>
+                          <Component id="txtEmail" min="-2" pref="223" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -126,7 +126,7 @@
                       <Component id="jScrollPane7" min="-2" pref="835" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                          <Component id="btnGuardarpro1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnGuardarCompra" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -141,27 +141,27 @@
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTFLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtRuc2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTFApellido" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtId" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTFPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtNombreCome" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTFTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTFNacimiento" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTFRol" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane7" min="-2" pref="329" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnGuardarpro1" min="-2" pref="45" max="-2" attributes="0"/>
+                      <Component id="btnGuardarCompra" min="-2" pref="45" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="51" max="32767" attributes="0"/>
               </Group>
@@ -227,43 +227,50 @@
             <Property name="text" type="java.lang.String" value="Tel&#xe9;fono"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTFLogin">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTFPassword">
+        <Component class="javax.swing.JTextField" name="txtRuc2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFPasswordActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRuc2ActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtRuc2KeyPressed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTFApellido">
+        <Component class="javax.swing.JTextField" name="txtNombreCome">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreComeActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtId">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTFTelefono">
+        <Component class="javax.swing.JTextField" name="txtDireccion">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
         </Component>
@@ -278,23 +285,23 @@
             <Property name="text" type="java.lang.String" value="E-mail"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTFNacimiento">
+        <Component class="javax.swing.JTextField" name="txtTelefono">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTFRol">
+        <Component class="javax.swing.JTextField" name="txtEmail">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
         </Component>
@@ -367,7 +374,7 @@
                               <EmptySpace min="0" pref="33" max="32767" attributes="0"/>
                               <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                              <Component id="jTFNombre3" min="-2" pref="111" max="-2" attributes="0"/>
+                              <Component id="txtValorTo" min="-2" pref="111" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
@@ -377,8 +384,8 @@
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTFNombre2" alignment="1" min="-2" pref="111" max="-2" attributes="0"/>
-                                  <Component id="jTFNombre1" alignment="1" min="-2" pref="111" max="-2" attributes="0"/>
+                                  <Component id="txtValorUnit" alignment="1" min="-2" pref="111" max="-2" attributes="0"/>
+                                  <Component id="txtIVA" alignment="1" min="-2" pref="111" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -391,17 +398,17 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTFNombre2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtValorUnit" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel13" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTFNombre1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtIVA" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel12" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="jTFNombre3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtValorTo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -442,7 +449,7 @@
                 <Property name="text" type="java.lang.String" value="Valor Total :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTFNombre1">
+            <Component class="javax.swing.JTextField" name="txtIVA">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -452,10 +459,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFNombre1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIVAActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTFNombre2">
+            <Component class="javax.swing.JTextField" name="txtValorUnit">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -465,10 +472,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFNombre2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtValorUnitActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTFNombre3">
+            <Component class="javax.swing.JTextField" name="txtValorTo">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -478,12 +485,12 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFNombre3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtValorToActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="btnGuardarpro1">
+        <Component class="javax.swing.JButton" name="btnGuardarCompra">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Img/GuardarTodo.png"/>
@@ -491,7 +498,7 @@
             <Property name="text" type="java.lang.String" value="Registrar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarpro1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarCompraActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

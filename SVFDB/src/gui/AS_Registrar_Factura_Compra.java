@@ -5,15 +5,28 @@
  */
 package gui;
 
-import svfdb.Usuario;
+import Modelos.Proveed;
+import Modelos.Proveedor;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+
+
 
 /**
  *
  * @author David Arteaga.
  */
 public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
+    
+       
+        Proveed prov = new Proveed();
+        Proveedor prove = new Proveedor();
+        
 
-    public AS_Registrar_Factura_Compra(Usuario usuarioConsultado) {
+    public AS_Registrar_Factura_Compra() {
+        
+     
+        
         initComponents();
         
         
@@ -35,23 +48,23 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTFLogin = new javax.swing.JTextField();
-        jTFPassword = new javax.swing.JTextField();
-        jTFApellido = new javax.swing.JTextField();
-        jTFTelefono = new javax.swing.JTextField();
+        txtRuc2 = new javax.swing.JTextField();
+        txtNombreCome = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTFNacimiento = new javax.swing.JTextField();
-        jTFRol = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         jScrollPane7 = new javax.swing.JScrollPane();
         tableVentas1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTFNombre1 = new javax.swing.JTextField();
-        jTFNombre2 = new javax.swing.JTextField();
-        jTFNombre3 = new javax.swing.JTextField();
-        btnGuardarpro1 = new javax.swing.JButton();
+        txtIVA = new javax.swing.JTextField();
+        txtValorUnit = new javax.swing.JTextField();
+        txtValorTo = new javax.swing.JTextField();
+        btnGuardarCompra = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -84,31 +97,42 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Teléfono");
 
-        jTFLogin.setBackground(new java.awt.Color(255, 255, 255));
-
-        jTFPassword.setBackground(new java.awt.Color(255, 255, 255));
-        jTFPassword.setForeground(new java.awt.Color(255, 255, 255));
-        jTFPassword.addActionListener(new java.awt.event.ActionListener() {
+        txtRuc2.setBackground(new java.awt.Color(255, 255, 255));
+        txtRuc2.setForeground(new java.awt.Color(0, 0, 0));
+        txtRuc2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFPasswordActionPerformed(evt);
+                txtRuc2ActionPerformed(evt);
+            }
+        });
+        txtRuc2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtRuc2KeyPressed(evt);
             }
         });
 
-        jTFApellido.setBackground(new java.awt.Color(255, 255, 255));
-        jTFApellido.setForeground(new java.awt.Color(255, 255, 255));
+        txtNombreCome.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombreCome.setForeground(new java.awt.Color(0, 0, 0));
+        txtNombreCome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreComeActionPerformed(evt);
+            }
+        });
 
-        jTFTelefono.setBackground(new java.awt.Color(255, 255, 255));
-        jTFTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        txtId.setBackground(new java.awt.Color(255, 255, 255));
+        txtId.setForeground(new java.awt.Color(0, 0, 0));
+
+        txtDireccion.setBackground(new java.awt.Color(255, 255, 255));
+        txtDireccion.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("E-mail");
 
-        jTFNacimiento.setBackground(new java.awt.Color(255, 255, 255));
-        jTFNacimiento.setForeground(new java.awt.Color(255, 255, 255));
+        txtTelefono.setBackground(new java.awt.Color(255, 255, 255));
+        txtTelefono.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTFRol.setBackground(new java.awt.Color(255, 255, 255));
-        jTFRol.setForeground(new java.awt.Color(255, 255, 255));
+        txtEmail.setBackground(new java.awt.Color(255, 255, 255));
+        txtEmail.setForeground(new java.awt.Color(0, 0, 0));
 
         tableVentas1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,27 +161,27 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Valor Total :");
 
-        jTFNombre1.setBackground(new java.awt.Color(255, 255, 255));
-        jTFNombre1.setForeground(new java.awt.Color(255, 255, 255));
-        jTFNombre1.addActionListener(new java.awt.event.ActionListener() {
+        txtIVA.setBackground(new java.awt.Color(255, 255, 255));
+        txtIVA.setForeground(new java.awt.Color(255, 255, 255));
+        txtIVA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFNombre1ActionPerformed(evt);
+                txtIVAActionPerformed(evt);
             }
         });
 
-        jTFNombre2.setBackground(new java.awt.Color(255, 255, 255));
-        jTFNombre2.setForeground(new java.awt.Color(255, 255, 255));
-        jTFNombre2.addActionListener(new java.awt.event.ActionListener() {
+        txtValorUnit.setBackground(new java.awt.Color(255, 255, 255));
+        txtValorUnit.setForeground(new java.awt.Color(255, 255, 255));
+        txtValorUnit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFNombre2ActionPerformed(evt);
+                txtValorUnitActionPerformed(evt);
             }
         });
 
-        jTFNombre3.setBackground(new java.awt.Color(255, 255, 255));
-        jTFNombre3.setForeground(new java.awt.Color(255, 255, 255));
-        jTFNombre3.addActionListener(new java.awt.event.ActionListener() {
+        txtValorTo.setBackground(new java.awt.Color(255, 255, 255));
+        txtValorTo.setForeground(new java.awt.Color(255, 255, 255));
+        txtValorTo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFNombre3ActionPerformed(evt);
+                txtValorToActionPerformed(evt);
             }
         });
 
@@ -172,7 +196,7 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
                         .addGap(0, 33, Short.MAX_VALUE)
                         .addComponent(jLabel12)
                         .addGap(58, 58, 58)
-                        .addComponent(jTFNombre3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtValorTo, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -180,8 +204,8 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
                             .addComponent(jLabel13))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFNombre2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTFNombre1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtValorUnit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIVA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(27, 27, 27))
         );
         jPanel2Layout.setVerticalGroup(
@@ -189,23 +213,23 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTFNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtValorUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIVA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFNombre3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtValorTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        btnGuardarpro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/GuardarTodo.png"))); // NOI18N
-        btnGuardarpro1.setText("Registrar");
-        btnGuardarpro1.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/GuardarTodo.png"))); // NOI18N
+        btnGuardarCompra.setText("Registrar");
+        btnGuardarCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarpro1ActionPerformed(evt);
+                btnGuardarCompraActionPerformed(evt);
             }
         });
 
@@ -223,37 +247,37 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTFNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                    .addComponent(jTFLogin))
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                    .addComponent(txtRuc2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTFPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNombreCome, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTFTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTFApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(175, 175, 175))
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(137, 137, 137))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTFRol, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 835, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(63, 63, 63)
-                        .addComponent(btnGuardarpro1)
+                        .addComponent(btnGuardarCompra)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -264,25 +288,25 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTFLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRuc2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jTFApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jTFPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombreCome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTFTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(jTFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
-                    .addComponent(jTFRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardarpro1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnGuardarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
@@ -315,37 +339,77 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tableVentas1MouseClicked
 
-    private void jTFPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFPasswordActionPerformed
+    private void txtNombreComeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreComeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTFPasswordActionPerformed
+    }//GEN-LAST:event_txtNombreComeActionPerformed
 
-    private void jTFNombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNombre1ActionPerformed
+    private void txtIVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIVAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTFNombre1ActionPerformed
+    }//GEN-LAST:event_txtIVAActionPerformed
 
-    private void jTFNombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNombre2ActionPerformed
+    private void txtValorUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorUnitActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTFNombre2ActionPerformed
+    }//GEN-LAST:event_txtValorUnitActionPerformed
 
-    private void jTFNombre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNombre3ActionPerformed
+    private void txtValorToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorToActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTFNombre3ActionPerformed
+    }//GEN-LAST:event_txtValorToActionPerformed
 
-    private void btnGuardarpro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarpro1ActionPerformed
+    private void btnGuardarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCompraActionPerformed
 
         
 
 
         // TODO add your handling code here:
   
-    }//GEN-LAST:event_btnGuardarpro1ActionPerformed
+    }//GEN-LAST:event_btnGuardarCompraActionPerformed
+
+    private void txtRuc2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRuc2KeyPressed
+
+
+if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+          
+            if (!"".equals(txtRuc2.getText())) {
+                String cod = txtRuc2.getText();
+                prove = prov.BuscarProve(cod);
+                        
+                        if (prove.getComercial() != null) {
+                    
+                 txtNombreCome.setText("" + prove.getComercial());
+                 txtId.setText("" + prove.getId());
+                    txtTelefono.setText("" + prove.getTelefono());
+                    txtDireccion.setText("" + prove.getDireccion());
+                    txtEmail.setText("" + prove.getEmail());
+                    txtRuc2.requestFocus();
+                } else {
+                   
+                    
+                    txtRuc2.requestFocus();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No exite Proveedor con ese RUC ");
+                txtId.requestFocus();
+            }
+        }
+
+
+        
+        
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRuc2KeyPressed
+
+    private void txtRuc2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuc2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRuc2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGuardarpro1;
+    private javax.swing.JButton btnGuardarCompra;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -359,15 +423,15 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTextField jTFApellido;
-    private javax.swing.JTextField jTFLogin;
-    private javax.swing.JTextField jTFNacimiento;
-    private javax.swing.JTextField jTFNombre1;
-    private javax.swing.JTextField jTFNombre2;
-    private javax.swing.JTextField jTFNombre3;
-    private javax.swing.JTextField jTFPassword;
-    private javax.swing.JTextField jTFRol;
-    private javax.swing.JTextField jTFTelefono;
     private javax.swing.JTable tableVentas1;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtIVA;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtNombreCome;
+    private javax.swing.JTextField txtRuc2;
+    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtValorTo;
+    private javax.swing.JTextField txtValorUnit;
     // End of variables declaration//GEN-END:variables
 }
