@@ -154,5 +154,29 @@ public class Client {
        }
        return cl;
    }
+   public Cliente BuscarCli(String cod){
+        Cliente clien = new Cliente();
+        String sql = "SELECT * FROM clientes  WHERE dni = ?";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, cod);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                
+                clien.setNombre(rs.getString("nombre"));
+                 clien.setApellido(rs.getString("apellido"));
+                clien.setTelefono(rs.getInt("telefono"));
+                   clien.setCorreo(rs.getString("correo"));
+                clien.setDireccion(rs.getString("direccion"));
+                                                                      
+                
+                
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return clien;
+    }
    
 }

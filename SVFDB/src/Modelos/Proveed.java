@@ -125,5 +125,27 @@ public class Proveed {
             }
         }
     }
+    
+    public Proveedor BuscarProve(String cod){
+        Proveedor proved = new Proveedor();
+        String sql = "SELECT * FROM proveedor WHERE ruc = ?";
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, cod);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                proved.setComercial(rs.getString("comercial"));
+                proved.setTelefono(rs.getInt("telefono"));
+                proved.setDireccion(rs.getString("direccion"));
+                proved.setEmail(rs.getString("email"));
+                
+                
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        return proved ;
+    }
 
 }
