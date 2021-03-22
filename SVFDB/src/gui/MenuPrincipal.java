@@ -279,7 +279,7 @@ public void ListarProveedor() {
         jScrollPane5 = new javax.swing.JScrollPane();
         tableVentas = new javax.swing.JTable();
         jLabel53 = new javax.swing.JLabel();
-        txtIdVenta3 = new javax.swing.JTextField();
+        txtCodigoVF = new javax.swing.JTextField();
         jLabel54 = new javax.swing.JLabel();
         txtIdVenta4 = new javax.swing.JTextField();
         btnDarDeBaja = new javax.swing.JButton();
@@ -1199,9 +1199,9 @@ public void ListarProveedor() {
         jLabel53.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel53.setText("Código ");
 
-        txtIdVenta3.addActionListener(new java.awt.event.ActionListener() {
+        txtCodigoVF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdVenta3ActionPerformed(evt);
+                txtCodigoVFActionPerformed(evt);
             }
         });
 
@@ -1259,7 +1259,7 @@ public void ListarProveedor() {
                 .addGap(195, 195, 195)
                 .addComponent(jLabel53)
                 .addGap(34, 34, 34)
-                .addComponent(txtIdVenta3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCodigoVF, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(jLabel54)
                 .addGap(28, 28, 28)
@@ -1279,7 +1279,7 @@ public void ListarProveedor() {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtIdVenta3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigoVF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel53)
                     .addComponent(jLabel54)
                     .addComponent(txtIdVenta4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1988,7 +1988,7 @@ LimpiarTable();
     private void btnEditarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProveedorActionPerformed
 
         if ("".equals(txtIdProveedor.getText())) {
-            JOptionPane.showMessageDialog(null, "Seleecione una fila");
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
         } else {
             if (!"".equals(txtRucProveedor.getText()) || !"".equals(txtNombreProveedor.getText())||!"".equals(txtApellidoProveedor.getText())||!"".equals(txtComercialProveedor.getText()) || !"".equals(txtTelefonoProveedor.getText()) || !"".equals(txtEmailProveedor.getText())  ||  !"".equals(txtDireccionProveedor.getText())) {
                 pr.setRuc(txtRucProveedor.getText());
@@ -2174,9 +2174,17 @@ LimpiarTable();
     }//GEN-LAST:event_cbxEstadoActionPerformed
 
     private void btnGenerarVenta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarVenta1ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here: ************************************MODIFICACIONES DAVID
         
+        //Primero debe verificar que haya elegido un codigo de venta y que sea un codigo de venta valido.
+        boolean esCodigoDeVentaValido = false;
+        for(int i = 0; i<)
+        if(txtCodigoVF.getText().isEmpty() ||){
+            JOptionPane.showMessageDialog(null, "Debe ingresar un codigo de venta valido.");
+        }
+        //en
         //AS_Generar_Factura genFactura = new AS_Generar_Factura(usuarioConsultado)
+        //***********************************************************************************
     }//GEN-LAST:event_btnGenerarVenta1ActionPerformed
 
     private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
@@ -2499,12 +2507,18 @@ LimpiarProductos();        // TODO add your handling code here:
     }//GEN-LAST:event_btnGenerarVenta3ActionPerformed
 
     private void tableVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableVentasMouseClicked
-
+        
+        //DMODIFICACION DAVID******************************************************************     
+        //Cuando es clickada una fila
+        int fila = tableVentas.rowAtPoint(evt.getPoint());
+        txtCodigoVF.setText(tableVentas.getValueAt(fila, 0).toString());
+        
+        
     }//GEN-LAST:event_tableVentasMouseClicked
 
-    private void txtIdVenta3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdVenta3ActionPerformed
+    private void txtCodigoVFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoVFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdVenta3ActionPerformed
+    }//GEN-LAST:event_txtCodigoVFActionPerformed
 
     private void tableVentas1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableVentas1MouseClicked
         // TODO add your handling code here:
@@ -2808,6 +2822,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     private javax.swing.JTextField txtCodigoPro;
     private javax.swing.JTextField txtCodigoPro2;
     private javax.swing.JTextField txtCodigoPro3;
+    private javax.swing.JTextField txtCodigoVF;
     private javax.swing.JTextField txtComercialProveedor;
     private javax.swing.JTextField txtDireccionCliente;
     private javax.swing.JTextField txtDireccionProveedor;
@@ -2818,7 +2833,6 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     private javax.swing.JTextField txtIdCliente;
     private javax.swing.JTextField txtIdPro;
     private javax.swing.JTextField txtIdProveedor;
-    private javax.swing.JTextField txtIdVenta3;
     private javax.swing.JTextField txtIdVenta4;
     private javax.swing.JTextField txtIdVenta5;
     private javax.swing.JTextField txtIdVenta6;

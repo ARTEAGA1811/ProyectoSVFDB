@@ -1542,7 +1542,7 @@
                               <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
                               <Component id="jLabel53" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                              <Component id="txtIdVenta3" min="-2" pref="65" max="-2" attributes="0"/>
+                              <Component id="txtCodigoVF" min="-2" pref="65" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                               <Component id="jLabel54" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
@@ -1565,7 +1565,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtIdVenta3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCodigoVF" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel53" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel54" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtIdVenta4" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1645,9 +1645,9 @@
                         <Property name="text" type="java.lang.String" value="C&#xf3;digo "/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtIdVenta3">
+                    <Component class="javax.swing.JTextField" name="txtCodigoVF">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIdVenta3ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodigoVFActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel54">
