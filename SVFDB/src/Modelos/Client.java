@@ -167,7 +167,7 @@ public class Client {
                 clien.setNombre(rs.getString("nombre"));
                  clien.setApellido(rs.getString("apellido"));
                 clien.setTelefono(rs.getInt("telefono"));
-                   clien.setCorreo(rs.getString("correo"));
+                clien.setCorreo(rs.getString("correo"));
                 clien.setDireccion(rs.getString("direccion"));
                                                                       
                 

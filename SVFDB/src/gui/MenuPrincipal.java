@@ -2282,7 +2282,7 @@ LimpiarTable();
         }else{ 
             //En esta parte ya quiere decir que el codigo de venta si es valido,aqui resolvemos todo.
             //if (evt.getKeyCode() == KeyEvent.VK_ENTER)
-            AS_Generar_Factura genFactura = new AS_Generar_Factura();
+            AS_Generar_Facturas genFactura = new AS_Generar_Facturas();
             
             genFactura.setVisible(true);
             
@@ -2293,7 +2293,18 @@ LimpiarTable();
     }//GEN-LAST:event_btnGenerarVenta1ActionPerformed
 
     private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
-        // TODO add your handling code here:
+
+
+
+
+  modelo = (DefaultTableModel) TableVentaPrin.getModel();
+       modelo.removeRow(TableVentaPrin.getSelectedRow());
+       
+       
+        txtNombreVenta.requestFocus();
+
+        JOptionPane.showMessageDialog(null,"Registo de Venta Eliminada");
+                // TODO add your handling code here:
         
     }//GEN-LAST:event_btnDarDeBajaActionPerformed
 
