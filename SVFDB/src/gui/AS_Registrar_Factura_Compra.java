@@ -88,7 +88,8 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
         LabelTotal1 = new javax.swing.JLabel();
         jLabel161 = new javax.swing.JLabel();
         txtStockDisponible = new javax.swing.JTextField();
-        txtStockDisponibleC = new javax.swing.JTextField();
+        txtStockDisponible1 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -96,7 +97,6 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa.png"))); // NOI18N
         jLabel1.setText("REGISTRAR FACTURA COMPRA");
 
-        jPanel1.setBackground(null);
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -259,17 +259,21 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
 
         txtStockDisponible.setEditable(false);
 
-        txtStockDisponibleC.setEditable(false);
-        txtStockDisponibleC.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtStockDisponible1.setEditable(false);
+        txtStockDisponible1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtStockDisponibleCMouseClicked(evt);
+                txtStockDisponible1MouseClicked(evt);
             }
         });
-        txtStockDisponibleC.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtStockDisponible1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtStockDisponibleCKeyPressed(evt);
+                txtStockDisponible1KeyPressed(evt);
             }
         });
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel8.setText("Stock Disponible");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -330,27 +334,28 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
                         .addComponent(txtCantidadVentaC, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPrecioVentaC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtPrecioVentaC, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel9)
-                        .addGap(25, 25, 25)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtStockDisponibleC, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97)
+                        .addGap(61, 61, 61)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(txtStockDisponible1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addComponent(btnEliminarventaC)
                 .addGap(19, 19, 19))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel161)
-                .addGap(40, 40, 40)
-                .addComponent(LabelTotal1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 835, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(63, 63, 63)
-                        .addComponent(btnGuardarCompra)))
+                        .addComponent(btnGuardarCompra)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel161)
+                        .addGap(40, 40, 40)
+                        .addComponent(LabelTotal1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -378,22 +383,24 @@ public class AS_Registrar_Factura_Compra extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminarventaC, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtPrecioVentaC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCantidadVentaC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtStockDisponibleC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtStockDisponible1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNombreVentaC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCodigoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnEliminarventaC, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCodigoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
@@ -518,6 +525,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
                     txtCodigoC.setText("" + pro.getCodigo());
 
                     txtPrecioVentaC.setText("" + pro.getPrecio());
+                    txtStockDisponible1.setText("" + pro.getStock());
                    
                     txtCantidadVentaC.requestFocus();
                 } else {
@@ -532,6 +540,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             }
 
         }
+    
 
     }//GEN-LAST:event_txtNombreVentaCKeyPressed
 
@@ -553,7 +562,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
                 double precio =  Double.parseDouble(txtPrecioVentaC.getText());
 
                 double total = cant * precio;
-                int stock = Integer.parseInt(txtStockDisponibleC.getText());
+                int stock = Integer.parseInt(txtStockDisponible1.getText());
                 if (stock >= cant) {
                     item = item + 1;
                     tmp = (DefaultTableModel) tableCompra1.getModel();
@@ -604,6 +613,9 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
     private void txtCodigoCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoCKeyPressed
 
+        
+        
+        
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
             if (!"".equals(txtCodigoC.getText())) {
@@ -650,15 +662,15 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
     }//GEN-LAST:event_btnEliminarventaCActionPerformed
 
-    private void txtStockDisponibleCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtStockDisponibleCMouseClicked
+    private void txtStockDisponible1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtStockDisponible1MouseClicked
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtStockDisponibleCMouseClicked
+    }//GEN-LAST:event_txtStockDisponible1MouseClicked
 
-    private void txtStockDisponibleCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStockDisponibleCKeyPressed
+    private void txtStockDisponible1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStockDisponible1KeyPressed
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtStockDisponibleCKeyPressed
+    }//GEN-LAST:event_txtStockDisponible1KeyPressed
 
     /**
      * @param args the command line arguments
@@ -679,6 +691,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane7;
@@ -693,7 +706,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     private javax.swing.JTextField txtPrecioVentaC;
     private javax.swing.JTextField txtRuc2;
     private javax.swing.JTextField txtStockDisponible;
-    private javax.swing.JTextField txtStockDisponibleC;
+    private javax.swing.JTextField txtStockDisponible1;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 
