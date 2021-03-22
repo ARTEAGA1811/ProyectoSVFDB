@@ -135,33 +135,31 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
             }
         });
 
-        txtNombreGenFac.setForeground(new java.awt.Color(255, 255, 255));
         txtNombreGenFac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreGenFacActionPerformed(evt);
             }
         });
 
-        txtApellidoGenFac.setForeground(new java.awt.Color(255, 255, 255));
         txtApellidoGenFac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApellidoGenFacActionPerformed(evt);
             }
         });
 
-        txtCodigoGenFac.setForeground(new java.awt.Color(255, 255, 255));
-
-        txtDireccionGenFac.setForeground(new java.awt.Color(255, 255, 255));
-
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("E-mail");
 
+<<<<<<< HEAD
         txtTelefGenFac.setForeground(new java.awt.Color(255, 255, 255));
 
         txtCorreoGenFac.setForeground(new java.awt.Color(255, 255, 255));
 
         tableFactura.setModel(new javax.swing.table.DefaultTableModel(
+=======
+        tableVentas1.setModel(new javax.swing.table.DefaultTableModel(
+>>>>>>> 79a39dba9a3298e634bfb65f7fa9bebad4549522
             new Object [][] {
 
             },
@@ -175,6 +173,8 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
             }
         });
         jScrollPane7.setViewportView(tableFactura);
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -192,21 +192,28 @@ public class AS_Generar_Factura extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Valor Total :");
 
-        jTFNombre1.setForeground(new java.awt.Color(255, 255, 255));
         jTFNombre1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFNombre1ActionPerformed(evt);
             }
         });
 
+<<<<<<< HEAD
         jTFNombre3.setForeground(new java.awt.Color(255, 255, 255));
+=======
+        jTFNombre2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFNombre2ActionPerformed(evt);
+            }
+        });
+
+>>>>>>> 79a39dba9a3298e634bfb65f7fa9bebad4549522
         jTFNombre3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFNombre3ActionPerformed(evt);
             }
         });
 
-        jTFNombre4.setForeground(new java.awt.Color(255, 255, 255));
         jTFNombre4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFNombre4ActionPerformed(evt);
@@ -484,8 +491,8 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             
             /*
             if(txtCedulaGenFact.getText().isEmpty() == false){
-                //boolean esCedulaValida = new ValidacionesCampos().validadorDeCedula(txtCedulaGenFact.getText());
-                boolean esCedulaValida = true;
+                boolean esCedulaValida = new ValidacionesCampos().validadorDeCedula(txtCedulaGenFact.getText());
+                //boolean esCedulaValida = true;
                 if(esCedulaValida){
                     
                     miClientee = miClient.Buscarcliente(Integer.parseInt(txtCedulaGenFact.getText()));
@@ -500,13 +507,13 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
                     }else{
                         //En este caso es que no ha detectado una cedula registrada
                         JOptionPane.showMessageDialog(null, "Cliente no registrado, ingrese datos");
-                        //limpiarEstaVentana();
+                        limpiarEstaVentana();
                     
                     
                     }    
                 }else{
                     JOptionPane.showMessageDialog(null, "Cedula incorrecta, vuelva a ingresar");
-                    //limpiarEstaVentana();
+                    limpiarEstaVentana();
                 }
                 
             }
