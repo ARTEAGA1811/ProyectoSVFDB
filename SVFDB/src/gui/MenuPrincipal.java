@@ -1204,7 +1204,7 @@ public void ListarProveedor() {
         });
 
         jLabel54.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel54.setText("Empleado");
+        jLabel54.setText("Vendedor");
 
         btnDarDeBaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/eliminar.png"))); // NOI18N
         btnDarDeBaja.setText("Dar de baja");
