@@ -352,7 +352,7 @@ public void ListarProveedor() {
         jScrollPane6 = new javax.swing.JScrollPane();
         tableVenta1 = new javax.swing.JTable();
         btnGenerarVenta2 = new javax.swing.JButton();
-        btnNuevoPro2 = new javax.swing.JButton();
+        btnRegistrarFactura = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Ventas y Facturación");
@@ -1494,6 +1494,14 @@ public void ListarProveedor() {
                 btnBuscarUsuarioActionPerformed(evt);
             }
         });
+        btnBuscarUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnBuscarUsuarioKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnBuscarUsuarioKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1812,8 +1820,13 @@ public void ListarProveedor() {
             }
         });
 
-        btnNuevoPro2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/nuevo.png"))); // NOI18N
-        btnNuevoPro2.setText("Registrar Factura");
+        btnRegistrarFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/nuevo.png"))); // NOI18N
+        btnRegistrarFactura.setText("Registrar Factura");
+        btnRegistrarFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarFacturaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelRegistrarCompraLayout = new javax.swing.GroupLayout(jPanelRegistrarCompra);
         jPanelRegistrarCompra.setLayout(jPanelRegistrarCompraLayout);
@@ -1842,14 +1855,14 @@ public void ListarProveedor() {
                         .addComponent(btnGenerarVenta2))
                     .addGroup(jPanelRegistrarCompraLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnNuevoPro2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnRegistrarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelRegistrarCompraLayout.setVerticalGroup(
             jPanelRegistrarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelRegistrarCompraLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addComponent(btnNuevoPro2)
+                .addComponent(btnRegistrarFactura)
                 .addGap(18, 18, 18)
                 .addGroup(jPanelRegistrarCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel30)
@@ -1963,11 +1976,13 @@ LimpiarTable();
         
 
    modelo = (DefaultTableModel) tableVenta.getModel();
-        modelo.removeRow(tableVenta.getSelectedRow());
+       modelo.removeRow(tableVenta.getSelectedRow());
+       
         TotalPagar();
         txtNombreVenta.requestFocus();
 
         JOptionPane.showMessageDialog(null,"Venta Eliminada");
+        
     }//GEN-LAST:event_btnEliminarventaActionPerformed
 
     private void TableProveedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableProveedorMouseClicked
@@ -2673,6 +2688,28 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtStockDisponibleMouseClicked
 
+    private void btnRegistrarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarFacturaActionPerformed
+
+
+              AS_Registrar_Factura_Compra FacturaC = new  AS_Registrar_Factura_Compra();
+        
+                  FacturaC.setVisible(true);
+    
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarFacturaActionPerformed
+
+    private void btnBuscarUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBuscarUsuarioKeyPressed
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarUsuarioKeyPressed
+
+    private void btnBuscarUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBuscarUsuarioKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarUsuarioKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -2734,12 +2771,12 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
     private javax.swing.JButton btnNuevaVenta;
     private javax.swing.JButton btnNuevoCliente;
     private javax.swing.JButton btnNuevoPro;
-    private javax.swing.JButton btnNuevoPro2;
     private javax.swing.JButton btnNuevoProveedor;
     private javax.swing.JButton btnProductos;
     private javax.swing.JButton btnProveedor;
     private javax.swing.JButton btnRegistarCompra;
     private javax.swing.JButton btnRegistrarCliente;
+    private javax.swing.JButton btnRegistrarFactura;
     private javax.swing.JButton btnReseterarPassword;
     private javax.swing.JButton btnVentas;
     private javax.swing.JButton btnguardarProveedor;

@@ -2075,6 +2075,8 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarUsuarioActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnBuscarUsuarioKeyPressed"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnBuscarUsuarioKeyTyped"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -2467,7 +2469,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnNuevoPro2" min="-2" pref="169" max="-2" attributes="0"/>
+                              <Component id="btnRegistrarFactura" min="-2" pref="169" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -2478,7 +2480,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                      <Component id="btnNuevoPro2" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnRegistrarFactura" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2559,13 +2561,16 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGenerarVenta2ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnNuevoPro2">
+            <Component class="javax.swing.JButton" name="btnRegistrarFactura">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Img/nuevo.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Registrar Factura"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarFacturaActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
